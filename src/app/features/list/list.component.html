@@ -14,18 +14,13 @@
     </div>
 
     <div class="col-md-1">
-      <button type="submit" class="btn btn-primary float-right" (ngClick)="addWish()">Submit</button>
+      <button type="submit" class="btn btn-primary float-right" (click)="addWish()">Submit</button>
     </div>
   </div>
 </form>
 
-
-
 <ul class="list-group">
-  <li class="list-group-item">Ser</li>
-  <li class="list-group-item">Ser</li>
-  <li class="list-group-item">Ser</li>
-  <li class="list-group-item">Ser</li>
-  <li class="list-group-item">Ser</li>
-  <li class="list-group-item">Ser</li>
+  <li class="list-group-item" *ngFor="let wish of shoppingList">{{ wish.name }}
+    <button class="remove fa fa-trash" (click)="removeWish(wish)"></button>
+  </li>
 </ul>

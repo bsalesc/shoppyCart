@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Wish } from '../../interfaces';
+import { WishService } from 'src/app/services/wish.service';
+import { Wish } from 'src/app/interfaces';
 
 @Component({
   templateUrl: './list.component.html',
@@ -15,7 +16,13 @@ export class ListComponent implements OnInit {
     quantity: 0
   };
 
-  constructor() {}
+  constructor(private _service: WishService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._service.getAll().subscribe(list => (this.shoppingList = list));
+  }
+
+  addWish = () => this._service.add(this.wish);
+
+  removeWish = wish => this._service.remove(wish);
 }
