@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WishService } from 'src/app/services/wish.service';
-import { Wish } from 'src/app/interfaces';
+import { Wish, TypeMessage } from 'src/app/interfaces';
 
 @Component({
   templateUrl: './list.component.html',
@@ -9,12 +9,8 @@ import { Wish } from 'src/app/interfaces';
 export class ListComponent implements OnInit {
   shoppingList: Wish[] = [];
 
-  wish: Wish = {
-    id: 0,
-    name: '',
-    price: 0,
-    quantity: 0
-  };
+  message: string = 'Success';
+  typeMessage: TypeMessage = TypeMessage.SUCCESS;
 
   constructor(private _service: WishService) {}
 
@@ -22,7 +18,9 @@ export class ListComponent implements OnInit {
     this._service.getAll().subscribe(list => (this.shoppingList = list));
   }
 
-  addWish = () => this._service.add(this.wish);
+  addWish = wish => {
+    this._service.add(wish);
+  };
 
   removeWish = wish => this._service.remove(wish);
 }
