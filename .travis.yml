@@ -21,3 +21,11 @@ install:
 
 script:
   - yarn test:headless
+
+before_deploy:
+  - yarn build --prod --aot --base-href https://
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: $heroku_token
