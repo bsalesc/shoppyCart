@@ -18,9 +18,5 @@ export class ListComponent implements OnInit {
     this._service.getAll().subscribe(list => (this.shoppingList = list));
   }
 
-  addWish = wish => {
-    this._service.add(wish);
-  };
-
   removeWish = wish => this._service.remove(wish);
 }

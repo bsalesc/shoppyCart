@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { TypeMessage } from '../../interfaces';
+import { TypeMessage, Message } from '../../interfaces';
+import { MessageService } from '../../services/message.service';
 
 @Component({
   selector: 'app-message',
@@ -7,8 +8,9 @@ import { TypeMessage } from '../../interfaces';
   styleUrls: ['./message.component.css']
 })
 export class MessageComponent {
-  @Input() message: string;
-  @Input() type: TypeMessage;
+  messages: Message[];
 
-  constructor() {}
+  constructor(private _messageService: MessageService) {
+    this.messages = _messageService.messages;
+  }
 }

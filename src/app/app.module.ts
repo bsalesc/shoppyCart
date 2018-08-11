@@ -9,6 +9,8 @@ import { FooterComponent } from 'src/app/features/footer/footer.component';
 import { AppComponent } from 'src/app/app.component';
 import { RouterModule } from 'src/app/router/router.module';
 import { WishService } from './services/wish.service';
+import { MessageModule } from './shared/message/message.module';
+import { MessageService } from './services/message.service';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent],
@@ -16,6 +18,7 @@ import { WishService } from './services/wish.service';
     BrowserModule,
     FormsModule,
     RouterModule,
+    MessageModule,
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyAobgCwkY8-yiFsYRfKzLqKQgZsw5Lgo3M',
       authDomain: 'shopping-list-5666c.firebaseapp.com',
@@ -26,7 +29,7 @@ import { WishService } from './services/wish.service';
     }),
     AngularFireDatabaseModule
   ],
-  providers: [WishService],
+  providers: [WishService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

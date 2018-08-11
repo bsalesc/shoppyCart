@@ -1,4 +1,4 @@
 import { Wish } from './wish';
-import { TypeMessage } from './types';
+import { Message, TypeMessage } from './message';
 
-export { Wish, TypeMessage };
+export { Wish, Message, TypeMessage };
