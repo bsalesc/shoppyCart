@@ -12,7 +12,9 @@
 </div>
 
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let wish of list">{{ wish.name }}
+  <li class="list-group-item" *ngFor="let wish of list">
+    <button class="remove fa fa-trash" (click)="removeWish(wish)"></button>
+    {{ wish.description }}
     <span class="right">
       Found?
       <input type="checkbox" [checked]="wish.bought" (click)="mark(wish)">

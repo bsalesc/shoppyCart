@@ -23,16 +23,16 @@ export class WishService {
     const ref = this.list.push(wish);
     ref.update({ id: ref.key });
 
-    this._message.show(`${wish.name} added :)`);
+    this._message.show(`${wish.description} added :)`);
   };
 
   edit = (wish: Wish) => {
     this.list.update(wish.id, wish);
-    this._message.show(`${wish.name} edited :)`);
+    this._message.show(`${wish.description} edited :)`);
   };
 
   remove = (wish: Wish): void => {
     this.list.remove(wish.id);
-    this._message.show(`${wish.name} removed :(`);
+    this._message.show(`${wish.description} removed :(`);
   };
 }

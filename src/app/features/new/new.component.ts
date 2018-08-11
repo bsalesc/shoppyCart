@@ -11,7 +11,7 @@ import { WishService } from '../../services/wish.service';
 export class NewComponent {
   wish: Wish = {
     id: '',
-    name: '',
+    description: '',
     price: 0,
     quantity: 0,
     bought: false
@@ -23,7 +23,7 @@ export class NewComponent {
     this._service.add(this.wish);
     this.wish = {
       id: '',
-      name: '',
+      description: '',
       price: 0,
       quantity: 0,
       bought: false
