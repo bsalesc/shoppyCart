@@ -8,9 +8,8 @@ import { CategoriesComponent } from '../features/categories/categories.component
 
 const routes: Route[] = [
   { path: 'categories', component: CategoriesComponent },
-  { path: 'list', component: ListComponent },
-  { path: '', redirectTo: '/list', pathMatch: 'full' },
-  { path: '**', redirectTo: '/list' }
+  { path: '', component: ListComponent, pathMatch: 'full' },
+  { path: '**', redirectTo: '/' }
 ];
 
 @NgModule({

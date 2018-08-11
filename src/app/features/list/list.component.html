@@ -1,23 +1,26 @@
-<app-new></app-new>
+<app-agreement *ngIf="!userAgreed"></app-agreement>
+<div *ngIf="userAgreed">
+  <app-new></app-new>
 
-<div class="form-group header">
-  <span>
-    List already bought?
-    <input type="checkbox" [(ngModel)]="showInactiveItem">
-  </span>
-
-  <span>
-    Total products: {{ totalRecords }}
-  </span>
-</div>
-
-<ul class="list-group">
-  <li class="list-group-item" *ngFor="let wish of list">
-    <button class="remove fa fa-trash" (click)="removeWish(wish)"></button>
-    {{ wish.description }}
-    <span class="right">
-      Found?
-      <input type="checkbox" [checked]="wish.bought" (click)="mark(wish)">
+  <div class="form-group header">
+    <span>
+      List already bought?
+      <input type="checkbox" [(ngModel)]="showInactiveItem">
     </span>
-  </li>
-</ul>
+
+    <span>
+      Total products: {{ totalRecords }}
+    </span>
+  </div>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let wish of list">
+      <button class="remove fa fa-trash" (click)="removeWish(wish)"></button>
+      {{ wish.description }}
+      <span class="right">
+        Found?
+        <input type="checkbox" [checked]="wish.bought" (click)="mark(wish)">
+      </span>
+    </li>
+  </ul>
+</div>

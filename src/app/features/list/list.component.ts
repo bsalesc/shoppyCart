@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WishService } from 'src/app/services/wish.service';
 import { Wish, TypeMessage } from 'src/app/interfaces';
+import { UserService } from '../../services/user.service';
 
 @Component({
   templateUrl: './list.component.html',
@@ -10,7 +11,7 @@ export class ListComponent implements OnInit {
   private _shoppingList: Wish[] = [];
   private _showInactiveItem: boolean = false;
 
-  constructor(private _service: WishService) {}
+  constructor(private _service: WishService, private _user: UserService) {}
 
   set showInactiveItem(value: boolean) {
     if (this._showInactiveItem === value) {
@@ -30,6 +31,10 @@ export class ListComponent implements OnInit {
 
   get totalRecords(): number {
     return this._shoppingList.length;
+  }
+
+  get userAgreed() {
+    return this._user.userAgreed;
   }
 
   ngOnInit() {
