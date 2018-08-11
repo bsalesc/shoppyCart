@@ -20,8 +20,10 @@ cache:
 install:
   - yarn
 
-before_deploy:
+script:
   - yarn test:headless
+
+before_deploy:
   - yarn build --prod --aot --base-href $s3_domain
 
 deploy:
