@@ -1,4 +1,4 @@
-# ShoppingList
+# ShoppingList [![Build Status](https://travis-ci.org/bsalesc/shopping_list.png)](https://travis-ci.org/bsalesc/shopping_list)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
