@@ -1,14 +1,18 @@
 <app-new></app-new>
 
-<div class="form-group">
+<div class="form-group header">
   <span>
     List already bought?
-    <input type="checkbox" [checked]="showInactiveItem" (change)="showInactiveItem = !showInactiveItem">
+    <input type="checkbox" [(ngModel)]="showInactiveItem">
+  </span>
+
+  <span>
+    Total products: {{ totalRecords }}
   </span>
 </div>
 
 <ul class="list-group">
-  <li class="list-group-item" *ngFor="let wish of shoppingList">{{ wish.name }}
+  <li class="list-group-item" *ngFor="let wish of list">{{ wish.name }}
     <span class="right">
       Found?
       <input type="checkbox" [checked]="wish.bought" (click)="mark(wish)">

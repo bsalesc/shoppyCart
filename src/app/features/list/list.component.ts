@@ -7,8 +7,8 @@ import { Wish, TypeMessage } from 'src/app/interfaces';
   styleUrls: ['./list.component.css']
 })
 export class ListComponent implements OnInit {
-  shoppingList: Wish[] = [];
-  _showInactiveItem: boolean = false;
+  private _shoppingList: Wish[] = [];
+  private _showInactiveItem: boolean = false;
 
   constructor(private _service: WishService) {}
 
@@ -24,19 +24,20 @@ export class ListComponent implements OnInit {
     return this._showInactiveItem;
   }
 
+  get list(): Wish[] {
+    return this._shoppingList.filter(f => this.showInactiveItem || !f.bought);
+  }
+
+  get totalRecords(): number {
+    return this._shoppingList.length;
+  }
+
   ngOnInit() {
     this.loadList();
   }
 
   loadList = () =>
-    this._service
-      .getAll()
-      .subscribe(
-        list =>
-          (this.shoppingList = list.filter(
-            f => this.showInactiveItem || !f.bought
-          ))
-      );
+    this._service.getAll().subscribe(list => (this._shoppingList = list));
 
   mark = (wish: Wish) => {
     wish.bought = !wish.bought;
