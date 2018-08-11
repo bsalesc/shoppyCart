@@ -8,6 +8,7 @@ import { WishService } from '../../services/wish.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
+import { AgreementComponent } from './agreement.component';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -22,7 +23,7 @@ describe('ListComponent', () => {
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule
       ],
-      declarations: [ListComponent],
+      declarations: [ListComponent, AgreementComponent],
       providers: [WishService]
     }).compileComponents();
   }));
