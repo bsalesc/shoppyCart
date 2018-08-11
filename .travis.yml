@@ -35,3 +35,4 @@ deploy:
   acl: public_read
   skip_cleanup: true
   local_dir: dist/shoppingList
+  region: 'us-east-2'
