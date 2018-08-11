@@ -1,18 +1,18 @@
-sudo: required
-addons:
-  chrome: stable
-
 language: node_js
 node_js:
   - '10'
+dist: trusty
+sudo: false
 
-branches:
-  only:
-    - master
+cache:
+  directories:
+    - node_modules
 
-before_script:
-  - npm install -g @angular/cli
+addons:
+  chrome: stable
 
 script:
-  - ng build --prod --aot
-  - ng test
+  - npm run lint
+  - npm run test:headless
+  - npm run build
+  - xvfb-run npm run e2e
