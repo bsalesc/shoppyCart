@@ -24,15 +24,15 @@ script:
   - yarn test:headless
 
 before_deploy:
-  - yarn build --prod --aot --base-href https://bsalesc-shopping-list.herokuapp.com/
+  - yarn build --prod --aot --base-href $s3_domain
 
 deploy:
   provider: s3
-  access_key_id: 'AKIAJTCCYDJQI44NGFWQ'
+  access_key_id: $s3_access_key_id
   secret_access_key:
-    secure: '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'
-  bucket: 'bsalesshoppinglist'
+    secure: $s3_secret_access_key
+  bucket: $s3_bucket
   acl: public_read
   skip_cleanup: true
   local_dir: dist/shoppingList
-  region: 'us-east-2'
+  region: $s3_region
