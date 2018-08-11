@@ -26,9 +26,13 @@ export class WishService {
     this._message.show(`${wish.name} added :)`);
   };
 
+  edit = (wish: Wish) => {
+    this.list.update(wish.id, wish);
+    this._message.show(`${wish.name} edited :)`);
+  };
+
   remove = (wish: Wish): void => {
     this.list.remove(wish.id);
-    // this.list.remove(wish.id);
     this._message.show(`${wish.name} removed :(`);
   };
 }

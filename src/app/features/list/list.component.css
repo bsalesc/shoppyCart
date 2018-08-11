@@ -1,5 +1,9 @@
-.remove {
-  background: none;
-  border: none;
+.right {
+  display: flex;
+  align-items: center;
   float: right;
+}
+
+.right input {
+  margin-left: 5px;
 }

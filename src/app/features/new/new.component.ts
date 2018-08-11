@@ -13,7 +13,8 @@ export class NewComponent {
     id: '',
     name: '',
     price: 0,
-    quantity: 0
+    quantity: 0,
+    bought: false
   };
 
   constructor(private _service: WishService) {}
@@ -24,7 +25,8 @@ export class NewComponent {
       id: '',
       name: '',
       price: 0,
-      quantity: 0
+      quantity: 0,
+      bought: false
     };
   };
 }

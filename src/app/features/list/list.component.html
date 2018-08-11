@@ -1,7 +1,17 @@
 <app-new></app-new>
 
+<div class="form-group">
+  <span>
+    List already bought?
+    <input type="checkbox" [checked]="showInactiveItem" (change)="showInactiveItem = !showInactiveItem">
+  </span>
+</div>
+
 <ul class="list-group">
   <li class="list-group-item" *ngFor="let wish of shoppingList">{{ wish.name }}
-    <button class="remove fa fa-trash" (click)="removeWish(wish)"></button>
+    <span class="right">
+      Found?
+      <input type="checkbox" [checked]="wish.bought" (click)="mark(wish)">
+    </span>
   </li>
 </ul>
