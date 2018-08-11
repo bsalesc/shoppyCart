@@ -13,8 +13,9 @@ addons:
       - google-chrome-stable
 
 cache:
+  yarn: true
   directories:
-    - ./node_modules
+    - node_modules
 
 install:
   - yarn
@@ -26,7 +27,11 @@ before_deploy:
   - yarn build --prod --aot --base-href https://bsalesc-shopping-list.herokuapp.com/
 
 deploy:
-  provider: heroku
-  api_key:
-    secure: $heroku_token
-  app: bsalesc-shopping-list
+  provider: s3
+  access_key_id: 'AKIAJTCCYDJQI44NGFWQ'
+  secret_access_key:
+    secure: '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'
+  bucket: 'bsalesshoppinglist'
+  acl: public_read
+  skip_cleanup: true
+  local_dir: dist/shoppingList
