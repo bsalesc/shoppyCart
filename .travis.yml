@@ -23,7 +23,7 @@ script:
   - yarn test:headless
 
 before_deploy:
-  - yarn build --prod --aot --base-href https://
+  - yarn build --prod --aot --base-href https://bsalesc-shopping-list.herokuapp.com/
 
 deploy:
   provider: heroku
