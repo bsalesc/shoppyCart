@@ -12,8 +12,8 @@ export class NewComponent {
   wish: Wish = {
     id: '',
     description: '',
-    price: 0,
-    quantity: 0,
+    price: null,
+    quantity: null,
     bought: false
   };
 

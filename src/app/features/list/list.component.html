@@ -13,14 +13,17 @@
     </span>
   </div>
 
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let wish of list">
-      <button class="remove fa fa-trash" (click)="removeWish(wish)"></button>
-      {{ wish.description }}
+  <div class="list-group">
+    <button type="button" class="list-group-item list-group-item-action" *ngFor="let wish of list">
+      <button *ngIf="isExpanded(wish.id)" class="remove fa fa-trash" (click)="removeWish(wish)"></button>
+      <button type="button" class="btn toggle" (click)="toggle(wish.id)">
+        {{ wish.description }}
+        <span [ngClass]="isExpanded(wish.id) ? 'd-none d-md-inline' : ''">| {{ wish.price | currency:'':'' }} | {{ wish.quantity }}</span>
+      </button>
       <span class="right">
         Found?
         <input type="checkbox" [checked]="wish.bought" (click)="mark(wish)">
       </span>
-    </li>
-  </ul>
+    </button>
+  </div>
 </div>

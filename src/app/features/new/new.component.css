@@ -1,0 +1,12 @@
+.append-field {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.quantity {
+    text-align: right;
+}
+
+.first-fields {
+    margin-bottom: 10px;
+}

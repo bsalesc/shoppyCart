@@ -1,7 +1,7 @@
 export interface Wish {
   id: string;
   description: string;
-  quantity: number;
+  quantity?: number;
   bought: boolean;
-  price: number;
+  price?: number;
 }

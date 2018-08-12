@@ -10,6 +10,7 @@ import { UserService } from '../../services/user.service';
 export class ListComponent implements OnInit {
   private _shoppingList: Wish[] = [];
   private _showInactiveItem: boolean = false;
+  private _expanded: string[] = [];
 
   constructor(private _service: WishService, private _user: UserService) {}
 
@@ -40,6 +41,16 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.loadList();
   }
+
+  isExpanded = id => !!this._expanded.find(f => f === id);
+
+  toggle = id => {
+    if (this.isExpanded(id)) {
+      this._expanded.splice(this._expanded.indexOf(id), 1);
+    } else {
+      this._expanded.push(id);
+    }
+  };
 
   loadList = () =>
     this._service.getAll().subscribe(list => (this._shoppingList = list));
