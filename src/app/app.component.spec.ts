@@ -10,18 +10,22 @@ import { FooterComponent } from './components/layout/footer/footer.component';
 import { AppComponent } from 'src/app/app.component';
 import { RouterModule } from 'src/app/router/router.module';
 import { WishService } from './services/wish.service';
-import { MessageModule } from './components/message/message.module';
 import { MessageService } from './services/message.service';
 import { environment } from '../environments/environment';
+import { MessageComponent } from './components/message/message.component';
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [AppComponent, HeaderComponent, FooterComponent],
+      declarations: [
+        AppComponent,
+        HeaderComponent,
+        FooterComponent,
+        MessageComponent
+      ],
       imports: [
         BrowserModule,
         FormsModule,
         RouterModule,
-        MessageModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule
       ],
