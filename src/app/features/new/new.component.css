@@ -5,6 +5,7 @@
 
 .quantity {
     text-align: right;
+    max-width: 120px;
 }
 
 .first-fields {

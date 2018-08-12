@@ -1,5 +1,9 @@
 # ShoppingList [![Build Status](https://travis-ci.org/bsalesc/shopping_list.png)](https://travis-ci.org/bsalesc/shopping_list)
 
+The idea of this application is to use on desktop and mobile (as PWA).
+
+Deployed on: [http://bsalesshoppinglist.s3-website.us-east-2.amazonaws.com/](http://bsalesshoppinglist.s3-website.us-east-2.amazonaws.com/)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.8.
 
 ## Development server
