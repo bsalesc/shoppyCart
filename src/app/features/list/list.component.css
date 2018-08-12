@@ -13,7 +13,15 @@
   justify-content: space-between;
 }
 
+.list-group-item {
+  align-items: center;
+  justify-content: flex-start;
+  display: flex;
+}
+
 .toggle {
+  text-align: left;
+  flex-grow: 1;
   padding: 0;
   border: 0;
   background-color: rgb(0, 0, 0, 0);
