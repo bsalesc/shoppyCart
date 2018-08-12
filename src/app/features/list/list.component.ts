@@ -9,7 +9,6 @@ import { UserService } from '../../services/user.service';
 })
 export class ListComponent implements OnInit {
   private _shoppingList: Wish[] = [];
-  private _showInactiveItem: boolean = false;
   private _expanded: string[] = [];
 
   constructor(private _service: WishService, private _user: UserService) {}
@@ -58,4 +57,6 @@ export class ListComponent implements OnInit {
   };
 
   removeWish = wish => this._service.remove(wish);
+
+  editWish = wish => {};
 }

@@ -19,6 +19,8 @@ export class WishService {
 
   getAll = () => this.list.valueChanges();
 
+  getById = id => this._db.list('/' + id).valueChanges();
+
   add = (wish: Wish) => {
     const ref = this.list.push(wish);
     ref.update({ id: ref.key });
