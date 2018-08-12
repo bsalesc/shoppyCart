@@ -14,24 +14,21 @@ export class ListComponent implements OnInit {
 
   constructor(private _service: WishService, private _user: UserService) {}
 
-  set showInactiveItem(value: boolean) {
-    if (this._showInactiveItem === value) {
-      return;
-    }
-    this._showInactiveItem = value;
-    this.loadList();
-  }
-
-  get showInactiveItem() {
-    return this._showInactiveItem;
-  }
-
   get list(): Wish[] {
-    return this._shoppingList.filter(f => this.showInactiveItem || !f.bought);
+    return this._shoppingList.filter(f => this.showBoughtItems || !f.bought);
   }
 
   get totalRecords(): number {
     return this._shoppingList.length;
+  }
+
+  get showBoughtItems() {
+    return this._user.showBoughtItems;
+  }
+
+  set showBoughtItems(show: boolean) {
+    this._user.showBoughtItems = show;
+    this.loadList();
   }
 
   get userAgreed() {

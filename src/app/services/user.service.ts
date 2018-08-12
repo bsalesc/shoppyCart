@@ -23,8 +23,31 @@ export class UserService {
     return this.user.agreed;
   }
 
-  loadUser = (): UserStorage =>
-    (this.user = JSON.parse(localStorage.getItem('user')) || {
-      agreed: false
-    });
+  set showBoughtItems(show: boolean) {
+    if (show === this.user.showBoughtItems) {
+      return;
+    }
+    this.user.showBoughtItems = show;
+    localStorage.setItem('user', JSON.stringify(this.user));
+  }
+
+  get showBoughtItems(): boolean {
+    return this.user.showBoughtItems;
+  }
+
+  loadUser = (): UserStorage => {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    if (!this.user) {
+      localStorage.setItem(
+        'user',
+        JSON.stringify(
+          (this.user = {
+            agreed: false,
+            showBoughtItems: false
+          })
+        )
+      );
+    }
+    return this.user;
+  };
 }
