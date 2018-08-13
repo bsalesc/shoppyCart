@@ -1,6 +1,14 @@
-# ShoppingList [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=develop)](https://travis-ci.org/bsalesc/shopping_list)
+# ShoppingList
 
 The idea of this application is to use on desktop and mobile (as PWA).
+
+## Environments
+
+### Master [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=master)](https://travis-ci.org/bsalesc/shopping_list)
+
+Deployed on: [http://bsalesshoppinglist.s3-website.us-east-2.amazonaws.com/](http://bsalesshoppinglist.s3-website.us-east-2.amazonaws.com/)
+
+### Develop [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=develop)](https://travis-ci.org/bsalesc/shopping_list)
 
 Deployed on: [http://bsalesshoppinglist-develop.s3-website.us-east-2.amazonaws.com/](http://bsalesshoppinglist-develop.s3-website.us-east-2.amazonaws.com/)
 
