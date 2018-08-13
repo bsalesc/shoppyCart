@@ -28,7 +28,7 @@ script:
 before_deploy:
   - yarn build --prod --aot --base-href $AWS_ENV
 
-  
+
 deploy:
   provider: s3
   access_key_id: $s3_access_key_id
@@ -39,3 +39,8 @@ deploy:
   skip_cleanup: true
   local_dir: dist/shoppingList
   region: $s3_region
+  on:
+    branches:
+      only:
+        - master
+        - develop
