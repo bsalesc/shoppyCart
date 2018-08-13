@@ -25,14 +25,15 @@ script:
 
 before_deploy:
   - yarn build --prod --aot --base-href $s3_domain
-
-deploy:
-  provider: s3
-  access_key_id: $s3_access_key_id
-  secret_access_key:
-    secure: $s3_secret_access_key
-  bucket: $s3_bucket
-  acl: public_read
-  skip_cleanup: true
-  local_dir: dist/shoppingList
-  region: $s3_region
+  
+if: branch = master
+  deploy:
+    provider: s3
+    access_key_id: $s3_access_key_id
+    secret_access_key:
+      secure: $s3_secret_access_key
+    bucket: $s3_bucket
+    acl: public_read
+    skip_cleanup: true
+    local_dir: dist/shoppingList
+    region: $s3_region
