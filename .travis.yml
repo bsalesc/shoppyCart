@@ -1,6 +1,3 @@
-dist: trusty
-sudo: false
-
 language: node_js
 node_js:
   - '8'
@@ -25,7 +22,7 @@ script:
 
 before_deploy:
   - yarn build --prod --aot --base-href $s3_domain
-  
+
 if: branch = master
   deploy:
     provider: s3
