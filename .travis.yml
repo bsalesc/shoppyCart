@@ -2,10 +2,10 @@ env:
   - DOMAIN=$s3_domain
   - BUCKET=$s3_bucket
 
-# if: branch = develop
-#   env: 
-#     - DOMAIN=$s3_domain_develop
-#     - BUCKET=$s3_bucket_develop
+if: branch = develop
+matrix:
+    - DOMAIN=$s3_domain_develop
+    - BUCKET=$s3_bucket_develop
 
 language: node_js
 node_js:
