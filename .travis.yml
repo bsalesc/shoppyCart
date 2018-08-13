@@ -1,7 +1,9 @@
-dist: trusty
-sudo: false
-
 language: node_js
+env:
+  global:
+    - GET_ENV_VAR=./travis_get_variables.sh
+    - AWS_ENV=$($GET_ENV_VAR $s3_domain_develop $s3_domain)
+    - AWS_BUCKET=$($GET_ENV_VAR $s3_bucket_develop $s3_bucket)
 node_js:
   - '8'
 
@@ -24,15 +26,17 @@ script:
   - yarn test:headless
 
 before_deploy:
-  - yarn build --prod --aot --base-href $s3_domain
+  - yarn build --prod --aot --base-href $AWS_ENV
 
 deploy:
   provider: s3
   access_key_id: $s3_access_key_id
   secret_access_key:
     secure: $s3_secret_access_key
-  bucket: $s3_bucket
+  bucket: $AWS_BUCKET
   acl: public_read
   skip_cleanup: true
   local_dir: dist/shoppingList
   region: $s3_region
+  on:
+    all_branches: true
