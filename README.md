@@ -1,4 +1,4 @@
-# ShoppingList [![Build Status](https://travis-ci.org/bsalesc/shopping_list.png)](https://travis-ci.org/bsalesc/shopping_list)
+# ShoppingList [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=master)](https://travis-ci.org/bsalesc/shopping_list)
 
 The idea of this application is to use on desktop and mobile (as PWA).
 
