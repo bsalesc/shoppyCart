@@ -9,7 +9,7 @@ import { WishService } from '../../services/wish.service';
 })
 export class EditComponent implements OnInit {
   @Input()
-  private wish: Wish;
+  wish: Wish;
 
   constructor(private _service: WishService) {}
 

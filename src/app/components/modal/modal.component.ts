@@ -6,19 +6,19 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./modal.component.css']
 })
 export class ModalComponent implements OnInit {
-  private visible: boolean = false;
+  visible: boolean = false;
 
   @Input()
-  private title: string;
+  title: string;
 
   @Input()
-  private primaryButtonText: string;
+  primaryButtonText: string;
   @Input()
-  private secondaryButtonText: string;
+  secondaryButtonText: string;
   @Output()
-  private primaryButtonClick: EventEmitter<void> = new EventEmitter<void>();
+  primaryButtonClick: EventEmitter<void> = new EventEmitter<void>();
   @Output()
-  private secondaryButtonClick: EventEmitter<void> = new EventEmitter<void>();
+  secondaryButtonClick: EventEmitter<void> = new EventEmitter<void>();
 
   constructor() {}
 
@@ -27,12 +27,11 @@ export class ModalComponent implements OnInit {
   show = () => (this.visible = true);
   hide = () => (this.visible = false);
 
-  private handleClose = (handleFn: EventEmitter<void>) => {
+  handleClose = (handleFn: EventEmitter<void>) => {
     this.hide();
     handleFn.emit();
   };
 
-  private handlePrimaryButton = () => this.handleClose(this.primaryButtonClick);
-  private handleSecondaryButton = () =>
-    this.handleClose(this.secondaryButtonClick);
+  handlePrimaryButton = () => this.handleClose(this.primaryButtonClick);
+  handleSecondaryButton = () => this.handleClose(this.secondaryButtonClick);
 }
