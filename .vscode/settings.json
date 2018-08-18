@@ -2,5 +2,6 @@
   "editor.tabSize": 4,
   "prettier.useTabs": false,
   "prettier.singleQuote": true,
+  "prettier.tslintIntegration": true,
   "editor.formatOnSave": true
 }

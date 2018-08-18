@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { WishService } from 'src/app/services/wish.service';
 import { Wish, TypeMessage } from 'src/app/interfaces';
 import { UserService } from '../../services/user.service';
+import { ModalComponent } from '../../components/modal/modal.component';
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   templateUrl: './list.component.html',
@@ -10,6 +12,13 @@ import { UserService } from '../../services/user.service';
 export class ListComponent implements OnInit {
   private _shoppingList: Wish[] = [];
   private _expanded: string[] = [];
+  private wishSelected: Wish;
+
+  @ViewChild(ModalComponent)
+  modalView: ModalComponent;
+
+  @ViewChild(EditComponent)
+  editView: EditComponent;
 
   constructor(private _service: WishService, private _user: UserService) {}
 
@@ -32,6 +41,10 @@ export class ListComponent implements OnInit {
 
   get userAgreed() {
     return this._user.userAgreed;
+  }
+
+  set userAgreed(value: boolean) {
+    this._user.userAgreed = value;
   }
 
   ngOnInit() {
@@ -58,5 +71,8 @@ export class ListComponent implements OnInit {
 
   removeWish = wish => this._service.remove(wish);
 
-  editWish = wish => {};
+  openEditModal = wish =>
+    (this.wishSelected = Object.assign({}, wish)) && this.modalView.show();
+
+  handleEditWish = () => this.editView.edit();
 }

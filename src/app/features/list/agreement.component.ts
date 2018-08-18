@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { UserService } from '../../services/user.service';
+import { ListComponent } from './list.component';
 
 @Component({
   selector: 'app-agreement',
@@ -7,11 +8,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./agreement.component.css']
 })
 export class AgreementComponent implements OnInit {
-  constructor(private _user: UserService) {}
+  constructor(@Inject(ListComponent) private parent: ListComponent) {}
 
   ngOnInit() {}
-
-  set userAgreed(value: boolean) {
-    this._user.userAgreed = value;
-  }
 }
