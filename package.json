@@ -3,10 +3,13 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "ngsw-config": "node_modules/.bin/ngsw-config dist src/ngsw-config.json",
+    "ngsw-copy": "cp node_modules/@angular/service-worker/ngsw-worker.js dist/",
     "start": "ng serve",
     "start:o": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
+    "deploy": "yarn build --prod --aot && yarn ngsw-config && yarn ngsw-copy",
     "test:headless": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "e2e": "ng e2e"

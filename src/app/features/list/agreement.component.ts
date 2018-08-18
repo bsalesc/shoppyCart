@@ -12,5 +12,5 @@ export class AgreementComponent implements OnInit {
 
   ngOnInit() {}
 
-  agreed = () => (this.parent.userAgreed = true);
+  handleAgree = () => (this.parent.userAgreed = true);
 }
