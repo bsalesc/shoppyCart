@@ -1,6 +1,11 @@
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditComponent } from './edit.component';
+import { FormsModule } from '../../../../node_modules/@angular/forms';
+import { WishService } from '../../services/wish.service';
+import { environment } from '../../../environments/environment';
 
 describe('EditComponent', () => {
   let component: EditComponent;
@@ -8,9 +13,14 @@ describe('EditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ EditComponent ]
-    })
-    .compileComponents();
+      imports: [
+        FormsModule,
+        AngularFireModule.initializeApp(environment.firebase),
+        AngularFireDatabaseModule
+      ],
+      declarations: [EditComponent],
+      providers: [WishService]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

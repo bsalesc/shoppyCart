@@ -9,6 +9,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from 'src/environments/environment';
 import { AgreementComponent } from './agreement.component';
+import { SharedModule } from '../../components/shared.module';
+import { EditModule } from '../edit/edit.module';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -20,6 +22,8 @@ describe('ListComponent', () => {
         CommonModule,
         FormsModule,
         NewModule,
+        SharedModule,
+        EditModule,
         AngularFireModule.initializeApp(environment.firebase),
         AngularFireDatabaseModule
       ],
