@@ -8,8 +8,9 @@ import { ListComponent } from './list.component';
   styleUrls: ['./agreement.component.css']
 })
 export class AgreementComponent implements OnInit {
-  parent: ListComponent;
-  constructor(@Inject(ListComponent) parent: ListComponent) {}
+  constructor(@Inject(ListComponent) private parent: ListComponent) {}
 
   ngOnInit() {}
+
+  agreed = () => (this.parent.userAgreed = true);
 }
