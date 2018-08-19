@@ -69,6 +69,15 @@ export class ListComponent implements OnInit {
     setTimeout(this._service.edit, 500, wish);
   };
 
+  get currentTotalToSpend(): number {
+    return !!this._shoppingList.length
+      ? this._shoppingList
+          .filter(f => !f.bought)
+          .map(wish => wish.price * wish.quantity)
+          .reduce((prev, curr) => prev + curr)
+      : 0;
+  }
+
   removeWish = wish => this._service.remove(wish);
 
   openEditModal = wish =>
