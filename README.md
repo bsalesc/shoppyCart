@@ -10,7 +10,7 @@ Deployed on: [http://bsalesshoppinglist.s3-website.us-east-2.amazonaws.com/](htt
 
 ### Develop [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=develop)](https://travis-ci.org/bsalesc/shopping_list)
 
-Deployed on: [http://bsalesshoppinglist-develop.s3-website.us-east-2.amazonaws.com/](http://bsalesshoppinglist-develop.s3-website.us-east-2.amazonaws.com/)
+Deployed on: [https://shopping-list-awesome.azurewebsites.net/](https://shopping-list-awesome.azurewebsites.net/)
 
 ## Angular CLI
 

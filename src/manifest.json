@@ -1,6 +1,6 @@
 {
-  "name": "ShoppingList",
-  "short_name": "ShoppingList",
+  "name": "Shopping List Awesome",
+  "short_name": "ShoppingListAwesome",
   "description": "A shopping list to help you on your day.",
   "icons": [
     {
@@ -27,5 +27,5 @@
   "start_url": "index.html",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#474747"
+  "theme_color": "#ffffff"
 }
