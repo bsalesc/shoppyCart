@@ -73,7 +73,7 @@ export class ListComponent implements OnInit {
     return !!this._shoppingList.length
       ? this._shoppingList
           .filter(f => !f.bought)
-          .map(wish => wish.price * wish.quantity)
+          .map(wish => wish.price || 0 * wish.quantity)
           .reduce((prev, curr) => prev + curr)
       : 0;
   }
