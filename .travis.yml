@@ -12,27 +12,31 @@ addons:
     packages:
       - google-chrome-stable
 
-env:
-  - PROJECT='app'
-  - PROJECT='api'
+jobs:
+  include:
+    - stage: deploy and test
 
-before_install:
-  - if [ $PROJECT == 'api' ]; then cd ./api; fi;
+      env:
+        - PROJECT='app'
+        - PROJECT='api'
 
-cache:
-  yarn: true
-  directories:
-    - node_modules
+      before_install:
+        - if [ $PROJECT == 'api' ]; then cd ./api; fi;
 
-install:
-  - yarn
+      cache:
+        yarn: true
+        directories:
+          - node_modules
 
-script:
-  - if [ $PROJECT == 'api' ];
-    then yarn test;
-    else yarn test:headless;
-    fi;
-  - yarn deploy;
+      install:
+        - yarn
+
+      script:
+        - if [ $PROJECT == 'api' ];
+          then yarn test;
+          else yarn test:headless;
+          fi;
+        - yarn deploy;
 
 # after_sucess:
 #   - docker-compose build;
