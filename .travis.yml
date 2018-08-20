@@ -40,8 +40,9 @@ script:
     fi
   - yarn deploy;
 
-
-deploy:
-  - docker-compose build;
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
-  - docker-compose push;
+env:
+  global: 
+    after_sucess:
+      - docker-compose build;
+      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
+      - docker-compose push;
