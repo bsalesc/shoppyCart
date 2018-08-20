@@ -13,8 +13,8 @@ addons:
       - google-chrome-stable
 
 env:
-  - FOLDER=./
-  - FOLDER=./api
+  - PROJECT='app'
+  - PROJECT='api'
 
 cache:
   yarn: true
@@ -22,21 +22,19 @@ cache:
     - node_modules
 
 before_install:
-  - cd $FOLDER
+  - if [ $FOLDER == 'api' ]; then cd ./api fi
 
 install:
   - yarn
 
 script:
-  - if [ $FOLDER == './api' ];
+  - if [ $FOLDER == 'app' ];
     then yarn test;
     else yarn test:headless;
     fi;
   - yarn deploy;
 
-env:
-  global: 
-    after_sucess:
-      - docker-compose build;
-      - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
-      - docker-compose push;
+# after_sucess:
+#   - docker-compose build;
+#   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
+#   - docker-compose push;
