@@ -1,0 +1,13 @@
+.board {
+    position: absolute;
+    z-index: 2;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, 30px);
+    display: flex;
+    flex-direction: column;
+}
+
+.board>div {
+    align-self: center;
+}
