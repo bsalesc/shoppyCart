@@ -31,7 +31,6 @@ jobs:
         - cd ./api
         - yarn
         - yarn test
-        - yarn deploy
     - stage: publish on azure
       script:
         - docker-compose build;
