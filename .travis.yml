@@ -17,7 +17,7 @@ env:
   - PROJECT='api'
 
 before_install:
-  - if [ $PROJECT == 'api' ]; then cd ./api fi
+  - if [ $PROJECT == 'api' ]; then cd ./api; fi;
 
 cache:
   yarn: true
