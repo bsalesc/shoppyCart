@@ -16,19 +16,19 @@ env:
   - PROJECT='app'
   - PROJECT='api'
 
+before_install:
+  - if [ $PROJECT == 'api' ]; then cd ./api fi
+
 cache:
   yarn: true
   directories:
     - node_modules
 
-before_install:
-  - if [ $FOLDER == 'api' ]; then cd ./api fi
-
 install:
   - yarn
 
 script:
-  - if [ $FOLDER == 'app' ];
+  - if [ $PROJECT == 'app' ];
     then yarn test;
     else yarn test:headless;
     fi;
