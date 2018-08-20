@@ -9,5 +9,5 @@
     "baseUrl": "./lib"
   },
   "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "src/**/*.spec.ts"]
 }
