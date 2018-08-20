@@ -12,6 +12,12 @@ addons:
     packages:
       - google-chrome-stable
 
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - dist
+
 jobs:
   include:
     - stage: build and test APP
