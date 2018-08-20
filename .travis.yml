@@ -30,7 +30,6 @@ script:
 
 after_success:
   - yarn deploy;
-  - docker build -t $REGISTRY/shopping-list .;
-  - docker tag microsoft/shopping-list $REGISTRY/shopping-list:$(git rev-parse --short HEAD);
+  - docker-compose build;
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
-  - docker push $REGISTRY/shopping-list;
+  - docker-compose push;

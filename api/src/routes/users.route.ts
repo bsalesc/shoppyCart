@@ -9,7 +9,7 @@ export class UserRouter {
   registerRoutes = () => {
     this._app.route('/').get((req: Request, res: Response) => {
       res.status(200).send({
-        message: 'GET request successfulll!!!!'
+        message: 'Finally!!!!'
       });
     });
   };
