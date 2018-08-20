@@ -20,19 +20,17 @@ cache:
 
 jobs:
   include:
-    - stage: build and test APP
+    - stage: Test RESTapi
+      script:
+        - cd ./api
+        - yarn
+        - yarn test
+    - stage: Test APP and Publish
       script:
         - cd ./app
         - yarn
         - yarn test:headless
         - yarn deploy
-    - stage: build and test RESTapi
-      script:
-        - cd ./api
-        - yarn
-        - yarn test
-    - stage: publish on azure
-      script:
         - docker-compose build;
         - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
         - docker-compose push;
