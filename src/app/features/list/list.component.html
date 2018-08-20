@@ -4,12 +4,12 @@
 
   <div class="form-group header">
     <span>
-      List already bought?
+      Bought items?
       <input type="checkbox" [(ngModel)]="showBoughtItems">
     </span>
 
     <span>
-      Total estimated: {{ currentTotalToSpend }}
+      Estimated Total: {{ currentTotalToSpend | currency:'':'' }}
     </span>
   </div>
 
