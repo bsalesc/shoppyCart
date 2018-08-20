@@ -17,19 +17,31 @@ addons:
     packages:
       - google-chrome-stable
 
+env:
+  - FOLDER=./
+  - FOLDER=./api
+
 cache:
   yarn: true
   directories:
     - node_modules
 
+script:
+  - cd $FOLDER
+
 install:
   - yarn
 
 script:
-  - yarn test:headless
-
-after_success:
+  - if [ $FOLDER == "./api" ]; then
+        yarn test; 
+    else 
+        yarn test:headless
+    fi
   - yarn deploy;
+
+
+deploy:
   - docker-compose build;
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
   - docker-compose push;

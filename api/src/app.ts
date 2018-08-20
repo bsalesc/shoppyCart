@@ -1,6 +1,6 @@
 import * as express from 'express';
 import * as bodyParser from 'body-parser';
-import { UserRouter } from './routes/users.route';
+import { UserRouter } from './routes/user.route';
 
 export default ((): express.Application => {
   let app: express.Application;
