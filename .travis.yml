@@ -33,11 +33,11 @@ install:
   - yarn
 
 script:
-  - if [ $FOLDER == "./api" ]; then
+  - 'if [ $FOLDER == "./api" ]; then
         yarn test; 
     else 
         yarn test:headless
-    fi
+    fi'
   - yarn deploy;
 
 env:
