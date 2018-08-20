@@ -1,4 +1,4 @@
-import { Request, Response, Application } from 'express';
+import { Application, Router } from 'express';
 import { UserController } from '../controllers/user.controller';
 
 export class UserRouter {
@@ -11,6 +11,10 @@ export class UserRouter {
   }
 
   registerRoutes = () => {
-    this._app.route('/').get(this._controller.finally);
+    const router = Router();
+
+    router.get('/', this._controller.finally);
+
+    this._app.use('/users', router);
   };
 }

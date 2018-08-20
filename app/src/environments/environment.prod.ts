@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  api_url: '/api/',
   firebase: {
     apiKey: 'AIzaSyAobgCwkY8-yiFsYRfKzLqKQgZsw5Lgo3M',
     authDomain: 'shopping-list-5666c.firebaseapp.com',

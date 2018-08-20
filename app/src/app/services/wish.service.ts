@@ -6,35 +6,30 @@ import {
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Wish } from 'src/app/interfaces';
 import { MessageService } from './message.service';
+import { HttpService } from '../utils/http.service';
 
 @Injectable()
 export class WishService {
   private list: AngularFireList<Wish>;
   constructor(
+    private http: HttpService,
     private _db: AngularFireDatabase,
     private _message: MessageService
   ) {
     this.list = this._db.list('/');
   }
 
-  getAll = () => this.list.valueChanges();
+  getAll = () => this.http.get<Result<Wish[]>>('items/');
 
-  getById = id => this._db.list('/' + id).valueChanges();
+  getById = id => this.http.get<Result<Wish[]>>('items/' + id);
 
-  add = (wish: Wish) => {
-    const ref = this.list.push(wish);
-    ref.update({ id: ref.key });
+  add = (wish: Wish) => this.http.post<Result<Wish>>('items/', wish);
 
-    this._message.show(`${wish.description} added :)`);
-  };
+  edit = (wish: Wish) => this.http.put<Result<Wish>>('items/' + wish.id, wish);
 
-  edit = (wish: Wish) => {
-    this.list.update(wish.id, wish);
-    this._message.show(`${wish.description} edited :)`);
-  };
+  remove = (wish: Wish) => this.http.delete<void>('items/' + wish.id);
+}
 
-  remove = (wish: Wish): void => {
-    this.list.remove(wish.id);
-    this._message.show(`${wish.description} removed :(`);
-  };
+interface Result<T> {
+  data: T;
 }

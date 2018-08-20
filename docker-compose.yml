@@ -1,15 +1,17 @@
-version: '3.4'
+version: "3.4"
 services:
   api:
-    image: 'awesomeshoppinglist.azurecr.io/shopping-list-api'
-    build: 'api/.'
+    image: "awesomeshoppinglist.azurecr.io/shopping-list-api"
+    build: "api/."
     expose:
-      - '8081'
+      - "8081"
+    environment:
+      CONNECTION_STRING: "mongodb://admin:admin@ds145289.mlab.com:45289/stmapp"
   gateway:
-    image: 'awesomeshoppinglist.azurecr.io/shopping-list'
-    build: 'app/.'
+    image: "awesomeshoppinglist.azurecr.io/shopping-list"
+    build: "app/."
     ports:
-      - '80:8080'
-      - '443:443'
+      - "80:8080"
+      - "443:443"
     depends_on:
       - api

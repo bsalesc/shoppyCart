@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { Wish } from 'src/app/interfaces';
-import { ListComponent } from '../list/list.component';
 import { WishService } from '../../services/wish.service';
 
 @Component({
@@ -9,6 +8,9 @@ import { WishService } from '../../services/wish.service';
   styleUrls: ['./new.component.css']
 })
 export class NewComponent {
+  @Output()
+  add: EventEmitter<Wish> = new EventEmitter<Wish>();
+
   wish: Wish = {
     id: '',
     description: '',
@@ -19,14 +21,16 @@ export class NewComponent {
 
   constructor(private _service: WishService) {}
 
-  add = () => {
-    this._service.add(this.wish);
-    this.wish = {
-      id: '',
-      description: '',
-      price: 0,
-      quantity: 0,
-      bought: false
-    };
+  handleAdd = () => {
+    this._service.add(this.wish).subscribe(result => {
+      this.add.emit(result.data);
+      this.wish = {
+        id: '',
+        description: '',
+        price: 0,
+        quantity: 0,
+        bought: false
+      };
+    });
   };
 }

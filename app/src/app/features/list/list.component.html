@@ -1,6 +1,6 @@
 <app-agreement *ngIf="!userAgreed"></app-agreement>
 <div *ngIf="userAgreed">
-  <app-new></app-new>
+  <app-new (add)="handleAdd($event)"></app-new>
 
   <div class="form-group header">
     <span>
@@ -29,6 +29,6 @@
   </div>
 
   <app-modal title="Edit" primaryButtonText="Save" (primaryButtonClick)="handleEditWish()">
-    <app-edit [wish]="wishSelected"></app-edit>
+    <app-edit [wish]="wishSelected" (edit)="handleEdit($event)"></app-edit>
   </app-modal>
 </div>

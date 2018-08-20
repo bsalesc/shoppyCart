@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -25,6 +26,7 @@ import { MessageComponent } from './components/message/message.component';
     BrowserModule,
     FormsModule,
     RouterModule,
+    HttpClientModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     ServiceWorkerModule.register('ngsw-worker.js', {

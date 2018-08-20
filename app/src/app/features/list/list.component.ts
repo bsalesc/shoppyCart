@@ -62,7 +62,9 @@ export class ListComponent implements OnInit {
   };
 
   loadList = () =>
-    this._service.getAll().subscribe(list => (this._shoppingList = list));
+    this._service
+      .getAll()
+      .subscribe(result => (this._shoppingList = result.data));
 
   mark = (wish: Wish) => {
     wish.bought = !wish.bought;
@@ -78,10 +80,23 @@ export class ListComponent implements OnInit {
       : 0;
   }
 
-  removeWish = wish => this._service.remove(wish);
+  removeWish = wish =>
+    this._service.remove(wish).subscribe(() => {
+      this._shoppingList.splice(this._shoppingList.indexOf(wish), 1);
+    });
 
   openEditModal = wish =>
     (this.wishSelected = Object.assign({}, wish)) && this.modalView.show();
 
-  handleEditWish = () => this.editView.edit();
+  handleEditWish = () => this.editView.handleEdit();
+
+  handleEdit = wish =>
+    console.log(
+      wish,
+      (this._shoppingList = this._shoppingList.map(
+        w => (w.id === wish.id ? wish : w)
+      ))
+    );
+
+  handleAdd = wish => this._shoppingList.push(wish);
 }

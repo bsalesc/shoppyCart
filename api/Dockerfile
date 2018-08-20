@@ -8,5 +8,7 @@ RUN yarn
 
 COPY . .
 
+ENV DISABLE_CORS=true
+
 EXPOSE 8081
 CMD [ "yarn", "prod" ]
