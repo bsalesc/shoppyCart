@@ -1,9 +1,4 @@
 language: node_js
-env:
-  global:
-    - GET_ENV_VAR=./travis_get_variables.sh
-    - AWS_ENV=$($GET_ENV_VAR $s3_domain_develop $s3_domain)
-    - AWS_BUCKET=$($GET_ENV_VAR $s3_bucket_develop $s3_bucket)
 node_js:
   - '8'
 
@@ -26,7 +21,7 @@ cache:
   directories:
     - node_modules
 
-script:
+before_install:
   - cd $FOLDER
 
 install:
