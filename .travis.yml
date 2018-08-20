@@ -28,7 +28,7 @@ install:
   - yarn
 
 script:
-  - if [ $PROJECT == 'app' ];
+  - if [ $PROJECT == 'api' ];
     then yarn test;
     else yarn test:headless;
     fi;
