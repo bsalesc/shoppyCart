@@ -11,8 +11,7 @@ export default async (): Promise<express.Application> => {
 
   try {
     await mongoose.connect(
-      process.env.CONNECTION_STRING ||
-        'mongodb://admin:admin@ds145289.mlab.com:45289/stmapp'
+      process.env.CONNECTION_STRING || 'mongodb://user:pass@localhost:27017/'
     );
   } catch (error) {
     console.error(error);
