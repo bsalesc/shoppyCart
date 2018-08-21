@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewComponent } from './new.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { WishService } from '../../services/wish.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,10 +11,7 @@ describe('NewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        FormsModule,
-        HttpClientModule
-      ],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
       declarations: [NewComponent],
       providers: [WishService]
     }).compileComponents();

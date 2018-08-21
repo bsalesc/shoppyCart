@@ -11,3 +11,11 @@
 .first-fields {
     margin-bottom: 10px;
 }
+
+.errors {
+    display: flex;
+    flex-direction: column;
+    font-size: 80%;
+    color: #dc3545;
+    margin-bottom: 10px;
+}
