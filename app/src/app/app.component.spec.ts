@@ -2,8 +2,6 @@ import { APP_BASE_HREF } from '@angular/common';
 import { TestBed, async } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
@@ -25,9 +23,7 @@ describe('AppComponent', () => {
       imports: [
         BrowserModule,
         FormsModule,
-        RouterModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule
+        RouterModule
       ],
       providers: [
         WishService,

@@ -3,9 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { NewComponent } from './new.component';
 import { FormsModule } from '@angular/forms';
 import { WishService } from '../../services/wish.service';
-import { environment } from 'src/environments/environment';
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('NewComponent', () => {
   let component: NewComponent;
@@ -15,8 +13,7 @@ describe('NewComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         FormsModule,
-        AngularFireModule.initializeApp(environment.firebase),
-        AngularFireDatabaseModule
+        HttpClientModule
       ],
       declarations: [NewComponent],
       providers: [WishService]
