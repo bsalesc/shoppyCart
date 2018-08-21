@@ -7,17 +7,13 @@ import { HttpService } from '../utils/http.service';
 export class WishService {
   constructor(private http: HttpService, private _message: MessageService) {}
 
-  getAll = () => this.http.get<Result<Wish[]>>('items/');
+  getAll = () => this.http.get<Wish[]>('items/');
 
-  getById = id => this.http.get<Result<Wish[]>>('items/' + id);
+  getById = id => this.http.get<Wish[]>('items/' + id);
 
-  add = (wish: Wish) => this.http.post<Result<Wish>>('items/', wish);
+  add = (wish: Wish) => this.http.post<Wish>('items/', wish);
 
-  edit = (wish: Wish) => this.http.put<Result<Wish>>('items/' + wish.id, wish);
+  edit = (wish: Wish) => this.http.put<Wish>('items/' + wish.id, wish);
 
-  remove = (wish: Wish) => this.http.delete<void>('items/' + wish.id);
-}
-
-interface Result<T> {
-  data: T;
+  remove = (wish: Wish) => this.http.delete('items/' + wish.id);
 }

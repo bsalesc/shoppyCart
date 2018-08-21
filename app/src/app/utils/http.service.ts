@@ -14,19 +14,19 @@ export class HttpService {
   }
 
   get = <T>(url: string, options?: Options) =>
-    this.service.get<T>(this.API_URL + url, options);
+    this.service.get<Result<T>>(this.API_URL + url, options);
 
   post = <T>(url: string, body: any, options?: Options) =>
-    this.service.post<T>(this.API_URL + url, body, options);
+    this.service.post<Result<T>>(this.API_URL + url, body, options);
 
   put = <T>(url: string, body: any, options?: Options) =>
-    this.service.put<T>(this.API_URL + url, body, options);
+    this.service.put<Result<T>>(this.API_URL + url, body, options);
 
   delete = <T>(url: string, options?: Options) =>
-    this.service.delete<T>(this.API_URL + url, options);
+    this.service.delete<Result<T> & any>(this.API_URL + url, options);
 
   patch = <T>(url: string, body: any, options?: Options) =>
-    this.service.patch<T>(this.API_URL + url, body, options);
+    this.service.patch<Result<T> & any>(this.API_URL + url, body, options);
 }
 
 type Options = {
@@ -45,3 +45,7 @@ type Options = {
   responseType: 'json';
   withCredentials?: boolean;
 };
+
+interface Result<T> {
+  data: T;
+}

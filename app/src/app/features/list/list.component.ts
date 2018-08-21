@@ -68,14 +68,14 @@ export class ListComponent implements OnInit {
 
   mark = (wish: Wish) => {
     wish.bought = !wish.bought;
-    setTimeout(this._service.edit, 500, wish);
+    this._service.edit(wish).subscribe(() => this.handleEdit(wish));
   };
 
   get currentTotalToSpend(): number {
     return !!this._shoppingList.length
       ? this._shoppingList
           .filter(f => !f.bought)
-          .map(wish => wish.price || 0 * wish.quantity)
+          .map(wish => (wish.price || 0) * wish.quantity)
           .reduce((prev, curr) => prev + curr)
       : 0;
   }
@@ -91,12 +91,9 @@ export class ListComponent implements OnInit {
   handleEditWish = () => this.editView.handleEdit();
 
   handleEdit = wish =>
-    console.log(
-      wish,
-      (this._shoppingList = this._shoppingList.map(
-        w => (w.id === wish.id ? wish : w)
-      ))
-    );
+    (this._shoppingList = this._shoppingList.map(
+      w => (w.id === wish.id ? wish : w)
+    ));
 
   handleAdd = wish => this._shoppingList.push(wish);
 }
