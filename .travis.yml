@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - '8'
+  - "8"
 
 services:
   - docker
@@ -22,12 +22,12 @@ jobs:
   include:
     - stage: Test RESTapi
       script:
-        - cd ./api
+        - cd ./server
         - yarn
         - yarn test
     - stage: Test APP and Publish
       script:
-        - cd ./app
+        - cd ./client
         - yarn
         - yarn test:headless
         - yarn deploy
