@@ -3,14 +3,6 @@
   border-bottom-left-radius: 0;
 }
 
-.description {
-  flex-grow: 1;
-}
-.description input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
 .quantity {
   text-align: right;
   max-width: 120px;

@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Wish } from 'src/app/interfaces';
-import { WishService } from '../../services/wish.service';
-import { ItemFormGroup } from '../../validations';
+import { WishService } from '../../../services/wish.service';
+import { ItemFormGroup } from '../../../validations';
 
 @Component({
   selector: 'app-new',

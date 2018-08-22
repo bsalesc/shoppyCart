@@ -1,27 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EditComponent } from './edit.component';
-import {
-  FormsModule,
-  ReactiveFormsModule,
-} from '../../../../node_modules/@angular/forms';
-import { WishService } from '../../services/wish.service';
+import { NewComponent } from './new.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { WishService } from '../../../services/wish.service';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('EditComponent', () => {
-  let component: EditComponent;
-  let fixture: ComponentFixture<EditComponent>;
+describe('NewComponent', () => {
+  let component: NewComponent;
+  let fixture: ComponentFixture<NewComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
-      declarations: [EditComponent],
+      declarations: [NewComponent],
       providers: [WishService],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(EditComponent);
+    fixture = TestBed.createComponent(NewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

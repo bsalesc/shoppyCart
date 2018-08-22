@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { WishService } from 'src/app/services/wish.service';
 import { Wish } from 'src/app/interfaces';
-import { UserService } from '../../services/user.service';
-import { ModalComponent } from '../../components/modal/modal.component';
+import { UserService } from '../../../services/user.service';
+import { ModalComponent } from '../../../components/modal/modal.component';
 import { EditComponent } from '../edit/edit.component';
 
 @Component({

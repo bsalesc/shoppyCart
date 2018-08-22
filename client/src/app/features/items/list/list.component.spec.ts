@@ -4,10 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list.component';
 import { NewModule } from '../new/new.module';
-import { WishService } from '../../services/wish.service';
-import { environment } from 'src/environments/environment';
-import { AgreementComponent } from './agreement.component';
-import { SharedModule } from '../../components/shared.module';
+import { WishService } from '../../../services/wish.service';
+import { SharedModule } from '../../../components/shared.module';
 import { EditModule } from '../edit/edit.module';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -25,7 +23,7 @@ describe('ListComponent', () => {
         EditModule,
         HttpClientModule,
       ],
-      declarations: [ListComponent, AgreementComponent],
+      declarations: [ListComponent],
       providers: [WishService],
     }).compileComponents();
   }));

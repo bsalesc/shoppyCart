@@ -1,5 +1,4 @@
-<app-agreement *ngIf="!userAgreed"></app-agreement>
-<div *ngIf="userAgreed">
+<div>
   <app-new (add)="handleAdd($event)"></app-new>
 
   <div class="form-group header">
