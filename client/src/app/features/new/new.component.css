@@ -1,0 +1,29 @@
+.append-field {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.description {
+  flex-grow: 1;
+}
+.description input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.quantity {
+  text-align: right;
+  max-width: 120px;
+}
+
+.first-fields {
+  margin-bottom: 10px;
+}
+
+.errors {
+  display: flex;
+  flex-direction: column;
+  font-size: 80%;
+  color: #dc3545;
+  margin-bottom: 10px;
+}
