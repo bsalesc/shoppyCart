@@ -1,8 +1,8 @@
 {
   "license": "MIT",
   "scripts": {
-    "tslint:app": "./node_modules/.bin/tslint --project ./app",
-    "tslint:api": "./node_modules/.bin/tslint --project ./api"
+    "tslint:app": "./node_modules/.bin/tslint --project ./client",
+    "tslint:api": "./node_modules/.bin/tslint --project ./server"
   },
   "devDependencies": {
     "prettier": "^1.14.2",

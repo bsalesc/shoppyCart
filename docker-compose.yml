@@ -1,20 +1,20 @@
-version: '3.4'
+version: "3.4"
 services:
   api:
-    image: 'awesomeshoppinglist.azurecr.io/shopping-list-api'
-    build: 'api/.'
+    image: "awesomeshoppinglist.azurecr.io/shopping-list-api"
+    build: "server/."
     expose:
-      - '8081'
+      - "8081"
     environment:
-      CONNECTION_STRING: 'mongodb://mongo:27017/local'
+      CONNECTION_STRING: "mongodb://mongo:27017/local"
     depends_on:
       - mongo
   gateway:
-    image: 'awesomeshoppinglist.azurecr.io/shopping-list'
-    build: 'app/.'
+    image: "awesomeshoppinglist.azurecr.io/shopping-list"
+    build: "client/."
     ports:
-      - '80:8080'
-      - '443:443'
+      - "80:8080"
+      - "443:443"
     depends_on:
       - api
   mongo:
@@ -23,4 +23,4 @@ services:
     volumes:
       - ./mongo/data/db:/data/db
     ports:
-      - '27017:27017'
+      - "27017:27017"
