@@ -7,7 +7,7 @@ import {
   FormControl as FormControlOriginal
 } from '@angular/forms';
 import { ERRORS } from './errors';
-import { formatError } from '../string-format';
+import { formatError } from '../../utils';
 
 export class FormGroup extends FormGroupOriginal {
   controls: {
@@ -37,6 +37,8 @@ export class FormGroup extends FormGroupOriginal {
       .filter(f => f.getErrorMessages().length !== 0)
       .map(m => m.getErrorMessages());
   }
+
+  getFormControl = (key: string): FormControl => this.controls[key];
 }
 
 export class FormControl extends FormControlOriginal {

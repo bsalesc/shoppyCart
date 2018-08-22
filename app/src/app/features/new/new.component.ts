@@ -1,8 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { Wish } from 'src/app/interfaces';
 import { WishService } from '../../services/wish.service';
-import { WishFormValidation } from '../../utils/validations/wish.validation';
-import { FormGroup } from '../../utils/validations/validation';
+import { ItemFormValidation, ItemFormGroup } from '../../validations';
 
 @Component({
   selector: 'app-new',
@@ -21,10 +20,10 @@ export class NewComponent {
     bought: false
   };
 
-  formGroup: FormGroup;
+  formGroup: ItemFormGroup;
 
   constructor(private _service: WishService) {
-    this.formGroup = WishFormValidation();
+    this.formGroup = ItemFormValidation();
   }
   handleAdd = () => {
     Object.assign(this.wish, this.formGroup.value);

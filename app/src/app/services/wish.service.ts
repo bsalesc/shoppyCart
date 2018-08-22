@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Wish } from 'src/app/interfaces';
 import { MessageService } from './message.service';
-import { HttpService } from '../utils/http.service';
+import { HttpService } from '../utils';
 
 @Injectable()
 export class WishService {
