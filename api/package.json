@@ -7,7 +7,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/server.ts",
-    "test": "mocha -r ts-node/register src/**/*.spec.ts",
+    "tslint": "./node_modules/.bin/tslint --project ./",
+    "test": "yarn tslint && mocha -r ts-node/register src/**/*.spec.ts",
     "start": "node ./dist/server.js",
     "deploy": "yarn build",
     "prod": "yarn build && yarn start"

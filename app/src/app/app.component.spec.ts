@@ -1,7 +1,7 @@
 import { APP_BASE_HREF } from '@angular/common';
 import { TestBed, async } from '@angular/core/testing';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
@@ -9,8 +9,8 @@ import { AppComponent } from 'src/app/app.component';
 import { RouterModule } from 'src/app/router/router.module';
 import { WishService } from './services/wish.service';
 import { MessageService } from './services/message.service';
-import { environment } from '../environments/environment';
 import { MessageComponent } from './components/message/message.component';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -20,7 +20,7 @@ describe('AppComponent', () => {
         FooterComponent,
         MessageComponent,
       ],
-      imports: [BrowserModule, FormsModule, RouterModule],
+      imports: [BrowserModule, RouterModule],
       providers: [
         WishService,
         MessageService,
@@ -28,6 +28,7 @@ describe('AppComponent', () => {
       ],
     }).compileComponents();
   }));
+
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;

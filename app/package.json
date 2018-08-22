@@ -9,8 +9,9 @@
     "start:o": "ng serve -o",
     "build": "ng build",
     "test": "ng test",
+    "tslint": "./node_modules/.bin/tslint --project ./",
     "deploy": "yarn build --prod --aot && yarn ngsw-config && yarn ngsw-copy",
-    "test:headless": "ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
+    "test:headless": "yarn tslint && ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },

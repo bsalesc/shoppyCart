@@ -1,7 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EditComponent } from './edit.component';
-import { FormsModule } from '../../../../node_modules/@angular/forms';
+import {
+  FormsModule,
+  ReactiveFormsModule,
+} from '../../../../node_modules/@angular/forms';
 import { WishService } from '../../services/wish.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -11,7 +14,7 @@ describe('EditComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, HttpClientModule],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
       declarations: [EditComponent],
       providers: [WishService],
     }).compileComponents();
