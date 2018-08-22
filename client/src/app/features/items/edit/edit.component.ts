@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Wish } from '../../../interfaces';
-import { WishService } from '../../../services/wish.service';
+import { Item } from '../../../interfaces';
+import { ItemService } from '../../../services/item.service';
 import { ItemFormGroup } from '../../../validations';
 
 @Component({
@@ -10,22 +10,22 @@ import { ItemFormGroup } from '../../../validations';
 })
 export class EditComponent implements OnInit {
   @Input()
-  wish: Wish;
+  item: Item;
 
   @Output()
-  edit: EventEmitter<Wish> = new EventEmitter<Wish>();
+  edit: EventEmitter<Item> = new EventEmitter<Item>();
 
   formGroup: ItemFormGroup;
 
-  constructor(private _service: WishService) {
+  constructor(private itemService: ItemService) {
     this.formGroup = new ItemFormGroup();
   }
 
   ngOnInit() {}
 
   handleEdit = () => {
-    this._service
-      .edit(this.wish)
+    this.itemService
+      .edit(this.item)
       .subscribe(result => this.edit.emit(result.data));
   };
 }

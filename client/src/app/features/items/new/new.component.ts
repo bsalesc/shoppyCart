@@ -1,6 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { Wish } from 'src/app/interfaces';
-import { WishService } from '../../../services/wish.service';
+import { Item } from 'src/app/interfaces';
+import { ItemService } from '../../../services/item.service';
 import { ItemFormGroup } from '../../../validations';
 
 @Component({
@@ -10,9 +10,9 @@ import { ItemFormGroup } from '../../../validations';
 })
 export class NewComponent {
   @Output()
-  add: EventEmitter<Wish> = new EventEmitter<Wish>();
+  add: EventEmitter<Item> = new EventEmitter<Item>();
 
-  wish: Wish = {
+  item: Item = {
     id: '',
     description: '',
     price: null,
@@ -22,14 +22,14 @@ export class NewComponent {
 
   formGroup: ItemFormGroup;
 
-  constructor(private _service: WishService) {
+  constructor(private itemService: ItemService) {
     this.formGroup = new ItemFormGroup();
   }
   handleAdd = () => {
-    Object.assign(this.wish, this.formGroup.value);
-    this._service.add(this.wish).subscribe(result => {
+    Object.assign(this.item, this.formGroup.value);
+    this.itemService.add(this.item).subscribe(result => {
       this.add.emit(result.data);
-      this.wish = {
+      this.item = {
         id: '',
         description: '',
         price: 0,

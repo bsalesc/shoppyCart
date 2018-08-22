@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ListComponent } from './list.component';
 import { NewModule } from '../new/new.module';
-import { WishService } from '../../../services/wish.service';
+import { ItemService } from '../../../services/item.service';
 import { SharedModule } from '../../../components/shared.module';
 import { EditModule } from '../edit/edit.module';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +24,7 @@ describe('ListComponent', () => {
         HttpClientModule,
       ],
       declarations: [ListComponent],
-      providers: [WishService],
+      providers: [ItemService],
     }).compileComponents();
   }));
 

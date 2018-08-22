@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { WishService } from 'src/app/services/wish.service';
-import { Wish } from 'src/app/interfaces';
+import { ItemService } from 'src/app/services/item.service';
+import { Item } from 'src/app/interfaces';
 import { UserService } from '../../../services/user.service';
 import { ModalComponent } from '../../../components/modal/modal.component';
 import { EditComponent } from '../edit/edit.component';
@@ -10,9 +10,9 @@ import { EditComponent } from '../edit/edit.component';
   styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
-  private _shoppingList: Wish[] = [];
+  private _shoppingList: Item[] = [];
   private _expanded: string[] = [];
-  public wishSelected: Wish;
+  public itemSelected: Item;
 
   @ViewChild(ModalComponent)
   modalView: ModalComponent;
@@ -20,9 +20,12 @@ export class ListComponent implements OnInit {
   @ViewChild(EditComponent)
   editView: EditComponent;
 
-  constructor(private _service: WishService, private _user: UserService) {}
+  constructor(
+    private itemService: ItemService,
+    private userService: UserService,
+  ) {}
 
-  get list(): Wish[] {
+  get list(): Item[] {
     return this._shoppingList.filter(f => this.showBoughtItems || !f.bought);
   }
 
@@ -31,20 +34,20 @@ export class ListComponent implements OnInit {
   }
 
   get showBoughtItems() {
-    return this._user.showBoughtItems;
+    return this.userService.showBoughtItems;
   }
 
   set showBoughtItems(show: boolean) {
-    this._user.showBoughtItems = show;
+    this.userService.showBoughtItems = show;
     this.loadList();
   }
 
   get userAgreed() {
-    return this._user.userAgreed;
+    return this.userService.userAgreed;
   }
 
   set userAgreed(value: boolean) {
-    this._user.userAgreed = value;
+    this.userService.userAgreed = value;
   }
 
   ngOnInit() {
@@ -62,13 +65,13 @@ export class ListComponent implements OnInit {
   };
 
   loadList = () =>
-    this._service
+    this.itemService
       .getAll()
       .subscribe(result => (this._shoppingList = result.data));
 
-  mark = (wish: Wish) => {
-    wish.bought = !wish.bought;
-    this._service.edit(wish).subscribe(() => this.handleEdit(wish));
+  mark = (item: Item) => {
+    item.bought = !item.bought;
+    this.itemService.edit(item).subscribe(() => this.handleEdit(item));
   };
 
   get currentTotalToSpend(): number {
@@ -80,20 +83,20 @@ export class ListComponent implements OnInit {
       : 0;
   }
 
-  removeWish = wish =>
-    this._service.remove(wish).subscribe(() => {
-      this._shoppingList.splice(this._shoppingList.indexOf(wish), 1);
+  removeItem = item =>
+    this.itemService.remove(item).subscribe(() => {
+      this._shoppingList.splice(this._shoppingList.indexOf(item), 1);
     });
 
   openEditModal = wish =>
-    (this.wishSelected = Object.assign({}, wish)) && this.modalView.show();
+    (this.itemSelected = Object.assign({}, wish)) && this.modalView.show();
 
-  handleEditWish = () => this.editView.handleEdit();
+  handleEditItem = () => this.editView.handleEdit();
 
-  handleEdit = wish =>
+  handleEdit = item =>
     (this._shoppingList = this._shoppingList.map(
-      w => (w.id === wish.id ? wish : w),
+      w => (w.id === item.id ? item : w),
     ));
 
-  handleAdd = wish => this._shoppingList.push(wish);
+  handleAdd = item => this._shoppingList.push(item);
 }

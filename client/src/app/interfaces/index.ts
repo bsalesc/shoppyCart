@@ -1,5 +1,5 @@
-import { Wish } from './wish';
+import { Item } from './wish';
 import { Message, TypeMessage } from './message';
 import { UserStorage } from './userstorage';
 
-export { Wish, Message, TypeMessage, UserStorage };
+export { Item, Message, TypeMessage, UserStorage };

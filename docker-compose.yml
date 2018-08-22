@@ -21,6 +21,6 @@ services:
     container_name: mongo-3.2.20-jessie
     image: mongo
     volumes:
-      - ./mongo/data/db:/data/db
+      - ./mongo/data:/data/db
     ports:
       - "27017:27017"

@@ -1,18 +1,17 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { WishService } from './wish.service';
-import { environment } from 'src/environments/environment';
+import { ItemService } from './item.service';
 import { HttpClientModule } from '@angular/common/http';
 
-describe('WishService', () => {
+describe('ItemService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      providers: [WishService],
+      providers: [ItemService],
     });
   });
 
-  it('should be created', inject([WishService], (service: WishService) => {
+  it('should be created', inject([ItemService], (service: ItemService) => {
     expect(service).toBeTruthy();
   }));
 });

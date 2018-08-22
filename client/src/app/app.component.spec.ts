@@ -7,7 +7,7 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { AppComponent } from 'src/app/app.component';
 import { RouterModule } from 'src/app/router/router.module';
-import { WishService } from './services/wish.service';
+import { ItemService } from './services/item.service';
 import { MessageService } from './services/message.service';
 import { MessageComponent } from './components/message/message.component';
 
@@ -22,7 +22,7 @@ describe('AppComponent', () => {
       ],
       imports: [BrowserModule, RouterModule],
       providers: [
-        WishService,
+        ItemService,
         MessageService,
         { provide: APP_BASE_HREF, useValue: '/' },
       ],

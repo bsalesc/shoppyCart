@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewComponent } from './new.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { WishService } from '../../../services/wish.service';
+import { ItemService } from '../../../services/item.service';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('NewComponent', () => {
@@ -13,7 +13,7 @@ describe('NewComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
       declarations: [NewComponent],
-      providers: [WishService],
+      providers: [ItemService],
     }).compileComponents();
   }));
 

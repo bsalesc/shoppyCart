@@ -1,20 +1,20 @@
-<div *ngIf="wish" [formGroup]="formGroup">
+<div *ngIf="item" [formGroup]="formGroup">
 
   <div class="form-group">
     <label for="description">Description</label>
-    <input type="text" class="form-control" [(ngModel)]="wish.description" id="description" placeholder="Description" formControlName="description"
+    <input type="text" class="form-control" [(ngModel)]="item.description" id="description" placeholder="Description" formControlName="description"
       [class.is-invalid]="!formGroup.description.isValid">
   </div>
 
   <div class="form-group">
     <label for="quantity">Quantity</label>
-    <input type="number" class="form-control" [(ngModel)]="wish.quantity" id="quantity" placeholder="Quantity" formControlName="quantity"
+    <input type="number" class="form-control" [(ngModel)]="item.quantity" id="quantity" placeholder="Quantity" formControlName="quantity"
       [class.is-invalid]="!formGroup.quantity.isValid">
   </div>
 
   <div class="form-group">
     <label for="price">Price</label>
-    <input type="number" class="form-control" [(ngModel)]="wish.price" id="price" placeholder="Price" formControlName="price"
+    <input type="number" class="form-control" [(ngModel)]="item.price" id="price" placeholder="Price" formControlName="price"
       [class.is-invalid]="!formGroup.price.isValid">
   </div>
 

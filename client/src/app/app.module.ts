@@ -8,7 +8,6 @@ import { HeaderComponent } from './components/layout/header/header.component';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { AppComponent } from 'src/app/app.component';
 import { RouterModule } from 'src/app/router/router.module';
-import { WishService } from './services/wish.service';
 import { MessageService } from './services/message.service';
 import { environment } from '../environments/environment';
 import { MessageComponent } from './components/message/message.component';
@@ -29,7 +28,7 @@ import { MessageComponent } from './components/message/message.component';
       enabled: environment.production,
     }),
   ],
-  providers: [WishService, MessageService],
+  providers: [MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -5,7 +5,7 @@ import {
   FormsModule,
   ReactiveFormsModule,
 } from '../../../../../node_modules/@angular/forms';
-import { WishService } from '../../../services/wish.service';
+import { ItemService } from '../../../services/item.service';
 import { HttpClientModule } from '@angular/common/http';
 
 describe('EditComponent', () => {
@@ -16,7 +16,7 @@ describe('EditComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
       declarations: [EditComponent],
-      providers: [WishService],
+      providers: [ItemService],
     }).compileComponents();
   }));
 
