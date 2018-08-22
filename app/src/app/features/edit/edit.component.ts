@@ -1,11 +1,12 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Wish } from '../../interfaces';
 import { WishService } from '../../services/wish.service';
+import { ItemFormValidation, ItemFormGroup } from '../../validations';
 
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styleUrls: ['./edit.component.css'],
 })
 export class EditComponent implements OnInit {
   @Input()
@@ -14,7 +15,11 @@ export class EditComponent implements OnInit {
   @Output()
   edit: EventEmitter<Wish> = new EventEmitter<Wish>();
 
-  constructor(private _service: WishService) {}
+  formGroup: ItemFormGroup;
+
+  constructor(private _service: WishService) {
+    this.formGroup = ItemFormValidation();
+  }
 
   ngOnInit() {}
 

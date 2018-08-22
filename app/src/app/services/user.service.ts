@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { UserStorage } from '../interfaces';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   user: UserStorage;
@@ -43,9 +43,9 @@ export class UserService {
         JSON.stringify(
           (this.user = {
             agreed: false,
-            showBoughtItems: false
-          })
-        )
+            showBoughtItems: false,
+          }),
+        ),
       );
     }
     return this.user;

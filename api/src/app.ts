@@ -1,18 +1,19 @@
-import * as mongoose from 'mongoose';
-import * as express from 'express';
 import * as bodyParser from 'body-parser';
 import * as cors from 'cors';
-import { UserRouter } from './routes/user.route';
+import * as express from 'express';
+import * as mongoose from 'mongoose';
+
 import { ItemRouter } from './routes/item.route';
+import { UserRouter } from './routes/user.route';
+
+import { CONFIG } from './configs/config.env';
 
 export default async (): Promise<express.Application> => {
   let app: express.Application;
   app = express();
 
   try {
-    await mongoose.connect(
-      process.env.CONNECTION_STRING || 'mongodb://user:pass@localhost:27017/'
-    );
+    await mongoose.connect(CONFIG.CONNECTION_STRING);
   } catch (error) {
     console.error(error);
   }

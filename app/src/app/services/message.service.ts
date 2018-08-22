@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Message, TypeMessage } from '../interfaces';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MessageService {
   messages: Message[] = [];
@@ -12,11 +12,11 @@ export class MessageService {
   show = (
     description: string,
     type: TypeMessage = TypeMessage.SUCCESS,
-    autoHide: boolean = true
+    autoHide: boolean = true,
   ): void => {
     const message: Message = {
       description,
-      type
+      type,
     };
     this.messages.push(message);
 

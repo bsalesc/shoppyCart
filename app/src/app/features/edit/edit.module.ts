@@ -6,6 +6,6 @@ import { FormsModule } from '@angular/forms';
 @NgModule({
   imports: [CommonModule, FormsModule],
   declarations: [EditComponent],
-  exports: [EditComponent]
+  exports: [EditComponent],
 })
 export class EditModule {}

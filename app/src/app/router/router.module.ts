@@ -9,12 +9,12 @@ import { CategoriesComponent } from '../features/categories/categories.component
 const routes: Route[] = [
   { path: 'categories', component: CategoriesComponent },
   { path: '', component: ListComponent, pathMatch: 'full' },
-  { path: '**', redirectTo: '/' }
+  { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
   imports: [CommonModule, ListModule, CategoriesModule, Module.forRoot(routes)],
   declarations: [],
-  exports: [Module]
+  exports: [Module],
 })
 export class RouterModule {}

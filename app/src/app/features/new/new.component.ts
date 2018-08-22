@@ -6,7 +6,7 @@ import { ItemFormValidation, ItemFormGroup } from '../../validations';
 @Component({
   selector: 'app-new',
   templateUrl: './new.component.html',
-  styleUrls: ['./new.component.css']
+  styleUrls: ['./new.component.css'],
 })
 export class NewComponent {
   @Output()
@@ -17,7 +17,7 @@ export class NewComponent {
     description: '',
     price: null,
     quantity: null,
-    bought: false
+    bought: false,
   };
 
   formGroup: ItemFormGroup;
@@ -34,7 +34,7 @@ export class NewComponent {
         description: '',
         price: 0,
         quantity: 0,
-        bought: false
+        bought: false,
       };
     });
   };

@@ -18,7 +18,7 @@ import { MessageComponent } from './components/message/message.component';
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MessageComponent
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,10 +26,10 @@ import { MessageComponent } from './components/message/message.component';
     RouterModule,
     HttpClientModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production
-    })
+      enabled: environment.production,
+    }),
   ],
   providers: [WishService, MessageService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}

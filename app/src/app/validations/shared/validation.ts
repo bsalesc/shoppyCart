@@ -4,7 +4,7 @@ import {
   ValidatorFn,
   AsyncValidatorFn,
   AbstractControlOptions,
-  FormControl as FormControlOriginal
+  FormControl as FormControlOriginal,
 } from '@angular/forms';
 import { ERRORS } from './errors';
 import { formatError } from '../../utils';
@@ -23,7 +23,7 @@ export class FormGroup extends FormGroupOriginal {
       | ValidatorFn[]
       | AbstractControlOptions
       | null,
-    asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
+    asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null,
   ) {
     super(controls, validatorOrOpts, asyncValidator);
     Object.keys(this.controls).forEach(key => {
@@ -51,7 +51,7 @@ export class FormControl extends FormControlOriginal {
       | ValidatorFn[]
       | AbstractControlOptions
       | null,
-    asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null
+    asyncValidator?: AsyncValidatorFn | AsyncValidatorFn[] | null,
   ) {
     super(formState, validatorOrOpts, asyncValidator);
   }
@@ -63,7 +63,7 @@ export class FormControl extends FormControlOriginal {
   getErrorMessages = (): string[] =>
     !!this.errors && (this.touched || this.dirty)
       ? Object.keys(this.errors).map(key =>
-          formatError(ERRORS[key], this.key, this.errors[key])
+          formatError(ERRORS[key], this.key, this.errors[key]),
         )
       : [];
 }

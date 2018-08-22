@@ -23,10 +23,10 @@ describe('ListComponent', () => {
         NewModule,
         SharedModule,
         EditModule,
-        HttpClientModule
+        HttpClientModule,
       ],
       declarations: [ListComponent, AgreementComponent],
-      providers: [WishService]
+      providers: [WishService],
     }).compileComponents();
   }));
 

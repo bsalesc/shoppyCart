@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HttpService {
   private API_URL: string;
@@ -29,7 +29,7 @@ export class HttpService {
     this.service.patch<Result<T> & any>(this.API_URL + url, body, options);
 }
 
-type Options = {
+interface Options {
   headers?:
     | HttpHeaders
     | {
@@ -44,7 +44,7 @@ type Options = {
   reportProgress?: boolean;
   responseType: 'json';
   withCredentials?: boolean;
-};
+}
 
 interface Result<T> {
   data: T;

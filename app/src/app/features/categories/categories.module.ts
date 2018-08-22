@@ -5,6 +5,6 @@ import { CategoriesComponent } from './categories.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [CategoriesComponent],
-  exports: [CategoriesComponent]
+  exports: [CategoriesComponent],
 })
 export class CategoriesModule {}

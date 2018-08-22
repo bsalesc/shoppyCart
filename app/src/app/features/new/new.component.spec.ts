@@ -13,7 +13,7 @@ describe('NewComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
       declarations: [NewComponent],
-      providers: [WishService]
+      providers: [WishService],
     }).compileComponents();
   }));
 

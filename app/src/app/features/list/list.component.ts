@@ -7,7 +7,7 @@ import { EditComponent } from '../edit/edit.component';
 
 @Component({
   templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  styleUrls: ['./list.component.css'],
 })
 export class ListComponent implements OnInit {
   private _shoppingList: Wish[] = [];
@@ -92,7 +92,7 @@ export class ListComponent implements OnInit {
 
   handleEdit = wish =>
     (this._shoppingList = this._shoppingList.map(
-      w => (w.id === wish.id ? wish : w)
+      w => (w.id === wish.id ? wish : w),
     ));
 
   handleAdd = wish => this._shoppingList.push(wish);

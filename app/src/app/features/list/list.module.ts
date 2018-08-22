@@ -12,6 +12,6 @@ import { EditModule } from '../edit/edit.module';
   imports: [CommonModule, FormsModule, NewModule, SharedModule, EditModule],
   declarations: [ListComponent, AgreementComponent],
   providers: [UserService],
-  exports: [ListComponent]
+  exports: [ListComponent],
 })
 export class ListModule {}

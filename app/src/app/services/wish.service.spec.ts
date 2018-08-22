@@ -7,10 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 describe('WishService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        HttpClientModule
-      ],
-      providers: [WishService]
+      imports: [HttpClientModule],
+      providers: [WishService],
     });
   });
 

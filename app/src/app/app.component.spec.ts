@@ -18,18 +18,14 @@ describe('AppComponent', () => {
         AppComponent,
         HeaderComponent,
         FooterComponent,
-        MessageComponent
+        MessageComponent,
       ],
-      imports: [
-        BrowserModule,
-        FormsModule,
-        RouterModule
-      ],
+      imports: [BrowserModule, FormsModule, RouterModule],
       providers: [
         WishService,
         MessageService,
-        { provide: APP_BASE_HREF, useValue: '/' }
-      ]
+        { provide: APP_BASE_HREF, useValue: '/' },
+      ],
     }).compileComponents();
   }));
   it('should create the app', async(() => {

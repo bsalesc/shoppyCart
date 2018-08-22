@@ -9,7 +9,7 @@ export let ItemSchema = Schema({
   description: String,
   quantity: Number,
   price: Number,
-  bought: { type: Boolean, default: false }
+  bought: { type: Boolean, default: false },
 });
 
 export const Item: Model<Interface> = model<Interface>('Item', ItemSchema);

@@ -7,7 +7,7 @@ describe('HttpService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
-      providers: [HttpService]
+      providers: [HttpService],
     });
   });
 

@@ -4,5 +4,5 @@ export const ERRORS = {
   max: '{field} must be up to {max}.',
   minlength: '{field} should has minimum length of {requiredLength}.',
   maxlength: '{field} should has maximum length of {requiredLength}.',
-  email: `{field} isn't valid.`
+  email: `{field} isn't valid.`,
 };

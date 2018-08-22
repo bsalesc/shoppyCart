@@ -3,6 +3,7 @@
   "prettier.useTabs": false,
   "prettier.tslintIntegration": true,
   "editor.formatOnSave": true,
+  "prettier.printWidth": 120,
   "[typescript]": {
     "prettier.singleQuote": true
   }

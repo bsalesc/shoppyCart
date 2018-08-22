@@ -7,5 +7,5 @@ export enum TypeMessage {
   SUCCESS = 'success',
   DANGER = 'danger',
   WARNING = 'warning',
-  INFO = 'info'
+  INFO = 'info',
 }

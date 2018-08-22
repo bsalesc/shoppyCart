@@ -1,6 +1,12 @@
 {
+  "scripts": {
+    "tslint:app": "./node_modules/.bin/tslint --project ./app",
+    "tslint:api": "./node_modules/.bin/tslint --project ./api"
+  },
   "devDependencies": {
+    "prettier": "^1.14.2",
+    "prettier-tslint": "^0.4.0",
     "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0"
+    "typescript": "^3.0.1"
   }
 }

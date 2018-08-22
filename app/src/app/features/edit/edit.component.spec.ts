@@ -13,7 +13,7 @@ describe('EditComponent', () => {
     TestBed.configureTestingModule({
       imports: [FormsModule, HttpClientModule],
       declarations: [EditComponent],
-      providers: [WishService]
+      providers: [WishService],
     }).compileComponents();
   }));
 
