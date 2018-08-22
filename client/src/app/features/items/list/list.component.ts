@@ -12,7 +12,7 @@ import { EditComponent } from '../edit/edit.component';
 export class ListComponent implements OnInit {
   private _shoppingList: Wish[] = [];
   private _expanded: string[] = [];
-  private wishSelected: Wish;
+  public wishSelected: Wish;
 
   @ViewChild(ModalComponent)
   modalView: ModalComponent;
