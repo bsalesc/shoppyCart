@@ -1,8 +1,9 @@
 {
   "license": "MIT",
   "scripts": {
-    "tslint:app": "./node_modules/.bin/tslint --project ./client",
-    "tslint:api": "./node_modules/.bin/tslint --project ./server"
+    "tslint": "yarn tslint:client && yarn tslint:server",
+    "tslint:client": "./node_modules/.bin/tslint --project ./client",
+    "tslint:server": "./node_modules/.bin/tslint --project ./server"
   },
   "devDependencies": {
     "prettier": "^1.14.2",
