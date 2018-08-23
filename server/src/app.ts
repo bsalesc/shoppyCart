@@ -9,9 +9,7 @@ import { UserRouter } from './routes/user.route';
 import { CONFIG } from './configs/config.env';
 
 export default async (): Promise<express.Application> => {
-  let app: express.Application;
-  app = express();
-
+  const app = express();
   try {
     await mongoose.connect(
       `mongodb://${CONFIG.MONGO_HOST}:${CONFIG.MONGO_PORT}/${CONFIG.MONGO_DB ||

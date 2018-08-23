@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn test:lcov
+  /usr/local/bin/node /usr/local/bin/yarn test
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands
@@ -24,8 +24,8 @@ npm manifest:
       "build": "tsc",
       "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/server.ts",
       "tslint": "./node_modules/.bin/tslint --project ./",
-      "test": "yarn tslint && nyc --reporter=text mocha -r ts-node/register src/**/*.spec.ts",
-      "test:lcov": "nyc report --reporter=text-lcov | coveralls",
+      "test": "yarn tslint && nyc --reporter=text mocha -r ts-node/register src/**/*.spec.ts src/*.spec.ts",
+      "coverage": "nyc report --reporter=text-lcov | coveralls",
       "start": "node ./dist/server.js",
       "deploy": "yarn build",
       "prod": "yarn build && yarn start"
@@ -38,6 +38,7 @@ npm manifest:
       "@types/sinon": "^5.0.1",
       "@types/sinon-chai": "^3.2.0",
       "@types/sinon-express-mock": "^1.3.5",
+      "@types/sinon-mongoose": "^1.3.7",
       "chai": "^4.1.2",
       "coveralls": "^3.0.2",
       "mocha": "^5.2.0",
@@ -49,6 +50,7 @@ npm manifest:
       "sinon": "^6.1.5",
       "sinon-chai": "^3.2.0",
       "sinon-express-mock": "^2.0.5",
+      "sinon-mongoose": "^2.2.1",
       "ts-node": "^7.0.1",
       "tslint": "^5.11.0",
       "typescript": "^3.0.1"
@@ -290,6 +292,12 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/sinon-express-mock/-/sinon-express-mock-1.3.5.tgz#5f0b53c56c4b023bf22a2bc09f0beddbd10656d3"
     dependencies:
       "@types/express" "*"
+      "@types/sinon" "*"
+  
+  "@types/sinon-mongoose@^1.3.7":
+    version "1.3.7"
+    resolved "https://registry.yarnpkg.com/@types/sinon-mongoose/-/sinon-mongoose-1.3.7.tgz#81ccb1093d49ed2484d9f9d7cd34a6d68d8b6cd1"
+    dependencies:
       "@types/sinon" "*"
   
   "@types/sinon@*", "@types/sinon@^5.0.1":
@@ -2851,6 +2859,10 @@ Lockfile:
     version "2.0.5"
     resolved "https://registry.yarnpkg.com/sinon-express-mock/-/sinon-express-mock-2.0.5.tgz#2ca382a89153149fe2e817a90cee32a6552479d2"
   
+  sinon-mongoose@^2.2.1:
+    version "2.2.1"
+    resolved "https://registry.yarnpkg.com/sinon-mongoose/-/sinon-mongoose-2.2.1.tgz#0096d0c0cd650846cdb30c9ca78d3cb23c6b488f"
+  
   sinon@^6.1.5:
     version "6.1.5"
     resolved "https://registry.yarnpkg.com/sinon/-/sinon-6.1.5.tgz#41451502d43cd5ffb9d051fbf507952400e81d09"
@@ -3477,7 +3489,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c nyc report --reporter=text-lcov | coveralls
+  Arguments: -c yarn tslint && nyc --reporter=text mocha -r ts-node/register src/**/*.spec.ts src/*.spec.ts
   Directory: /Users/brunosalescardoso/Projects/shopping_list/server
   Output:
   

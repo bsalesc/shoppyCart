@@ -3,9 +3,13 @@ import { Item } from '../models/item.model';
 
 export class ItemController {
   get = async (req: Request, res: Response) => {
-    const items = await Item.find({});
+    try {
+      const items = await Item.find({});
 
-    res.status(200).json({ success: true, data: items });
+      res.status(200).json({ success: true, data: items });
+    } catch (e) {
+      res.status(400).json({ error: e });
+    }
   };
 
   create = async (req: Request, res: Response) => {
@@ -33,8 +37,8 @@ export class ItemController {
 
   delete = async (req: Request, res: Response) => {
     const { id } = req.params;
+
     try {
-      console.log(id);
       await Item.deleteOne({ _id: id });
 
       res.status(200).json({ success: true });
