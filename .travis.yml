@@ -25,7 +25,6 @@ jobs:
         - cd ./server
         - yarn
         - yarn test
-        - yarn coverage
     - stage: Test APP and Publish
       script:
         - cd ./client
@@ -36,3 +35,7 @@ jobs:
         - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker-compose build; fi
         - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi
         - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker-compose push; fi
+    - stage: Coverage
+      script:
+        - cd ./server
+        - yarn coverage
