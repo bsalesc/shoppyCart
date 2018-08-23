@@ -1,5 +1,5 @@
 Arguments: 
-  /usr/local/bin/node /usr/local/bin/yarn test
+  /usr/local/bin/node /usr/local/bin/yarn coverage
 
 PATH: 
   /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands
@@ -25,7 +25,7 @@ npm manifest:
       "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/server.ts",
       "tslint": "./node_modules/.bin/tslint --project ./",
       "test": "yarn tslint && nyc --reporter=text mocha -r ts-node/register src/**/*.spec.ts src/*.spec.ts",
-      "coverage": "nyc report --reporter=text-lcov | coveralls",
+      "coverage": "nyc report --reporter=text-lcov --no-clean",
       "start": "node ./dist/server.js",
       "deploy": "yarn build",
       "prod": "yarn build && yarn start"
@@ -68,7 +68,8 @@ npm manifest:
       ],
       "exclude": [
         "**/*.d.ts",
-        "**/*.spec.ts"
+        "**/*.spec.ts",
+        "src/server.ts"
       ],
       "reporter": [
         "lcov"
@@ -3489,7 +3490,7 @@ Trace:
   Error: Command failed.
   Exit code: 1
   Command: sh
-  Arguments: -c yarn tslint && nyc --reporter=text mocha -r ts-node/register src/**/*.spec.ts src/*.spec.ts
+  Arguments: -c nyc report --reporter=text-lcov --no-clean
   Directory: /Users/brunosalescardoso/Projects/shopping_list/server
   Output:
   

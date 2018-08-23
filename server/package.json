@@ -9,7 +9,7 @@
     "dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ts-node src/server.ts",
     "tslint": "./node_modules/.bin/tslint --project ./",
     "test": "yarn tslint && nyc --reporter=text mocha -r ts-node/register src/**/*.spec.ts src/*.spec.ts",
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "coverage": "nyc report --reporter=text-lcov",
     "start": "node ./dist/server.js",
     "deploy": "yarn build",
     "prod": "yarn build && yarn start"
