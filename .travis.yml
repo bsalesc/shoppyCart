@@ -38,4 +38,5 @@ jobs:
     - stage: Coverage
       script:
         - cd ./server;
+        - yarn;
         - yarn coverage;
