@@ -12,7 +12,7 @@ The idea of this application is to use on desktop and mobile (as PWA).
 
 Deployed on: Still need a domain.
 
-## Develop [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=develop)](https://travis-ci.org/bsalesc/shopping_list)
+## Develop [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=develop)](https://travis-ci.org/bsalesc/shopping_list)[![Coverage Status](https://coveralls.io/repos/github/bsalesc/shopping_list/badge.svg?branch=develop)](https://coveralls.io/github/bsalesc/shopping_list?branch=develop)
 
 Deployed on: [https://shopping-list-awesome.azurewebsites.net/](https://shopping-list-awesome.azurewebsites.net/)
 
