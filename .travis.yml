@@ -1,11 +1,9 @@
 language: node_js
-env:
-  global:
-    - GET_ENV_VAR=./travis_get_variables.sh
-    - AWS_ENV=$($GET_ENV_VAR $s3_domain_develop $s3_domain)
-    - AWS_BUCKET=$($GET_ENV_VAR $s3_bucket_develop $s3_bucket)
 node_js:
   - '8'
+
+services:
+  - docker
 
 addons:
   apt:
@@ -18,25 +16,22 @@ cache:
   yarn: true
   directories:
     - node_modules
+    - dist
 
-install:
-  - yarn
-
-script:
-  - yarn test:headless
-
-before_deploy:
-  - yarn build --prod --aot --base-href $AWS_ENV
-
-deploy:
-  provider: s3
-  access_key_id: $s3_access_key_id
-  secret_access_key:
-    secure: $s3_secret_access_key
-  bucket: $AWS_BUCKET
-  acl: public_read
-  skip_cleanup: true
-  local_dir: dist/shoppingList
-  region: $s3_region
-  on:
-    all_branches: true
+jobs:
+  include:
+    - stage: Test RESTapi
+      script:
+        - cd ./server
+        - yarn
+        - yarn test
+    - stage: Test APP and Publish
+      script:
+        - cd ./client
+        - yarn
+        - yarn test:headless
+        # DEVELOP branch and NO PULL REQUEST
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then yarn deploy; fi
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker-compose build; fi
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker-compose push; fi
