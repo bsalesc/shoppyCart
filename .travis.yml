@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - '8'
 
 services:
   - docker
@@ -31,6 +31,6 @@ jobs:
         - yarn
         - yarn test:headless
         - yarn deploy
-        - docker-compose build;
-        - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY;
-        - docker-compose push;
+        - if [ $TRAVIS_BRANCH == "develop" ]; then docker-compose build; fi
+        - if [ $TRAVIS_BRANCH == "develop" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi
+        - if [ $TRAVIS_BRANCH == "develop" ]; then docker-compose push; fi

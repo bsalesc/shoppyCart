@@ -6,7 +6,12 @@ services:
     expose:
       - '8081'
     environment:
-      CONNECTION_STRING: 'CONNECTION_STRING'
+      MONGO_HOST: NULL
+      MONGO_PORT: NULL
+      MONGO_DB: NULL
+      MONGO_SSL: NULL
+      MONGO_USER: NULL
+      MONGO_PASS: NULL
   gateway:
     image: 'awesomeshoppinglist.azurecr.io/shopping-list'
     build: 'client/.'
