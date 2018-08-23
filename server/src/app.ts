@@ -14,9 +14,8 @@ export default async (): Promise<express.Application> => {
 
   try {
     await mongoose.connect(
-      `mongodb://${CONFIG.MONGO_HOST}:${CONFIG.MONGO_PORT}/${CONFIG.MONGO_DB}${
-        CONFIG.MONGO_SSL ? '?ssl=true' : ''
-      }`,
+      `mongodb://${CONFIG.MONGO_HOST}:${CONFIG.MONGO_PORT}/${CONFIG.MONGO_DB ||
+        ''}${CONFIG.MONGO_SSL ? '?ssl=true' : ''}`,
       {
         user: CONFIG.MONGO_USER,
         pass: CONFIG.MONGO_PASS,
