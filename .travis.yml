@@ -30,7 +30,8 @@ jobs:
         - cd ./client
         - yarn
         - yarn test:headless
-        - yarn deploy
-        - if [ $TRAVIS_BRANCH == "develop" ]; then docker-compose build; fi
-        - if [ $TRAVIS_BRANCH == "develop" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi
-        - if [ $TRAVIS_BRANCH == "develop" ]; then docker-compose push; fi
+        # DEVELOP branch and NO PULL REQUEST
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then yarn deploy; fi
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker-compose build; fi
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi
+        - if [ $TRAVIS_BRANCH == "develop" && $TRAVIS_PULL_REQUEST == "false" ]; then docker-compose push; fi
