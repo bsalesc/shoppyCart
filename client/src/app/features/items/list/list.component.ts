@@ -75,12 +75,15 @@ export class ListComponent implements OnInit {
   };
 
   get currentTotalToSpend(): number {
-    return !!this._shoppingList.length
-      ? this._shoppingList
-          .filter(f => !f.bought)
-          .map(wish => (wish.price || 0) * wish.quantity)
-          .reduce((prev, curr) => prev + curr)
-      : 0;
+    if (!this._shoppingList.length) return 0;
+
+    const values = this._shoppingList
+      .filter(f => !f.bought)
+      .map(wish => (wish.price || 0) * wish.quantity);
+
+    if (!values.length) return 0;
+
+    return values.reduce((prev, curr) => prev + curr);
   }
 
   removeItem = item =>
