@@ -22,7 +22,7 @@
       "name": "api",
       "urls": ["**//localhost/**", "**//**/api/**"],
       "cacheConfig": {
-        "strategy": "performance",
+        "strategy": "freshness",
         "maxSize": "1",
         "maxAge": "7h"
       }
