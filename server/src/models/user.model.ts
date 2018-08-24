@@ -11,8 +11,9 @@ export let UserSchema = Schema({
   pass: String,
   name: String,
 
-  googleToken: String,
-  facebookToken: String,
+  token: { type: String, required: false },
+  googleToken: { type: String, required: false },
+  facebookToken: { type: String, required: false },
 });
 
 export const User: Model<Interface> = model<Interface>('User', UserSchema);
