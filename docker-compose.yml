@@ -1,10 +1,10 @@
-version: '3.4'
+version: "3.4"
 services:
   api:
-    image: 'awesomeshoppinglist.azurecr.io/shopping-list-api'
-    build: 'server/.'
+    image: "awesomeshoppinglist.azurecr.io/shopping-list-api"
+    build: "server/."
     expose:
-      - '8081'
+      - "8081"
     environment:
       MONGO_HOST: NULL
       MONGO_PORT: NULL
@@ -13,10 +13,10 @@ services:
       MONGO_USER: NULL
       MONGO_PASS: NULL
   gateway:
-    image: 'awesomeshoppinglist.azurecr.io/shopping-list'
-    build: 'client/.'
+    image: "awesomeshoppinglist.azurecr.io/shopping-list"
+    build: "client/."
     ports:
-      - '80:8080'
-      - '443:443'
+      - "80:8080"
+      - "443:443"
     depends_on:
       - api

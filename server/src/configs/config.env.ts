@@ -9,7 +9,7 @@ const {
 } = process.env;
 
 const DEFAULT_MONGO_HOST = 'ds145289.mlab.com';
-const DEFAULT_MONGO_PORT = '45289';
+const DEFAULT_MONGO_PORT = 45289;
 const DEFAULT_MONGO_DB = 'stmapp';
 const DEFAULT_MONGO_SSL = false;
 const DEFAULT_MONGO_USER = 'admin';
