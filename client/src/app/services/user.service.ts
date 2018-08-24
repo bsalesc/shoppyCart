@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserStorage } from '../interfaces';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class UserService {
   user: UserStorage;
 

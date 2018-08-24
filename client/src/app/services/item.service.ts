@@ -3,7 +3,7 @@ import { Item } from 'src/app/interfaces';
 import { MessageService } from './message.service';
 import { HttpService } from '../utils';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ItemService {
   constructor(private http: HttpService, private _message: MessageService) {}
 

@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Message, TypeMessage } from '../interfaces';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class MessageService {
   messages: Message[] = [];
 
