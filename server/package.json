@@ -15,6 +15,7 @@
     "prod": "yarn build && yarn start"
   },
   "devDependencies": {
+    "@types/bcrypt": "^2.0.0",
     "@types/chai": "^4.1.4",
     "@types/cors": "^2.8.4",
     "@types/mocha": "^5.2.5",
@@ -41,6 +42,7 @@
   },
   "dependencies": {
     "@types/express": "^4.16.0",
+    "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",

@@ -1,6 +1,6 @@
 import { Document, Model, model } from 'mongoose';
 import { IItem } from '../interfaces/item.interface';
-import { Schema } from '../utils/schema';
+import { Schema } from '../utils/schema.util';
 
 type Interface = IItem & Document;
 
