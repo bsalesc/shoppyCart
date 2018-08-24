@@ -13,6 +13,24 @@ import { ServiceWorkerService } from './services/service-worker.service';
 import { Subject } from 'rxjs';
 import { SwUpdate } from '@angular/service-worker';
 
+class MockSwUpdate {
+  $$availableSubj = new Subject<{ available: { hash: string } }>();
+  $$activatedSubj = new Subject<{ current: { hash: string } }>();
+
+  available = this.$$availableSubj.asObservable();
+  activated = this.$$activatedSubj.asObservable();
+
+  activateUpdate = jasmine
+    .createSpy('MockSwUpdate.activateUpdate')
+    .and.callFake(() => Promise.resolve());
+
+  checkForUpdate = jasmine
+    .createSpy('MockSwUpdate.checkForUpdate')
+    .and.callFake(() => Promise.resolve());
+
+  constructor(public isEnabled: boolean) {}
+}
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -42,21 +60,3 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   }));
 });
-
-class MockSwUpdate {
-  $$availableSubj = new Subject<{ available: { hash: string } }>();
-  $$activatedSubj = new Subject<{ current: { hash: string } }>();
-
-  available = this.$$availableSubj.asObservable();
-  activated = this.$$activatedSubj.asObservable();
-
-  activateUpdate = jasmine
-    .createSpy('MockSwUpdate.activateUpdate')
-    .and.callFake(() => Promise.resolve());
-
-  checkForUpdate = jasmine
-    .createSpy('MockSwUpdate.checkForUpdate')
-    .and.callFake(() => Promise.resolve());
-
-  constructor(public isEnabled: boolean) {}
-}
