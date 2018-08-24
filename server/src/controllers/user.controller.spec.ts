@@ -8,6 +8,7 @@ import { IUser } from '../interfaces/user.interface';
 import { User } from '../models/user.model';
 
 import * as passwordUtil from '../utils/password.util';
+import { mapUserResult } from '../mappers/user.mapper';
 
 describe('User controller', () => {
   const controller = new UserController();
@@ -18,8 +19,6 @@ describe('User controller', () => {
     name: 'name',
     pass: 'pass',
     email: 'email',
-    facebookToken: 'facebookToken',
-    googleToken: 'googleToken',
   };
 
   let sandbox: sinon.SinonSandbox;
@@ -41,7 +40,7 @@ describe('User controller', () => {
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
         success: true,
-        data: userMock,
+        data: mapUserResult(userMock),
       });
     });
 
@@ -70,7 +69,7 @@ describe('User controller', () => {
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
         success: true,
-        data: userMock,
+        data: mapUserResult(userMock),
       });
     });
 

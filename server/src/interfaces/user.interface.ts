@@ -1,15 +1,13 @@
-export interface IUser {
+export interface IUserBase {
   id: any;
   email: string;
-  pass: string;
   name: string;
-
-  googleToken: string;
-  facebookToken: string;
+  token?: string;
 }
 
-export interface IUserSafe {
-  id: any;
-  email: string;
-  name: string;
+export interface IUser extends IUserBase {
+  pass: string;
+
+  googleToken?: string;
+  facebookToken?: string;
 }

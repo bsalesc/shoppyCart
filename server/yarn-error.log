@@ -3516,7 +3516,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit code: 2
   Command: sh
   Arguments: -c yarn tslint && nyc --reporter=text mocha -r ts-node/register src/**/*.spec.ts src/*.spec.ts
   Directory: /Users/brunosalescardoso/Projects/shopping_list/server
