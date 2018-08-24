@@ -11,7 +11,7 @@ describe('Item controller', () => {
   const req = mockReq();
   const res = mockRes();
 
-  const item: IItem = {
+  const itemMock: IItem = {
     bought: false,
     description: 'description',
     id: 'id',
@@ -25,12 +25,12 @@ describe('Item controller', () => {
 
   describe('create function', () => {
     it('should create an item', async () => {
-      sandbox.stub(Item, 'create').resolves(item);
+      sandbox.stub(Item, 'create').resolves(itemMock);
       await controller.create(req, res);
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
         success: true,
-        data: item,
+        data: itemMock,
       });
     });
 
@@ -62,12 +62,12 @@ describe('Item controller', () => {
 
   describe('get function', () => {
     it('should return items', async () => {
-      sandbox.stub(Item, 'find').resolves([item]);
+      sandbox.stub(Item, 'find').resolves([itemMock]);
       await controller.get(req, res);
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
         success: true,
-        data: [item],
+        data: [itemMock],
       });
     });
 
@@ -81,14 +81,14 @@ describe('Item controller', () => {
 
   describe('update function', () => {
     it('should update an item', async () => {
-      sandbox.stub(Item, 'findOne').resolves(item);
+      sandbox.stub(Item, 'findOne').resolves(itemMock);
       sandbox.stub(Item, 'updateOne').resolves();
 
       await controller.update(req, res);
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
         success: true,
-        data: item,
+        data: itemMock,
       });
     });
 

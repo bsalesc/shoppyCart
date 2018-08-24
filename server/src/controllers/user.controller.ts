@@ -4,29 +4,32 @@ import { generatePassword, comparePassword } from '../utils/password.util';
 
 export class UserController {
   login = async (req: Request, res: Response) => {
-    const { email, pass } = req.params;
+    const { email, pass } = req.body;
 
     const user = await User.findOne({ email });
 
-    if (await comparePassword(pass, user)) {
+    if (user && (await comparePassword(pass, user))) {
       res.status(200).json({ success: true, data: user });
+    } else {
+      res.status(401).json({ error: 'Invalid user or password.' });
     }
-
-    res.status(400).json({ error: '' });
   };
 
   register = async (req: Request, res: Response) => {
     try {
-      let { user } = req.body;
-      await User.findOneAndRemove({ user });
+      let user = req.body;
 
-      user = await generatePassword(req.body);
+      const checkUser = await User.findOne({ email: user.email });
 
-      const newUser = await User.create(req.body);
+      if (!checkUser) {
+        user = await generatePassword(user);
+        const newUser = await User.create(user);
 
-      res.status(200).json({ success: true, data: newUser });
+        res.status(200).json({ success: true, data: newUser });
+      } else {
+        res.status(403).json({ error: 'Email already registered.' });
+      }
     } catch (e) {
-      console.error(e);
       res.status(400).json({ error: e });
     }
   };

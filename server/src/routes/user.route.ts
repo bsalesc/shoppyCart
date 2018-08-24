@@ -13,7 +13,7 @@ export class UserRouter {
   registerRoutes = () => {
     const router = Router();
 
-    router.get('/login', this._controller.login);
+    router.post('/login', this._controller.login);
     router.post('/register', this._controller.register);
 
     this._app.use('/users', router);
