@@ -1,6 +1,6 @@
 import { Application, Router } from 'express';
-import { UserController } from '../controllers/user.controller';
 import { ItemController } from '../controllers/item.controller';
+import { checkAuthentication } from '../utils/auth.util';
 
 export class ItemRouter {
   private _app: Application;
@@ -20,6 +20,6 @@ export class ItemRouter {
     router.put('/:id', this._controller.update);
     router.delete('/:id', this._controller.delete);
 
-    this._app.use('/items', router);
+    this._app.use('/items', checkAuthentication, router);
   };
 }

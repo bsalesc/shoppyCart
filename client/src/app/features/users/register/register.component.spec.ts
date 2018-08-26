@@ -1,16 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { LoginComponent } from './login.component';
+import { RegisterComponent } from './register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '../../../router/router.module';
-import { LoginModule } from './login.module';
-import { APP_BASE_HREF } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FormModule } from '../form/form.module';
+import { APP_BASE_HREF } from '@angular/common';
+import { RegisterModule } from './register.module';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('RegisterComponent', () => {
+  let component: RegisterComponent;
+  let fixture: ComponentFixture<RegisterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -18,9 +18,9 @@ describe('LoginComponent', () => {
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        RouterModule,
+        RouterModule.forRoot([]),
         FormModule,
-        LoginModule,
+        RegisterModule,
       ],
       declarations: [],
       providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
@@ -28,7 +28,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,9 +1,9 @@
 import { Response, Request } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { User } from '../models/user.model';
-import { generatePassword, comparePassword } from '../utils/password.util';
+import { generatePassword, comparePassword } from '../utils/auth.util';
 import { mapUserResult } from '../mappers/user.mapper';
-import { generateToken } from '../services/token.service';
+import { generateToken } from '../utils/token.util';
 
 export class UserController {
   login = async (req: Request, res: Response) => {

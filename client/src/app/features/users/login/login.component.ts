@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserFormGroup } from '../../../validations/user.validation';
+import { LoginFormGroup } from '../../../validations/login.validation';
 import { UserService } from '../../../services/user.service';
 
 @Component({
@@ -9,9 +9,9 @@ import { UserService } from '../../../services/user.service';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-  formGroup: UserFormGroup;
+  formGroup: LoginFormGroup;
   constructor(private userService: UserService, private router: Router) {
-    this.formGroup = new UserFormGroup();
+    this.formGroup = new LoginFormGroup();
   }
 
   ngOnInit() {}
@@ -23,4 +23,6 @@ export class LoginComponent implements OnInit {
       .login(email.value, pass.value)
       .subscribe(result => this.router.navigate(['']));
   };
+
+  register = () => this.router.navigate(['register']);
 }

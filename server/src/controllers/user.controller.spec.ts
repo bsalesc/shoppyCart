@@ -7,9 +7,9 @@ import { UserController } from './user.controller';
 import { IUser } from '../interfaces/user.interface';
 import { User } from '../models/user.model';
 
-import * as passwordUtil from '../utils/password.util';
+import * as authUtil from '../utils/auth.util';
 import { mapUserResult } from '../mappers/user.mapper';
-import * as tokenService from '../services/token.service';
+import * as tokenUtil from '../utils/token.util';
 
 describe('User controller', () => {
   const controller = new UserController();
@@ -36,8 +36,8 @@ describe('User controller', () => {
 
     it('should return user', async () => {
       sandbox.stub(User, 'findOne').resolves(userMock);
-      sandbox.stub(passwordUtil, 'comparePassword').resolves(true);
-      sandbox.stub(tokenService, 'generateToken').resolves(userMock);
+      sandbox.stub(authUtil, 'comparePassword').resolves(true);
+      sandbox.stub(tokenUtil, 'generateToken').resolves(userMock);
       await controller.login(req, res);
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
@@ -48,7 +48,7 @@ describe('User controller', () => {
 
     it('should return invalid user error', async () => {
       sandbox.stub(User, 'findOne').resolves(userMock);
-      sandbox.stub(passwordUtil, 'comparePassword').resolves(false);
+      sandbox.stub(authUtil, 'comparePassword').resolves(false);
       await controller.login(req, res);
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
@@ -64,8 +64,8 @@ describe('User controller', () => {
 
     it('should create and return the user', async () => {
       sandbox.stub(User, 'findOne').resolves();
-      sandbox.stub(passwordUtil, 'generatePassword').resolves(userMock);
-      sandbox.stub(tokenService, 'generateToken').resolves(userMock);
+      sandbox.stub(authUtil, 'generatePassword').resolves(userMock);
+      sandbox.stub(tokenUtil, 'generateToken').resolves(userMock);
       sandbox.stub(User, 'create').resolves(userMock);
 
       await controller.register(req, res);
@@ -78,7 +78,7 @@ describe('User controller', () => {
 
     it('should return user already registered error', async () => {
       sandbox.stub(User, 'findOne').resolves(userMock);
-      sandbox.stub(passwordUtil, 'generatePassword').resolves();
+      sandbox.stub(authUtil, 'generatePassword').resolves();
       sandbox.stub(User, 'create').resolves();
 
       await controller.register(req, res);

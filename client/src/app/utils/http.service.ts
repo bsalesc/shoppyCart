@@ -25,28 +25,63 @@ export class HttpService {
       }),
     );
 
+  mergeOptions = (options?: Options): Options => ({
+    headers: new HttpHeaders().set('token', this.token),
+    ...options,
+  });
+
   get = <T>(url: string, options?: Options) =>
-    this.catchError(this.service.get<Result<T>>(this.API_URL + url, options));
+    this.catchError(
+      this.service.get<Result<T>>(
+        this.API_URL + url,
+        this.mergeOptions(options),
+      ),
+    );
 
   post = <T>(url: string, body: any, options?: Options) =>
     this.catchError(
-      this.service.post<Result<T>>(this.API_URL + url, body, options),
+      this.service.post<Result<T>>(
+        this.API_URL + url,
+        body,
+        this.mergeOptions(options),
+      ),
     );
 
   put = <T>(url: string, body: any, options?: Options) =>
     this.catchError(
-      this.service.put<Result<T>>(this.API_URL + url, body, options),
+      this.service.put<Result<T>>(
+        this.API_URL + url,
+        body,
+        this.mergeOptions(options),
+      ),
     );
 
   delete = <T>(url: string, options?: Options) =>
     this.catchError(
-      this.service.delete<Result<T> & any>(this.API_URL + url, options),
+      this.service.delete<Result<T> & any>(
+        this.API_URL + url,
+        this.mergeOptions(options),
+      ),
     );
 
   patch = <T>(url: string, body: any, options?: Options) =>
     this.catchError(
-      this.service.patch<Result<T> & any>(this.API_URL + url, body, options),
+      this.service.patch<Result<T> & any>(
+        this.API_URL + url,
+        body,
+        this.mergeOptions(options),
+      ),
     );
+
+  get token() {
+    let token = '';
+    const storage = JSON.parse(localStorage.getItem('user'));
+    if (storage && storage.user) {
+      token = storage.user.token;
+    }
+
+    return token;
+  }
 }
 
 interface Options {

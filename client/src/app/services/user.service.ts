@@ -48,6 +48,10 @@ export class UserService {
     return this.userStorage.showBoughtItems;
   }
 
+  get token() {
+    return this.userStorage.user && !!this.userStorage.user.token;
+  }
+
   setUser = (userStorage: UserStorage) =>
     localStorage.setItem(
       'user',

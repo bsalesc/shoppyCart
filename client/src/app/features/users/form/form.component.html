@@ -1,0 +1,16 @@
+<div [formGroup]="formGroup">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email" [class.is-invalid]="!formGroup.email.isValid">
+  </div>
+
+  <div class="form-group">
+    <label for="pass">Password</label>
+    <input type="password" class="form-control" id="pass" placeholder="Password" formControlName="pass" [class.is-invalid]="!formGroup.pass.isValid">
+  </div>
+
+  <div *ngIf="!loginView" class="form-group">
+    <label for="name">Name</label>
+    <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name" [class.is-invalid]="!formGroup.name.isValid">
+  </div>
+</div>

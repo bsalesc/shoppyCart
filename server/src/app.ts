@@ -7,6 +7,7 @@ import { ItemRouter } from './routes/item.route';
 import { UserRouter } from './routes/user.route';
 
 import { CONFIG } from './configs/config.env';
+import { jwtDecode } from './utils/token.util';
 
 export default async (): Promise<express.Application> => {
   const app = express();
@@ -29,6 +30,8 @@ export default async (): Promise<express.Application> => {
   if (!process.env.DISABLE_CORS) {
     app.use(cors());
   }
+
+  app.use(jwtDecode());
 
   const userRouter = new UserRouter(app);
   userRouter.registerRoutes();
