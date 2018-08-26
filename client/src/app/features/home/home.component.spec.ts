@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { HomeComponent } from './home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -11,7 +12,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([])],
+      imports: [RouterModule.forRoot([]), HttpClientModule],
       declarations: [HomeComponent],
       providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     }).compileComponents();

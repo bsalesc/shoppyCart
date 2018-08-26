@@ -9,6 +9,7 @@ import { User } from '../models/user.model';
 
 import * as passwordUtil from '../utils/password.util';
 import { mapUserResult } from '../mappers/user.mapper';
+import * as tokenService from '../services/token.service';
 
 describe('User controller', () => {
   const controller = new UserController();
@@ -36,6 +37,7 @@ describe('User controller', () => {
     it('should return user', async () => {
       sandbox.stub(User, 'findOne').resolves(userMock);
       sandbox.stub(passwordUtil, 'comparePassword').resolves(true);
+      sandbox.stub(tokenService, 'generateToken').resolves(userMock);
       await controller.login(req, res);
 
       expect(res.json.lastCall.args[0]).to.deep.equal({
@@ -63,6 +65,7 @@ describe('User controller', () => {
     it('should create and return the user', async () => {
       sandbox.stub(User, 'findOne').resolves();
       sandbox.stub(passwordUtil, 'generatePassword').resolves(userMock);
+      sandbox.stub(tokenService, 'generateToken').resolves(userMock);
       sandbox.stub(User, 'create').resolves(userMock);
 
       await controller.register(req, res);

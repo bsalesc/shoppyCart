@@ -4,11 +4,12 @@ import { APP_BASE_HREF } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { HomeGuard } from './home.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('HomeGuard', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([])],
+      imports: [RouterModule.forRoot([]), HttpClientModule],
       providers: [HomeGuard, { provide: APP_BASE_HREF, useValue: '/' }],
     });
   });

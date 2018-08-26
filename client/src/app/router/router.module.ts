@@ -9,6 +9,8 @@ import { HomeComponent } from '../features/home/home.component';
 import { AgreementGuard } from '../guards/agreement.guard';
 import { HomeModule } from '../features/home/home.module';
 import { HomeGuard } from '../guards/home.guard';
+import { LoginComponent } from '../features/users/login/login.component';
+import { LoginModule } from '../features/users/login/login.module';
 
 const routes: Route[] = [
   { path: 'categories', component: CategoriesComponent },
@@ -18,6 +20,7 @@ const routes: Route[] = [
     pathMatch: 'full',
     canActivate: [HomeGuard],
   },
+  { path: 'login', component: LoginComponent },
   {
     path: '',
     component: ListComponent,
@@ -32,6 +35,7 @@ const routes: Route[] = [
     CommonModule,
     ListModule,
     CategoriesModule,
+    LoginModule,
     HomeModule,
     Module.forRoot(routes),
   ],

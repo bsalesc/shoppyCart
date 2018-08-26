@@ -1,0 +1,20 @@
+<form [formGroup]="formGroup" (submit)="login()">
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email" [class.is-invalid]="!formGroup.email.isValid">
+  </div>
+
+  <div class="form-group">
+    <label for="pass">Password</label>
+    <input type="pass" class="form-control" id="pass" placeholder="Password" formControlName="pass" [class.is-invalid]="!formGroup.pass.isValid">
+  </div>
+
+  <div class="form-group actions">
+    <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary">Login
+    </button>
+  </div>
+
+
+
+</form>

@@ -1,20 +1,25 @@
 import { Response, Request } from 'express';
+import * as jwt from 'jsonwebtoken';
 import { User } from '../models/user.model';
 import { generatePassword, comparePassword } from '../utils/password.util';
 import { mapUserResult } from '../mappers/user.mapper';
+import { generateToken } from '../services/token.service';
 
 export class UserController {
   login = async (req: Request, res: Response) => {
-    const { email, pass } = req.body;
+    const { email, pass } = req.query;
 
-    const user = await User.findOne({ email });
+    let user = await User.findOne({ email });
 
     if (user && (await comparePassword(pass, user))) {
+      user = await generateToken(user);
       res.status(200).json({ success: true, data: mapUserResult(user) });
     } else {
       res.status(401).json({ error: 'Invalid user or password.' });
     }
   };
+
+  logout = async (req: Request, res: Response) => {};
 
   register = async (req: Request, res: Response) => {
     try {
@@ -24,7 +29,8 @@ export class UserController {
 
       if (!checkUser) {
         user = await generatePassword(user);
-        const newUser = await User.create(user);
+        let newUser = await User.create(user);
+        newUser = await generateToken(user);
 
         res.status(200).json({ success: true, data: mapUserResult(newUser) });
       } else {
