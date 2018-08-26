@@ -30,7 +30,7 @@ export class UserController {
       if (!checkUser) {
         user = await generatePassword(user);
         let newUser = await User.create(user);
-        newUser = await generateToken(user);
+        newUser = await generateToken(newUser);
 
         res.status(200).json({ success: true, data: mapUserResult(newUser) });
       } else {

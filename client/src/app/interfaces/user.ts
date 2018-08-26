@@ -3,5 +3,5 @@ export interface User {
   pass: string;
   name: string;
 
-  token: string;
+  token?: string;
 }

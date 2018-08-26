@@ -15,7 +15,7 @@ export const jwtDecode = (): RequestHandler => (
 
   if (token) {
     const user = jwt.verify(token, CONFIG.SECRET.toString());
-    req['user'] = (user as { data: object }).data;
+    req['user'] = user;
     req['token'] = token;
   }
 
@@ -26,14 +26,8 @@ export const generateToken = async (
   user: UserDocument,
 ): Promise<UserDocument> => {
   const { _id: id, email, name } = user;
-  const token = jwt.sign(
-    {
-      exp: Math.floor(Date.now() / 1000) + CONFIG.TOKEN_EXPIRATION * 60,
-      data: { id, email, name },
-    },
-    CONFIG.SECRET.toString(),
-  );
-
+  const token = jwt.sign({ id, email, name }, CONFIG.SECRET.toString());
   user.token = token;
+
   return await user.save();
 };

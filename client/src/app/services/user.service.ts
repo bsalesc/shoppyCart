@@ -26,6 +26,14 @@ export class UserService {
         }),
       );
 
+  register = (user: User) =>
+    this.http.post<User>('users/register', user).pipe(
+      map<Result<User>, Result<User>>(result => {
+        this.setUser({ ...this.userStorage, user: result.data });
+        return result;
+      }),
+    );
+
   set userAgreed(agreed: boolean) {
     if (agreed === this.userStorage.agreed) return;
 

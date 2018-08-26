@@ -25,7 +25,7 @@ export const checkAuthentication = async (
   next: NextFunction,
 ) => {
   const userToken = req['user'];
-  const user = await User.findOne({ token: req['token'] });
+  const user = userToken && (await User.findOne({ token: req['token'] }));
 
   if (user && user._id.toString() === userToken.id) {
     next();
