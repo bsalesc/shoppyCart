@@ -1,7 +1,10 @@
 import * as jwt from 'jsonwebtoken';
 import { CONFIG } from '../configs/config.env';
-import { RequestHandler, Request, Response, NextFunction } from 'express';
+import { RequestHandler, NextFunction } from 'express';
+import { Request, Response } from '../interfaces/express.interface';
+
 import { UserDocument } from '../models/user.model';
+import { IUserBase } from '../interfaces/user.interface';
 
 export const jwtDecode = (): RequestHandler => (
   req: Request,
@@ -10,13 +13,13 @@ export const jwtDecode = (): RequestHandler => (
 ) => {
   const token: string = req.headers.token as string;
 
-  req['user'] = null;
-  req['token'] = null;
+  req.user = null;
+  req.token = null;
 
   if (token) {
-    const user = jwt.verify(token, CONFIG.SECRET.toString());
-    req['user'] = user;
-    req['token'] = token;
+    const user = jwt.verify(token, CONFIG.SECRET.toString()) as IUserBase;
+    req.user = user;
+    req.token = token;
   }
 
   next();

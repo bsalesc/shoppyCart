@@ -1,7 +1,9 @@
 import * as bcrypt from 'bcrypt';
 import { IUser } from '../interfaces/user.interface';
 import { CONFIG } from '../configs/config.env';
-import { RequestHandler, Request, Response, NextFunction } from 'express';
+import { NextFunction } from 'express';
+import { Request, Response } from '../interfaces/express.interface';
+
 import { User } from '../models/user.model';
 
 export const comparePassword = async (passToCompare: string, user: IUser) =>
@@ -24,8 +26,8 @@ export const checkAuthentication = async (
   res: Response,
   next: NextFunction,
 ) => {
-  const userToken = req['user'];
-  const user = userToken && (await User.findOne({ token: req['token'] }));
+  const userToken = req.user;
+  const user = userToken && (await User.findOne({ token: req.token }));
 
   if (user && user._id.toString() === userToken.id) {
     next();

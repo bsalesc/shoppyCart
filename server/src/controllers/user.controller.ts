@@ -1,5 +1,4 @@
-import { Response, Request } from 'express';
-import * as jwt from 'jsonwebtoken';
+import { Request, Response } from '../interfaces/express.interface';
 import { User } from '../models/user.model';
 import { generatePassword, comparePassword } from '../utils/auth.util';
 import { mapUserResult } from '../mappers/user.mapper';
@@ -19,7 +18,16 @@ export class UserController {
     }
   };
 
-  logout = async (req: Request, res: Response) => {};
+  logout = async (req: Request, res: Response) => {
+    const { user: userToken, token } = req;
+
+    const user = await User.findOne({ token });
+
+    if (user && user._id === userToken.id) {
+      user.token = null;
+      user.save();
+    }
+  };
 
   register = async (req: Request, res: Response) => {
     try {
