@@ -1,0 +1,8 @@
+{
+  "MONGO_CONNECTIONSTRING": "mongodb://ds145289.mlab.com:45289/stmapp",
+  "MONGO_USER": "admin",
+  "MONGO_PASS": "admin",
+  "DISABLE_CORS": false,
+  "TOKEN_EXPIRATION": 60,
+  "SECRET": 777
+}
