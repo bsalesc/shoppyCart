@@ -1,45 +1,4 @@
-const {
-  MONGO_HOST,
-  MONGO_PORT,
-  MONGO_DB,
-  MONGO_SSL,
-  MONGO_USER,
-  MONGO_PASS,
-  DISABLE_CORS,
-  TOKEN_EXPIRATION,
-} = process.env;
+import * as nconf from 'nconf';
+import * as path from 'path';
 
-const DEFAULT_MONGO_HOST = 'ds145289.mlab.com';
-const DEFAULT_MONGO_PORT = 45289;
-const DEFAULT_MONGO_DB = 'stmapp';
-const DEFAULT_MONGO_SSL = false;
-const DEFAULT_MONGO_USER = 'admin';
-const DEFAULT_MONGO_PASS = 'admin';
-
-const DEFAULT_DISABLE_CORS = false;
-
-const DEFAULT_TOKEN_EXPIRATION = 60;
-
-interface Config {
-  MONGO_HOST: string;
-  MONGO_PORT: number;
-  MONGO_DB: string;
-  MONGO_SSL: boolean;
-  MONGO_USER: string;
-  MONGO_PASS: string;
-  DISABLE_CORS: boolean;
-  TOKEN_EXPIRATION: number;
-  SECRET: number;
-}
-
-export const CONFIG: Config = {
-  MONGO_HOST: MONGO_HOST || DEFAULT_MONGO_HOST,
-  MONGO_PORT: parseInt(MONGO_PORT, 10) || DEFAULT_MONGO_PORT,
-  MONGO_DB: MONGO_DB || DEFAULT_MONGO_DB,
-  MONGO_SSL: Boolean(MONGO_SSL) || DEFAULT_MONGO_SSL,
-  MONGO_USER: MONGO_USER || DEFAULT_MONGO_USER,
-  MONGO_PASS: MONGO_PASS || DEFAULT_MONGO_PASS,
-  DISABLE_CORS: Boolean(DISABLE_CORS) || DEFAULT_DISABLE_CORS,
-  TOKEN_EXPIRATION: parseInt(TOKEN_EXPIRATION, 10) || DEFAULT_TOKEN_EXPIRATION,
-  SECRET: 777,
-};
+export default nconf.env().file(path.join('./', 'config.json'));

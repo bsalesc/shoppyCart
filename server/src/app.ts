@@ -6,19 +6,22 @@ import * as mongoose from 'mongoose';
 import { ItemRouter } from './routes/item.route';
 import { UserRouter } from './routes/user.route';
 
-import { CONFIG } from './configs/config.env';
+import config from './configs/config.env';
 import { jwtDecode } from './utils/token.util';
 
 export default async (): Promise<express.Application> => {
   const app = express();
   try {
+    let configAuth = null;
+    if (!config.get('MONGO_USER')) {
+      configAuth = {
+        user: config.get('MONGO_USER'),
+        pass: config.get('MONGO_PASS'),
+      };
+    }
     await mongoose.connect(
-      `mongodb://${CONFIG.MONGO_HOST}:${CONFIG.MONGO_PORT}/${CONFIG.MONGO_DB ||
-        ''}${CONFIG.MONGO_SSL ? '?ssl=true' : ''}`,
-      {
-        user: CONFIG.MONGO_USER,
-        pass: CONFIG.MONGO_PASS,
-      },
+      config.get('MONGO_CONNECTIONSTRING'),
+      configAuth,
     );
   } catch (error) {
     console.error(error);

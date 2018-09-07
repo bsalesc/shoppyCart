@@ -1,5 +1,5 @@
 import * as jwt from 'jsonwebtoken';
-import { CONFIG } from '../configs/config.env';
+import config from '../configs/config.env';
 import { RequestHandler, NextFunction } from 'express';
 import { Request, Response } from '../interfaces/express.interface';
 
@@ -17,7 +17,10 @@ export const jwtDecode = (): RequestHandler => (
   req.token = null;
 
   if (token) {
-    const user = jwt.verify(token, CONFIG.SECRET.toString()) as IUserBase;
+    const user = jwt.verify(
+      token,
+      config.get('SECRET').toString(),
+    ) as IUserBase;
     req.user = user;
     req.token = token;
   }
@@ -29,7 +32,7 @@ export const generateToken = async (
   user: UserDocument,
 ): Promise<UserDocument> => {
   const { _id: id, email, name } = user;
-  const token = jwt.sign({ id, email, name }, CONFIG.SECRET.toString());
+  const token = jwt.sign({ id, email, name }, config.get('SECRET').toString());
   user.token = token;
 
   return await user.save();

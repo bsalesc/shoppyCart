@@ -1,6 +1,6 @@
 import * as bcrypt from 'bcrypt';
 import { IUser } from '../interfaces/user.interface';
-import { CONFIG } from '../configs/config.env';
+import config from '../configs/config.env';
 import { NextFunction } from 'express';
 import { Request, Response } from '../interfaces/express.interface';
 
@@ -12,7 +12,7 @@ export const comparePassword = async (passToCompare: string, user: IUser) =>
 export const generatePassword = async user => {
   if (!!user.id && !user.isModified('pass')) return user;
 
-  const salt = await bcrypt.genSalt(CONFIG.SECRET);
+  const salt = await bcrypt.genSalt(config.get('SECRET'));
 
   const passwordHash = await bcrypt.hash(user.pass, salt);
 
