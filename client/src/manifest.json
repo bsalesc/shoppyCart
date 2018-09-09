@@ -1,6 +1,6 @@
 {
-  "name": "Awesome Shopping List",
-  "short_name": "AwesomeShoppingList",
+  "name": "shoppyCart",
+  "short_name": "shoppyCart",
   "description": "A shopping list to help you on your day.",
   "icons": [
     {
