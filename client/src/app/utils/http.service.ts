@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
@@ -10,6 +10,9 @@ import { throwError } from 'rxjs';
   providedIn: 'root',
 })
 export class HttpService {
+  @Output()
+  redirectToLogin: EventEmitter<void> = new EventEmitter();
+
   private API_URL: string;
 
   constructor(private service: HttpClient, private message: MessageService) {
@@ -20,13 +23,16 @@ export class HttpService {
     observable.pipe(
       map(result => result),
       catchError(result => {
-        this.message.show(result.error.error, TypeMessage.WARNING);
-        return throwError(result.error.error);
+        this.message.show(result.error, TypeMessage.WARNING);
+        if (result.status === 401 && result.error === 'Invalid token.') {
+          this.redirectToLogin.emit();
+        }
+        return throwError(result.error);
       }),
     );
 
   mergeOptions = (options?: Options): Options => ({
-    headers: new HttpHeaders().set('token', this.token),
+    headers: new HttpHeaders().set('Authorization', this.token),
     ...options,
   });
 

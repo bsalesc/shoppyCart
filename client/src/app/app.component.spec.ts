@@ -12,6 +12,7 @@ import { MessageComponent } from './components/message/message.component';
 import { ServiceWorkerService } from './services/service-worker.service';
 import { Subject } from 'rxjs';
 import { SwUpdate } from '@angular/service-worker';
+import { HttpClientModule } from '@angular/common/http';
 
 class MockSwUpdate {
   $$availableSubj = new Subject<{ available: { hash: string } }>();
@@ -40,7 +41,7 @@ describe('AppComponent', () => {
         FooterComponent,
         MessageComponent,
       ],
-      imports: [BrowserModule, RouterModule],
+      imports: [BrowserModule, RouterModule, HttpClientModule],
       providers: [
         ItemService,
         MessageService,

@@ -31,6 +31,6 @@ export const checkAuthentication = async (
   if (user && user._id.toString() === userToken.id) {
     next();
   } else {
-    res.status(401).json({ error: 'Invalid token.' });
+    res.status(401).json('Invalid token.');
   }
 };

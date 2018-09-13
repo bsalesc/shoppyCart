@@ -20,7 +20,7 @@ export class UserController extends BaseController<UserRepository> {
       user = await generateToken(user);
       res.status(200).json({ success: true, data: mapUserResult(user) });
     } else {
-      res.status(401).json({ error: 'Invalid user or password.' });
+      res.status(401).json('Invalid user or password.');
     }
   };
 
@@ -48,10 +48,10 @@ export class UserController extends BaseController<UserRepository> {
 
         res.status(200).json({ success: true, data: mapUserResult(newUser) });
       } else {
-        res.status(403).json({ error: 'Email already registered.' });
+        res.status(403).json('Email already registered.');
       }
     } catch (e) {
-      res.status(400).json({ error: e });
+      res.status(400).json(e);
     }
   };
 }

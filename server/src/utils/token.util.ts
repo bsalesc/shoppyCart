@@ -11,7 +11,7 @@ export const jwtDecode = (): RequestHandler => (
   res: Response,
   next: NextFunction,
 ) => {
-  const token: string = req.headers.token as string;
+  const token: string = req.headers.Authorization as string;
 
   req.user = null;
   req.token = null;
