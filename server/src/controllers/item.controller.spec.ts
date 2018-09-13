@@ -38,7 +38,7 @@ describe('Item controller', () => {
       sandbox.stub(Item, 'create').throws();
       await controller.create(req, res);
 
-      expect(res.json.lastCall.args[0]).to.deep.property('error');
+      expect(res.json.lastCall.args[0]).to.be.an.instanceOf(Error);
     });
   });
 
@@ -56,7 +56,7 @@ describe('Item controller', () => {
       sandbox.stub(Item, 'deleteOne').throws();
       await controller.delete(req, res);
 
-      expect(res.json.lastCall.args[0]).to.deep.property('error');
+      expect(res.json.lastCall.args[0]).to.be.an.instanceOf(Error);
     });
   });
 
@@ -75,7 +75,7 @@ describe('Item controller', () => {
       sandbox.stub(Item, 'find').throws();
       await controller.get(req, res);
 
-      expect(res.json.lastCall.args[0]).to.deep.property('error');
+      expect(res.json.lastCall.args[0]).to.be.an.instanceOf(Error);
     });
   });
 
@@ -97,7 +97,7 @@ describe('Item controller', () => {
       sandbox.stub(Item, 'updateOne').throws();
       await controller.update(req, res);
 
-      expect(res.json.lastCall.args[0]).to.deep.property('error');
+      expect(res.json.lastCall.args[0]).to.be.an.instanceOf(Error);
     });
   });
 });

@@ -51,9 +51,9 @@ describe('User controller', () => {
       sandbox.stub(authUtil, 'comparePassword').resolves(false);
       await controller.login(req, res);
 
-      expect(res.json.lastCall.args[0]).to.deep.equal({
-        error: 'Invalid user or password.',
-      });
+      expect(res.json.lastCall.args[0]).to.deep.equal(
+        'Invalid user or password.',
+      );
     });
   });
 
@@ -83,17 +83,9 @@ describe('User controller', () => {
 
       await controller.register(req, res);
 
-      expect(res.json.lastCall.args[0]).to.deep.equal({
-        error: 'Email already registered.',
-      });
-    });
-
-    it('should return user already registered error', async () => {
-      sandbox.stub(User, 'findOne').throws();
-
-      await controller.register(req, res);
-
-      expect(res.json.lastCall.args[0]).to.deep.property('error');
+      expect(res.json.lastCall.args[0]).to.deep.equal(
+        'Email already registered.',
+      );
     });
   });
 });

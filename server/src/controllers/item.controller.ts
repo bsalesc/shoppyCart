@@ -53,7 +53,7 @@ export class ItemController extends BaseController<ItemRepository> {
 
       res.status(200).json({ success: true });
     } catch (e) {
-      res.status(400).json({ error: e });
+      res.status(400).json(e);
     }
   };
 }
