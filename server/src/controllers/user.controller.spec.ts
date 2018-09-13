@@ -5,11 +5,11 @@ import { mockRes, mockReq } from 'sinon-express-mock';
 
 import { UserController } from './user.controller';
 import { IUser } from '../interfaces/user.interface';
-import { User } from '../models/user.model';
 
 import * as authUtil from '../utils/auth.util';
 import { mapUserResult } from '../mappers/user.mapper';
 import * as tokenUtil from '../utils/token.util';
+import { User } from '../app/models/user.model';
 
 describe('User controller', () => {
   const controller = new UserController();

@@ -3,8 +3,8 @@ import * as sinon from 'sinon';
 import 'mocha';
 import { ItemController } from './item.controller';
 import { mockRes, mockReq } from 'sinon-express-mock';
-import { Item } from '../models/item.model';
 import { IItem } from '../interfaces/item.interface';
+import { Item } from '../app/models/item.model';
 
 describe('Item controller', () => {
   const controller = new ItemController();

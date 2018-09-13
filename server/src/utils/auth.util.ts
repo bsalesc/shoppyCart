@@ -3,8 +3,7 @@ import { IUser } from '../interfaces/user.interface';
 import config from '../configs/config.env';
 import { NextFunction } from 'express';
 import { Request, Response } from '../interfaces/express.interface';
-
-import { User } from '../models/user.model';
+import { User } from '../app/models/user.model';
 
 export const comparePassword = async (passToCompare: string, user: IUser) =>
   await bcrypt.compare(passToCompare, user.pass);

@@ -1,10 +1,16 @@
 import { Request, Response } from '../interfaces/express.interface';
-import { User } from '../models/user.model';
 import { generatePassword, comparePassword } from '../utils/auth.util';
 import { mapUserResult } from '../mappers/user.mapper';
 import { generateToken } from '../utils/token.util';
+import { User } from '../app/models/user.model';
+import { BaseController } from './base.controller';
+import { UserRepository } from '../app/repositories/user.repository';
 
-export class UserController {
+export class UserController extends BaseController<UserRepository> {
+  constructor() {
+    super(new UserRepository());
+  }
+
   login = async (req: Request, res: Response) => {
     const { email, pass } = req.query;
 
