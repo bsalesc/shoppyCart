@@ -24,7 +24,6 @@ jobs:
       script:
         - cd ./server;
         - yarn;
-        - yarn test;
         - yarn coverage;
     - stage: Test APP and Publish
       script:
