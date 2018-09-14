@@ -12,7 +12,8 @@
     "start": "node ./dist/server.js",
     "start:dev": "nodemon",
     "deploy": "yarn build",
-    "prod": "yarn build && yarn start"
+    "prod": "yarn build && yarn start",
+    "mongo": "docker run --name mongo -d -p 27017:27017 mongo:4-xenial"
   },
   "devDependencies": {
     "@types/bcrypt": "^2.0.0",

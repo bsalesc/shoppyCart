@@ -23,9 +23,10 @@ export class HttpService {
     observable.pipe(
       map(result => result),
       catchError(result => {
-        this.message.show(result.error, TypeMessage.WARNING);
         if (result.status === 401 && result.error === 'Invalid token.') {
           this.redirectToLogin.emit();
+        } else {
+          this.message.show(result.error, TypeMessage.WARNING);
         }
         return throwError(result.error);
       }),
