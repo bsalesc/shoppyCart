@@ -15,7 +15,7 @@ export class UserRouter {
 
     router.get('/login', this._controller.login);
     router.post('/register', this._controller.register);
-    router.get('/logout', this._controller.register);
+    router.get('/logout', this._controller.logout);
 
     this._app.use('/users', router);
   };

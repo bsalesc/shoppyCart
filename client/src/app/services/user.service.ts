@@ -26,6 +26,14 @@ export class UserService {
         }),
       );
 
+  logout = () =>
+    this.http.get<User>('users/logout').pipe(
+      map<Result<User>, Result<User>>(result => {
+        this.setUser({ ...this.userStorage, user: null });
+        return result;
+      }),
+    );
+
   register = (user: User) =>
     this.http.post<User>('users/register', user).pipe(
       map<Result<User>, Result<User>>(result => {

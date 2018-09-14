@@ -12,6 +12,7 @@ import { LoginModule } from '../features/users/login/login.module';
 import { RegisterComponent } from '../features/users/register/register.component';
 import { RegisterModule } from '../features/users/register/register.module';
 import { AuthGuard } from '../guards/auth.service';
+import { LogoutComponent } from 'src/app/features/users/login/logout.component';
 
 const routes: Route[] = [
   {
@@ -21,6 +22,7 @@ const routes: Route[] = [
     canActivate: [HomeGuard],
   },
   { path: 'login', component: LoginComponent },
+  { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: '',

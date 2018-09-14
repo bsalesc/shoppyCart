@@ -25,14 +25,16 @@ export class UserController extends BaseController<UserRepository> {
   };
 
   logout = async (req: Request, res: Response) => {
-    const { user: userToken, token } = req;
+    const { token } = req;
 
     const user = await User.findOne({ token });
 
-    if (user && user._id === userToken.id) {
+    if (user) {
       user.token = null;
       user.save();
     }
+
+    res.status(200).json({ success: true });
   };
 
   register = async (req: Request, res: Response) => {
