@@ -29,7 +29,6 @@ jobs:
     - stage: Test RESTapi
       script:
         - cd ./server;
-        - yarn --global node-gyp;
         - yarn;
         - yarn test;
         - yarn coverage;
