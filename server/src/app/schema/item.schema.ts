@@ -5,5 +5,6 @@ export let ItemSchema = Schema({
   description: String,
   quantity: Number,
   price: Number,
+  userId: String,
   bought: { type: Boolean, default: false },
 });

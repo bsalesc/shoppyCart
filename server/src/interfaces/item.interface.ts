@@ -1,7 +1,8 @@
 export interface IItem {
-  id: any;
+  id: string;
   description: string;
   quantity: number;
   bought: boolean;
+  userId: string;
   price?: number;
 }

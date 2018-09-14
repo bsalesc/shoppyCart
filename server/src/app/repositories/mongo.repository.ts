@@ -9,7 +9,8 @@ export abstract class MongoRepository<T extends Document>
     this._model = model;
   }
 
-  public findAll = async (): Promise<T[]> => await this._model.find({});
+  public findAll = async (condition?: { userId: string }): Promise<T[]> =>
+    await this._model.find(condition);
 
   public findById = async (id: number): Promise<T> =>
     await this._model.findOne({ _id: id });

@@ -1,7 +1,8 @@
-import { Response, Request } from 'express';
+import { Request, Response } from '../interfaces/express.interface';
 import { BaseController } from './base.controller';
 import { ItemRepository } from '../app/repositories/item.repository';
-import { Item } from '../app/models/item.model';
+import { Item, IItemModel } from '../app/models/item.model';
+import { IItem } from '../interfaces/item.interface';
 
 export class ItemController extends BaseController<ItemRepository> {
   constructor() {
@@ -10,10 +11,10 @@ export class ItemController extends BaseController<ItemRepository> {
 
   get = async (req: Request, res: Response) => {
     const { id } = req.params;
-
+    const { id: userId } = req.user;
     try {
       const items = !id
-        ? await this._repository.findAll()
+        ? await this._repository.findAll({ userId })
         : await this._repository.findById(id);
 
       res.status(200).json({ success: true, data: items });
@@ -24,7 +25,9 @@ export class ItemController extends BaseController<ItemRepository> {
 
   create = async (req: Request, res: Response) => {
     try {
-      const item = await this._repository.create(req.body);
+      const newItem: IItemModel = req.body;
+      newItem.userId = req.user.id;
+      const item = await this._repository.create(newItem);
 
       res.status(200).json({ success: true, data: item });
     } catch (e) {

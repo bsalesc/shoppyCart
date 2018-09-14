@@ -8,7 +8,7 @@ import { Item } from '../app/models/item.model';
 
 describe('Item controller', () => {
   const controller = new ItemController();
-  const req = mockReq();
+  const req = mockReq({ user: { id: 'id' } });
   const res = mockRes();
 
   const itemMock: IItem = {
@@ -16,6 +16,7 @@ describe('Item controller', () => {
     description: 'description',
     id: 'id',
     price: 1,
+    userId: 'userId',
     quantity: 1,
   };
 
