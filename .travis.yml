@@ -5,22 +5,12 @@ node_js:
 services:
   - docker
 
-sudo: required
-before_install:
-  - npm install -g node-gyp
-
-env:
-  global:
-    - CXX=g++-5
-
 addons:
   apt:
     sources:
       - google-chrome
-      - ubuntu-toolchain-r-test
     packages:
       - google-chrome-stable
-      - g++-5
 
 cache:
   yarn: true

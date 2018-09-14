@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcrypt';
+import * as bcrypt from 'bcryptjs-then';
 import { IUser } from '../interfaces/user.interface';
 import config from '../configs/config.env';
 import { NextFunction } from 'express';
