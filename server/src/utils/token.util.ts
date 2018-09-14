@@ -11,18 +11,15 @@ export const jwtDecode = (): RequestHandler => (
   res: Response,
   next: NextFunction,
 ) => {
-  const token: string = req.headers.Authorization as string;
-
+  req.token = req.headers.authorization as string;
   req.user = null;
-  req.token = null;
 
-  if (token) {
+  if (req.token) {
     const user = jwt.verify(
-      token,
+      req.token,
       config.get('SECRET').toString(),
     ) as IUserBase;
     req.user = user;
-    req.token = token;
   }
 
   next();

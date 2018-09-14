@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
     this.userService
       .login(email.value, pass.value)
-      .subscribe(result => this.router.navigate(['']));
+      .subscribe(() => this.router.navigate(['']));
   };
 
   register = () => this.router.navigate(['register']);
