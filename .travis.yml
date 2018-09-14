@@ -9,6 +9,10 @@ sudo: required
 before_install:
   - npm install -g node-gyp
 
+env:
+  global:
+    - CXX=g++-5
+
 addons:
   apt:
     sources:
@@ -16,7 +20,7 @@ addons:
       - ubuntu-toolchain-r-test
     packages:
       - google-chrome-stable
-      - g++-4.8
+      - g++-5
 
 cache:
   yarn: true
