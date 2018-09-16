@@ -45,6 +45,7 @@ export class UserController extends BaseController<UserRepository> {
 
       if (!checkUser) {
         user = await generatePassword(user);
+
         let newUser = await User.create(user);
         newUser = await generateToken(newUser);
 

@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcryptjs-then';
+import * as bcrypt from 'bcryptjs';
 import { IUser } from '../interfaces/user.interface';
 import config from '../configs/config.env';
 import { NextFunction } from 'express';
@@ -11,10 +11,7 @@ export const comparePassword = async (passToCompare: string, user: IUser) =>
 export const generatePassword = async user => {
   if (!!user.id && !user.isModified('pass')) return user;
 
-  const salt = await bcrypt.genSalt(config.get('SECRET'));
-
-  const passwordHash = await bcrypt.hash(user.pass, salt);
-
+  const passwordHash = await bcrypt.hash(user.pass, config.get('SECRET'));
   user.pass = passwordHash;
 
   return user;

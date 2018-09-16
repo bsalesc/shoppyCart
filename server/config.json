@@ -4,5 +4,5 @@
   "MONGO_PASS": "",
   "DISABLE_CORS": false,
   "TOKEN_EXPIRATION": 60,
-  "SECRET": 777
+  "SECRET": 5
 }
