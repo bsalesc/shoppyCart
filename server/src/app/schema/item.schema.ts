@@ -7,4 +7,5 @@ export let ItemSchema = Schema({
   price: Number,
   userId: String,
   bought: { type: Boolean, default: false },
+  boughtAt: { type: Date, default: null },
 });

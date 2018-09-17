@@ -15,5 +15,7 @@ export class ItemService {
 
   edit = (wish: Item) => this.http.put<Item>('items/' + wish.id, wish);
 
+  bought = id => this.http.put<Item>(`items/${id}/bought`);
+
   remove = (wish: Item) => this.http.delete('items/' + wish.id);
 }

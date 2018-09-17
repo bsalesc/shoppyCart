@@ -3,6 +3,7 @@ export interface IItem {
   description: string;
   quantity: number;
   bought: boolean;
+  boughtAt: string | Date;
   userId: string;
   price?: number;
 }

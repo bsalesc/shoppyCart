@@ -54,7 +54,7 @@ export class HttpService {
       ),
     );
 
-  put = <T>(url: string, body: any, options?: Options) =>
+  put = <T>(url: string, body?: any, options?: Options) =>
     this.catchError(
       this.service.put<Result<T>>(
         this.API_URL + url,

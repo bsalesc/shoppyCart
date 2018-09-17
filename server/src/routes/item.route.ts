@@ -18,6 +18,7 @@ export class ItemRouter {
     router.get('/:id', this._controller.get);
     router.post('/', this._controller.create);
     router.put('/:id', this._controller.update);
+    router.put('/:id/bought', this._controller.bought);
     router.delete('/:id', this._controller.delete);
 
     this._app.use('/items', checkAuthentication, router);

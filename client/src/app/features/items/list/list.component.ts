@@ -71,7 +71,7 @@ export class ListComponent implements OnInit {
 
   mark = (item: Item) => {
     item.bought = !item.bought;
-    this.itemService.edit(item).subscribe(() => this.handleEdit(item));
+    this.itemService.bought(item.id).subscribe(() => this.handleEdit(item));
   };
 
   get currentTotalToSpend(): number {

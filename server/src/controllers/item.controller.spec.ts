@@ -13,6 +13,7 @@ describe('Item controller', () => {
 
   const itemMock: IItem = {
     bought: false,
+    boughtAt: null,
     description: 'description',
     id: 'id',
     price: 1,
