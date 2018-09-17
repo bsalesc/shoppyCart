@@ -9,6 +9,7 @@
     "test": "ng test",
     "tslint": "./node_modules/.bin/tslint --project ./",
     "deploy": "yarn build --prod --aot && yarn ngsw && yarn ngsw:copy",
+    "deploy:app": "yarn build --prod --aot --base-href ./ --output-path ../mobile/www",
     "test:headless": "yarn tslint && ng test --watch=false --progress=false --browsers=ChromeHeadlessCI",
     "ngsw": "node_modules/.bin/ngsw-config dist/shoppingList src/ngsw-config.json",
     "ngsw:test": "yarn build --prod && yarn ngsw && yarn ngsw:copy && http-server -p 8888 ./dist/shoppingList",

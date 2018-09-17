@@ -7,3 +7,8 @@
 .navbar-brand {
   margin-right: 0;
 }
+
+nav {
+  padding-top: constant(safe-area-inset-top);
+  padding-top: env(safe-area-inset-top);
+}

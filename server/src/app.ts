@@ -12,10 +12,7 @@ export default async (): Promise<express.Application> => {
 
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false }));
-
-  if (!process.env.DISABLE_CORS) {
-    app.use(cors());
-  }
+  app.use(cors());
 
   app.use(jwtDecode());
 
