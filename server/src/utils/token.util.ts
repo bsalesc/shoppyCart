@@ -14,15 +14,19 @@ export const jwtDecode = (): RequestHandler => (
   req.token = req.headers.authorization as string;
   req.user = null;
 
-  if (req.token) {
-    const user = jwt.verify(
-      req.token,
-      config.get('SECRET').toString(),
-    ) as IUserBase;
-    req.user = user;
-  }
+  try {
+    if (req.token) {
+      const user = jwt.verify(
+        req.token,
+        config.get('SECRET').toString(),
+      ) as IUserBase;
+      req.user = user;
+    }
 
-  next();
+    next();
+  } catch (e) {
+    res.status(401).json('Invalid token.');
+  }
 };
 
 export const generateToken = async (user: IUserModel): Promise<IUserModel> => {

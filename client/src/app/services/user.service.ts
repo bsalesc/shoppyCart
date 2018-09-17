@@ -71,7 +71,9 @@ export class UserService {
   setUser = (userStorage: UserStorage) =>
     localStorage.setItem(
       'user',
-      JSON.stringify((this.userStorage = userStorage)),
+      JSON.stringify(
+        (this.userStorage = { ...this.userStorage, ...userStorage }),
+      ),
     );
 
   loadUser = (): UserStorage => {
