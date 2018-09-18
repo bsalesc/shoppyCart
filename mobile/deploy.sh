@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd ../client/
-yarn deploy:app --configuration=app:local
+yarn deploy:app --configuration=app:production
