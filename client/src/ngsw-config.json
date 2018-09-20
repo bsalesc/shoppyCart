@@ -5,8 +5,7 @@
       "name": "app",
       "installMode": "prefetch",
       "resources": {
-        "files": ["/favicon.ico", "/index.html"],
-        "versionedFiles": ["/*.bundle.css", "/*.bundle.js", "/*.chunk.js"]
+        "files": ["/favicon.ico", "/index.html", "/*.bundle.css", "/*.bundle.js", "/*.chunk.js"]
       }
     },
     {
@@ -15,6 +14,17 @@
       "updateMode": "prefetch",
       "resources": {
         "files": ["/assets/**"]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "api",
+      "urls": ["**//localhost/**", "**//**/api/**"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": "1",
+        "maxAge": "7h"
       }
     }
   ]

@@ -3,7 +3,7 @@ import { Item } from 'src/app/interfaces';
 import { MessageService } from './message.service';
 import { HttpService } from '../utils';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class ItemService {
   constructor(private http: HttpService, private _message: MessageService) {}
 
@@ -14,6 +14,8 @@ export class ItemService {
   add = (wish: Item) => this.http.post<Item>('items/', wish);
 
   edit = (wish: Item) => this.http.put<Item>('items/' + wish.id, wish);
+
+  bought = id => this.http.put<Item>(`items/${id}/bought`);
 
   remove = (wish: Item) => this.http.delete('items/' + wish.id);
 }

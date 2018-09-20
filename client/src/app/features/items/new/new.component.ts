@@ -12,30 +12,15 @@ export class NewComponent {
   @Output()
   add: EventEmitter<Item> = new EventEmitter<Item>();
 
-  item: Item = {
-    id: '',
-    description: '',
-    price: null,
-    quantity: null,
-    bought: false,
-  };
-
   formGroup: ItemFormGroup;
 
   constructor(private itemService: ItemService) {
     this.formGroup = new ItemFormGroup();
   }
   handleAdd = () => {
-    Object.assign(this.item, this.formGroup.value);
-    this.itemService.add(this.item).subscribe(result => {
+    this.itemService.add(this.formGroup.value).subscribe(result => {
       this.add.emit(result.data);
-      this.item = {
-        id: '',
-        description: '',
-        price: 0,
-        quantity: 0,
-        bought: false,
-      };
+      this.formGroup.reset();
     });
   };
 }

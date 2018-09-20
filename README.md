@@ -14,7 +14,7 @@ Deployed on: Still need a domain.
 
 ## Develop [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=develop)](https://travis-ci.org/bsalesc/shopping_list) [![Coverage Status](https://coveralls.io/repos/github/bsalesc/shopping_list/badge.svg?branch=develop)](https://coveralls.io/github/bsalesc/shopping_list?branch=develop)
 
-Deployed on: [https://shopping-list-awesome.azurewebsites.net/](https://shopping-list-awesome.azurewebsites.net/)
+Deployed on: [http://easyshopping.eastus.cloudapp.azure.com/](http://easyshopping.eastus.cloudapp.azure.com/)
 
 # Commands
 

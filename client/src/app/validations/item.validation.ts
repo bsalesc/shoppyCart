@@ -1,5 +1,5 @@
 import { FormGroup, FormControl } from './shared/validation';
-import { Validators, AbstractControl } from '@angular/forms';
+import { Validators } from '@angular/forms';
 
 export class ItemFormGroup extends FormGroup {
   description: FormControl;

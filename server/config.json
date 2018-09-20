@@ -1,0 +1,8 @@
+{
+  "MONGO_CONNECTIONSTRING": "mongodb://localhost:27017/shopping_list",
+  "MONGO_USER": "",
+  "MONGO_PASS": "",
+  "DISABLE_CORS": false,
+  "TOKEN_EXPIRATION": 60,
+  "SECRET": 5
+}

@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "8"
+  - '8'
 
 services:
   - docker
@@ -24,7 +24,6 @@ jobs:
       script:
         - cd ./server;
         - yarn;
-        - yarn test;
         - yarn coverage;
     - stage: Test APP and Publish
       script:
@@ -35,3 +34,4 @@ jobs:
         - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker-compose build; fi;
         - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi;
         - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker-compose push; fi;
+        - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then curl -X POST http://easyshopping.eastus.cloudapp.azure.com:8555/$SECRET_TOKEN; fi;

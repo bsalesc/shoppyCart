@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup" (submit)="login()">
+
+  <app-form [loginView]="true" [formGroup]="formGroup"></app-form>
+
+  <div class="form-group actions">
+    <button type="button" class="btn btn-secondary" (click)="register()">Do not have? Register!
+    </button>
+    <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary">Login
+    </button>
+  </div>
+
+</form>
