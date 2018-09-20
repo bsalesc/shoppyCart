@@ -11,6 +11,7 @@ import { RouterModule } from 'src/app/router/router.module';
 import { MessageService } from './services/message.service';
 import { environment } from '../environments/environment';
 import { MessageComponent } from './components/message/message.component';
+import { SharedModule } from './components/shared.module';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MessageComponent } from './components/message/message.component';
     FormsModule,
     RouterModule,
     HttpClientModule,
+    SharedModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),

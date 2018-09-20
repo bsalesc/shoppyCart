@@ -2,10 +2,16 @@
   display: flex;
   flex-grow: 1;
   justify-content: space-between;
+  color: #fff;
 }
 
 .navbar-brand {
   margin-right: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 nav {
