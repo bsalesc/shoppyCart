@@ -20,8 +20,3 @@ nav {
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top);
 }
-
-.fixed-top {
-  z-index: 1050;
-  height: 100%;
-}

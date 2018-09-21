@@ -3,10 +3,6 @@ import { CommonModule } from '@angular/common';
 import { RouterModule as Module, Route } from '@angular/router';
 import { ListComponent } from '../features/items/list/list.component';
 import { ListModule } from '../features/items/list/list.module';
-import { HomeComponent } from '../features/home/home.component';
-import { AgreementGuard } from '../guards/agreement.guard';
-import { HomeModule } from '../features/home/home.module';
-import { HomeGuard } from '../guards/home.guard';
 import { LoginComponent } from '../features/users/login/login.component';
 import { LoginModule } from '../features/users/login/login.module';
 import { RegisterComponent } from '../features/users/register/register.component';
@@ -15,12 +11,6 @@ import { AuthGuard } from '../guards/auth.service';
 import { LogoutComponent } from 'src/app/features/users/login/logout.component';
 
 const routes: Route[] = [
-  {
-    path: 'home',
-    component: HomeComponent,
-    pathMatch: 'full',
-    canActivate: [HomeGuard],
-  },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
@@ -28,7 +18,7 @@ const routes: Route[] = [
     path: '',
     component: ListComponent,
     pathMatch: 'full',
-    canActivate: [AgreementGuard, AuthGuard],
+    canActivate: [AuthGuard],
   },
   { path: '**', redirectTo: '/' },
 ];
@@ -39,7 +29,6 @@ const routes: Route[] = [
     ListModule,
     LoginModule,
     RegisterModule,
-    HomeModule,
     Module.forRoot(routes),
   ],
   declarations: [],
