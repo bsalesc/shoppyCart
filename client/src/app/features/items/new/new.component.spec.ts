@@ -4,6 +4,7 @@ import { NewComponent } from './new.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ItemService } from '../../../services/item.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 describe('NewComponent', () => {
   let component: NewComponent;
@@ -11,7 +12,12 @@ describe('NewComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
+      imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+      ],
       declarations: [NewComponent],
       providers: [ItemService],
     }).compileComponents();
