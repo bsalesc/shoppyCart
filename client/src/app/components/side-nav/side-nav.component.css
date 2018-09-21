@@ -17,8 +17,9 @@
   transition: all 1s ease-in-out;
 }
 
-.side-nav a {
-  cursor: pointer;
+.side-nav .list-group .list-group-item a {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 .navbar-brand {

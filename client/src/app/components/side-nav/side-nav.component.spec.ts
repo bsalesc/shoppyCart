@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SideNavComponent } from './side-nav.component';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '../../router/router.module';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
@@ -9,7 +10,7 @@ describe('SideNavComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, RouterModule],
       declarations: [SideNavComponent],
     }).compileComponents();
   }));

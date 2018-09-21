@@ -8,10 +8,7 @@ import { UserService } from '../../services/user.service';
   styleUrls: ['./side-nav.component.css'],
 })
 export class SideNavComponent implements OnInit {
-  constructor(
-    private menuService: MenuService,
-    private userService: UserService,
-  ) {}
+  constructor(private menuService: MenuService) {}
 
   ngOnInit() {}
 
@@ -19,7 +16,9 @@ export class SideNavComponent implements OnInit {
     return this.menuService.visible ? 'visible' : '';
   }
 
-  get userAuthenticated() {
-    return this.userService.token;
+  get menus() {
+    return this.menuService.get();
   }
+
+  handle = () => setTimeout(this.menuService.toggle, 300);
 }

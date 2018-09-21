@@ -56,13 +56,10 @@ export class ListComponent implements OnInit {
 
   isExpanded = id => !!this._expanded.find(f => f === id);
 
-  toggle = id => {
-    if (this.isExpanded(id)) {
-      this._expanded.splice(this._expanded.indexOf(id), 1);
-    } else {
-      this._expanded.push(id);
-    }
-  };
+  toggle = id =>
+    this.isExpanded(id)
+      ? this._expanded.splice(this._expanded.indexOf(id), 1)
+      : this._expanded.push(id);
 
   loadList = () =>
     this.itemService
