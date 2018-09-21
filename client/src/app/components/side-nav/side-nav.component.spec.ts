@@ -1,7 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientModule } from '@angular/common/http';
+import { APP_BASE_HREF } from '@angular/common';
 
 import { SideNavComponent } from './side-nav.component';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '../../router/router.module';
 
 describe('SideNavComponent', () => {
@@ -11,7 +12,8 @@ describe('SideNavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterModule],
-      declarations: [SideNavComponent],
+      declarations: [],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     }).compileComponents();
   }));
 
