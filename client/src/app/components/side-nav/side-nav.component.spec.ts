@@ -1,25 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 
-import { HomeComponent } from './home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { SideNavComponent } from './side-nav.component';
+import { RouterModule } from '../../router/router.module';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('SideNavComponent', () => {
+  let component: SideNavComponent;
+  let fixture: ComponentFixture<SideNavComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterModule.forRoot([]), HttpClientModule],
-      declarations: [HomeComponent],
+      imports: [HttpClientModule, RouterModule],
+      declarations: [],
       providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(SideNavComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

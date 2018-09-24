@@ -13,6 +13,7 @@ import { ServiceWorkerService } from './services/service-worker.service';
 import { Subject } from 'rxjs';
 import { SwUpdate } from '@angular/service-worker';
 import { HttpClientModule } from '@angular/common/http';
+import { SharedModule } from './components/shared.module';
 
 class MockSwUpdate {
   $$availableSubj = new Subject<{ available: { hash: string } }>();
@@ -41,7 +42,7 @@ describe('AppComponent', () => {
         FooterComponent,
         MessageComponent,
       ],
-      imports: [BrowserModule, RouterModule, HttpClientModule],
+      imports: [BrowserModule, RouterModule, HttpClientModule, SharedModule],
       providers: [
         ItemService,
         MessageService,

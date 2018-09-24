@@ -1,45 +1,45 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule as Module, Route } from '@angular/router';
-import { ListComponent } from '../features/items/list/list.component';
-import { ListModule } from '../features/items/list/list.module';
-import { HomeComponent } from '../features/home/home.component';
-import { AgreementGuard } from '../guards/agreement.guard';
-import { HomeModule } from '../features/home/home.module';
-import { HomeGuard } from '../guards/home.guard';
+
+import { ListComponent as ItemListComponent } from '../features/items/list/list.component';
+import { ListComponent as CategoryListComponent } from '../features/categories/list/list.component';
+
+import { ListModule as ItemListModule } from '../features/items/list/list.module';
+import { ListModule as CategoryListModule } from '../features/categories/list/list.module';
+
 import { LoginComponent } from '../features/users/login/login.component';
 import { LoginModule } from '../features/users/login/login.module';
 import { RegisterComponent } from '../features/users/register/register.component';
 import { RegisterModule } from '../features/users/register/register.module';
 import { AuthGuard } from '../guards/auth.service';
 import { LogoutComponent } from 'src/app/features/users/login/logout.component';
+import { AboutComponent } from '../features/about/about.component';
+import { AboutModule } from '../features/about/about.module';
 
 const routes: Route[] = [
-  {
-    path: 'home',
-    component: HomeComponent,
-    pathMatch: 'full',
-    canActivate: [HomeGuard],
-  },
   { path: 'login', component: LoginComponent },
   { path: 'logout', component: LogoutComponent },
   { path: 'register', component: RegisterComponent },
   {
     path: '',
-    component: ListComponent,
+    component: ItemListComponent,
     pathMatch: 'full',
-    canActivate: [AgreementGuard, AuthGuard],
+    canActivate: [AuthGuard],
   },
+  { path: 'categories', component: CategoryListComponent },
+  { path: 'about', component: AboutComponent },
   { path: '**', redirectTo: '/' },
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    ListModule,
+    ItemListModule,
+    CategoryListModule,
+    AboutModule,
     LoginModule,
     RegisterModule,
-    HomeModule,
     Module.forRoot(routes),
   ],
   declarations: [],

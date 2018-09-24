@@ -1,14 +1,22 @@
 .header {
   display: flex;
+  align-self: flex-end;
   flex-grow: 1;
   justify-content: space-between;
+  color: #fff;
 }
 
 .navbar-brand {
   margin-right: 0;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 nav {
+  min-height: 56px;
   padding-top: constant(safe-area-inset-top);
   padding-top: env(safe-area-inset-top);
 }

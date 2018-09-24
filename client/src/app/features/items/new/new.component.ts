@@ -17,6 +17,7 @@ export class NewComponent {
   constructor(private itemService: ItemService) {
     this.formGroup = new ItemFormGroup();
   }
+
   handleAdd = () => {
     this.itemService.add(this.formGroup.value).subscribe(result => {
       this.add.emit(result.data);
