@@ -11,7 +11,7 @@ export class MenuService {
   toggle = () => (this.visible = !this.visible);
 
   get = (): Menu[] => [
-    { description: 'List', url: '/', allowed: this.userService.token },
+    { description: 'Home', url: '/', allowed: true },
     {
       description: 'Categories',
       url: '/categories',
