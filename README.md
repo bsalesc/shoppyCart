@@ -10,11 +10,11 @@ The idea of this application is to use on desktop and mobile (as PWA).
 
 ## Master [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/)
 
-Deployed on: Still need a domain.
+Deployed on: [http://easyshopping.eastus.cloudapp.azure.com/](http://easyshopping.eastus.cloudapp.azure.com/)
 
 ## Develop [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/)
 
-Deployed on: [http://easyshopping.eastus.cloudapp.azure.com/](http://easyshopping.eastus.cloudapp.azure.com/)
+Deployed on: Still need a domain.
 
 # Commands
 
