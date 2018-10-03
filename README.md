@@ -8,11 +8,11 @@ The idea of this application is to use on desktop and mobile (as PWA).
 
 # Environments
 
-## Master [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=master)](https://travis-ci.org/bsalesc/shopping_list) [![Coverage Status](https://coveralls.io/repos/github/bsalesc/shopping_list/badge.svg?branch=master)](https://coveralls.io/github/bsalesc/shopping_list?branch=master)
+## Master [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/)
 
 Deployed on: Still need a domain.
 
-## Develop [![Build Status](https://travis-ci.org/bsalesc/shopping_list.svg?branch=develop)](https://travis-ci.org/bsalesc/shopping_list) [![Coverage Status](https://coveralls.io/repos/github/bsalesc/shopping_list/badge.svg?branch=develop)](https://coveralls.io/github/bsalesc/shopping_list?branch=develop)
+## Develop [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/)
 
 Deployed on: [http://easyshopping.eastus.cloudapp.azure.com/](http://easyshopping.eastus.cloudapp.azure.com/)
 
