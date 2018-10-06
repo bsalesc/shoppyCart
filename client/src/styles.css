@@ -30,8 +30,3 @@
   margin-left: auto;
   margin-right: auto;
 }
-
-body {
-  padding-top: constant(safe-area-inset-top);
-  padding-top: env(safe-area-inset-top);
-}

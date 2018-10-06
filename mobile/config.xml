@@ -47,6 +47,7 @@
         <icon height="167" src="res/icon/ios/icon-167.png" width="167" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <preference name="StatusBarOverlaysWebView" value="false" />
     </platform>
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
