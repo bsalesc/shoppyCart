@@ -1,0 +1,36 @@
+language: node_js
+node_js:
+  - "8"
+
+services:
+  - docker
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - dist
+
+jobs:
+  include:
+    - stage: Test RESTapi
+      script:
+        - cd ./server;
+        - yarn;
+        - yarn test;
+        - yarn coverage;
+    - stage: Test APP and Publish
+      script:
+        - cd ./client;
+        - yarn;
+        - yarn test:headless;
+        - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker-compose build; fi;
+        - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi;
+        - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker-compose push; fi;
