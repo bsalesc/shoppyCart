@@ -24,6 +24,8 @@ services:
   mongo:
     image: 'awesomeshoppinglist.azurecr.io/mongo'
     build: 'mongo/.'
+    volumes:
+      - ./data/db:/data/db
     ports:
       - '27017:27017'
     command: --smallfiles
