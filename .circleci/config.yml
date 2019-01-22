@@ -62,3 +62,15 @@ jobs:
         - docker-compose build
         - docker login -u="$registry_username" -p="$registry_password" $registry_server
         - docker-compose push
+
+
+workflows:
+    version: 2.1
+    build_and_deploy:
+        jobs:
+            - client_build
+            - server_build
+            - deploy:
+                requires:
+                    - client_build
+                    - server_build
