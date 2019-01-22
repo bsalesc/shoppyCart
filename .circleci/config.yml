@@ -5,7 +5,7 @@ jobs:
   client_build:
     working_directory: ~/client
     docker:
-      - image: circleci/node:10.9.0-browsers
+      - image: circleci/node:10-jessie-browsers
     steps:
       # - restore_cache:
       #     name: Restore Yarn Package Cache
@@ -29,7 +29,7 @@ jobs:
   server_build:
     working_directory: ~/server
     docker:
-      - image: circleci/node:10.9.0-slim
+      - image: circleci/node:10-jessie-browsers
     steps:
       # - restore_cache:
       #     name: Restore Yarn Package Cache
