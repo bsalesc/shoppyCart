@@ -1,0 +1,64 @@
+version: 2.1
+
+executors:
+  client_build:
+    docker:
+      - image: circleci/node:10.9.0-browsers
+  server_build:
+    docker:
+      - image: circleci/node:10.9.0-slim
+
+jobs:
+
+  client_build:
+    working_directory: ~/client
+    executor: client_build
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Linting
+          command: yarn lint
+      - run:
+          name: Testing
+          command: yarn test:headless
+
+  server_build:
+    working_directory: ~/server
+    executor: server_build
+    steps:
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --frozen-lockfile
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Linting
+          command: yarn tslint
+      - run:
+          name: Testing
+          command: yarn test
+
+  deploy:
+    working_directory: ~/
+    steps:
+        - docker-compose build
+        - docker login -u="$registry_username" -p="$registry_password" $registry_server
+        - docker-compose push
