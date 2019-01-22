@@ -8,11 +8,11 @@ The idea of this application is to use on desktop and mobile (as PWA).
 
 # Environments
 
-## Master [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/)
+## Master [![Build Status](https://travis-ci.com/bsalesc/shoppyCart.svg?branch=master)](https://travis-ci.com/bsalesc/shoppyCart) [![Coverage Status](https://coveralls.io/repos/github/bsalesc/shoppyCart/badge.svg?branch=master)](https://coveralls.io/github/bsalesc/shoppyCart?branch=master)
 
-Deployed on: [http://easyshopping.eastus.cloudapp.azure.com/](http://easyshopping.eastus.cloudapp.azure.com/)
+Deployed on: [https://shoppycart.azurewebsites.net/](https://shoppycart.azurewebsites.net/)
 
-## Develop [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/)
+## Develop [![Build Status](https://travis-ci.com/bsalesc/shoppyCart.svg?branch=develop)](https://travis-ci.com/bsalesc/shoppyCart) [![Coverage Status](https://coveralls.io/repos/github/bsalesc/shoppyCart/badge.svg?branch=develop)](https://coveralls.io/github/bsalesc/shoppyCart?branch=develop)
 
 Deployed on: Still need a domain.
 
