@@ -58,11 +58,11 @@ jobs:
   #       - docker-compose push
 
 
-workflows:
-    version: 2.1
-    build_and_deploy:
-        jobs:
-            - build
+# workflows:
+#     version: 2.1
+#     build_and_deploy:
+#         jobs:
+#             - build
             # - server_build
             # - deploy:
             #     requires:
