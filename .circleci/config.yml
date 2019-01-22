@@ -2,10 +2,10 @@ version: 2.1
 
 jobs:
 
-  client_build:
+  build:
     working_directory: ~/client
     docker:
-      - image: circleci/node:10-jessie-browsers
+      - image: circleci/node:10.9.0-browsers
     steps:
       # - restore_cache:
       #     name: Restore Yarn Package Cache
@@ -29,20 +29,20 @@ jobs:
   server_build:
     working_directory: ~/server
     docker:
-      - image: circleci/node:10-jessie-browsers
+      - image: circleci/node:10.9.0
     steps:
-      # - restore_cache:
-      #     name: Restore Yarn Package Cache
-      #     keys:
-      #       - yarn-packages-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install Dependencies
           command: yarn install --frozen-lockfile
-      # - save_cache:
-      #     name: Save Yarn Package Cache
-      #     key: yarn-packages-{{ checksum "yarn.lock" }}
-      #     paths:
-      #       - ~/.cache/yarn
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
       - run:
           name: Linting
           command: yarn tslint
@@ -50,21 +50,21 @@ jobs:
           name: Testing
           command: yarn test
 
-  deploy:
-    working_directory: ~/
-    steps:
-        - docker-compose build
-        - docker login -u="$registry_username" -p="$registry_password" $registry_server
-        - docker-compose push
+  # deploy:
+  #   working_directory: ~/
+  #   steps:
+  #       - docker-compose build
+  #       - docker login -u="$registry_username" -p="$registry_password" $registry_server
+  #       - docker-compose push
 
 
 workflows:
     version: 2.1
     build_and_deploy:
         jobs:
-            - client_build
-            - server_build
-            - deploy:
-                requires:
-                    - client_build
-                    - server_build
+            - build
+            # - server_build
+            # - deploy:
+            #     requires:
+            #         - client_build
+            #         - server_build
