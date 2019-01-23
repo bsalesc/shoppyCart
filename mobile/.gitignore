@@ -1,4 +1,6 @@
 /node_modules
 .DS_Store
 www/*
-platforms/ios/www/*
+platforms/*
+plugins/*
+!/**/.gitempty
