@@ -1,6 +1,6 @@
 # ShoppingList
 
-The idea of this application is to use on desktop and mobile (as PWA).
+The idea of this application is to use on desktop and mobile.
 
 ### [Client / Angular / Boostrap](/client)
 

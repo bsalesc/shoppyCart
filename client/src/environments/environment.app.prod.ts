@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  api_url: 'http://easyshopping.eastus.cloudapp.azure.com/api/',
+  api_url: 'https://shoppycart.azurewebsites.net/api/',
 };

@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import { catchError, map } from 'rxjs/operators';
 import { MessageService } from '../services/message.service';
 import { TypeMessage } from '../interfaces';
-import { throwError } from 'rxjs';
+import { throwError, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -37,7 +37,7 @@ export class HttpService {
     ...options,
   });
 
-  get = <T>(url: string, options?: Options) =>
+  get = <T>(url: string, options?: Options): Observable<Result<T>> =>
     this.catchError(
       this.service.get<Result<T>>(
         this.API_URL + url,
@@ -45,7 +45,11 @@ export class HttpService {
       ),
     );
 
-  post = <T>(url: string, body: any, options?: Options) =>
+  post = <T>(
+    url: string,
+    body: any,
+    options?: Options,
+  ): Observable<Result<T>> =>
     this.catchError(
       this.service.post<Result<T>>(
         this.API_URL + url,
@@ -54,7 +58,11 @@ export class HttpService {
       ),
     );
 
-  put = <T>(url: string, body?: any, options?: Options) =>
+  put = <T>(
+    url: string,
+    body?: any,
+    options?: Options,
+  ): Observable<Result<T>> =>
     this.catchError(
       this.service.put<Result<T>>(
         this.API_URL + url,
@@ -63,7 +71,7 @@ export class HttpService {
       ),
     );
 
-  delete = <T>(url: string, options?: Options) =>
+  delete = <T>(url: string, options?: Options): Observable<Result<T>> =>
     this.catchError(
       this.service.delete<Result<T> & any>(
         this.API_URL + url,
@@ -71,7 +79,11 @@ export class HttpService {
       ),
     );
 
-  patch = <T>(url: string, body: any, options?: Options) =>
+  patch = <T>(
+    url: string,
+    body: any,
+    options?: Options,
+  ): Observable<Result<T>> =>
     this.catchError(
       this.service.patch<Result<T> & any>(
         this.API_URL + url,

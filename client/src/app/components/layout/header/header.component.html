@@ -1,10 +1,8 @@
-<div>
-  <nav class="navbar navbar-expand-xl navbar-dark bg-dark">
-    <div class="header">
-      <a class="navbar-brand" (click)="toggleMenu()">
-        <i class="fa fa-bars"></i> shoppyCart</a>
-      <a *ngIf="userAuthenticated" class="navbar-brand right" routerLink="/logout"><i class="fa fa-sign-out"></i></a>
-    </div>
-  </nav>
-  <app-side-nav></app-side-nav>
-</div>
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark">
+  <div class="header">
+    <a class="navbar-brand" (click)="toggleMenu()">
+      <i class="fa fa-bars"></i> shoppyCart</a>
+    <a *ngIf="userAuthenticated" class="navbar-brand right" routerLink="/logout"><i class="fa fa-sign-out"></i></a>
+  </div>
+</nav>
+<app-side-nav></app-side-nav>
