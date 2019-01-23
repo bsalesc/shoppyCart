@@ -1,7 +1,7 @@
 version: '3.4'
 services:
   api:
-    image: 'shoppycart_api'
+    image: 'bsalesc.azurecr.io/shoppycart_api'
     build: 'server/.'
     expose:
       - '8081'
@@ -14,7 +14,7 @@ services:
     links:
       - mongo
   gateway:
-    image: 'shoppycart_gateway'
+    image: 'bsalesc.azurecr.io/shoppycart_gateway'
     build: 'client/.'
     ports:
       - '80:8080'
@@ -22,7 +22,7 @@ services:
     depends_on:
       - api
   mongo:
-    image: 'shoppycart_mongo'
+    image: 'bsalesc.azurecr.io/shoppycart_mongo'
     build: 'mongo/.'
     volumes:
       - ./data/db:/data/db
