@@ -3,12 +3,17 @@
   "scripts": {
     "tslint": "yarn tslint:client && yarn tslint:server",
     "tslint:client": "./node_modules/.bin/tslint --project ./client",
-    "tslint:server": "./node_modules/.bin/tslint --project ./server"
+    "tslint:server": "./node_modules/.bin/tslint --project ./server",
+    "coverage": "./node_modules/.bin/lcov-result-merger */coverage/lcov.info | coveralls"
   },
   "devDependencies": {
     "prettier": "^1.14.2",
     "prettier-tslint": "^0.4.0",
     "tslint": "^5.11.0",
     "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "coveralls": "^3.0.2",
+    "lcov-result-merger": "^3.1.0"
   }
 }
