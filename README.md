@@ -8,13 +8,13 @@ The idea of this application is to use on desktop and mobile.
 
 # Environments
 
-## Master [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart/)
-
-Deployed on: [http://easyshopping.eastus.cloudapp.azure.com/](http://easyshopping.eastus.cloudapp.azure.com/)
-
-## Develop [![Build Status](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/badge/icon)](http://easyshopping.eastus.cloudapp.azure.com:8555/job/shoppyCart-develop/)
+## Master [![Build Status](https://travis-ci.com/bsalesc/shoppyCart.svg?branch=master)](https://travis-ci.com/bsalesc/shoppyCart) [![Coverage Status](https://coveralls.io/repos/github/bsalesc/shoppyCart/badge.svg?branch=master)](https://coveralls.io/github/bsalesc/shoppyCart?branch=master)
 
 Deployed on: Still need a domain.
+
+## Develop [![Build Status](https://travis-ci.com/bsalesc/shoppyCart.svg?branch=develop)](https://travis-ci.com/bsalesc/shoppyCart) [![Coverage Status](https://coveralls.io/repos/github/bsalesc/shoppyCart/badge.svg?branch=develop)](https://coveralls.io/github/bsalesc/shoppyCart?branch=develop)
+
+Deployed on: [https://shoppycart.azurewebsites.net/](https://shoppycart.azurewebsites.net/)
 
 # Commands
 
