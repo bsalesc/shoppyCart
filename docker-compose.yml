@@ -22,10 +22,7 @@ services:
     depends_on:
       - api
   mongo:
-    image: 'bsalesc.azurecr.io/shoppycart_mongo'
-    build: 'mongo/.'
-    volumes:
-      - ./mongo/data:/data/db
+    image: mongo:4-xenial
     ports:
       - '27017:27017'
     command: --smallfiles

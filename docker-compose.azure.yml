@@ -6,13 +6,9 @@ services:
     expose:
       - '8081'
     environment:
-      MONGO_CONNECTIONSTRING: 'mongodb://mongo:27017/shows'
-      MONGO_USER: ''
-      MONGO_PASS: ''
-    depends_on:
-      - mongo
-    links:
-      - mongo
+      MONGO_CONNECTIONSTRING: ${COSMO_DB_CONNECTIONSTRING}
+      MONGO_USER: ${COSMO_DB_USER}
+      MONGO_PASS: ${COSMO_DB_PASS}
   gateway:
     image: 'bsalesc.azurecr.io/shoppycart_gateway'
     build: 'client/.'
@@ -21,11 +17,3 @@ services:
       - '443:443'
     depends_on:
       - api
-  mongo:
-    image: 'bsalesc.azurecr.io/shoppycart_mongo'
-    build: 'mongo/.'
-    volumes:
-      - ${WEBAPP_STORAGE_HOME}/data/db:/data/db
-    ports:
-      - '27017:27017'
-    command: --smallfiles

@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10"
+  - '10'
 
 services:
   - docker
@@ -20,18 +20,15 @@ cache:
 
 jobs:
   include:
-    - stage: Test RESTapi
+    - stage: Tests
       script:
-        - cd ./server;
-        - yarn;
-        - yarn test;
-        - yarn coverage;
-    - stage: Test APP and Publish
+        - yarn --cwd ./server
+        - yarn --cwd ./server test
+        - yarn --cwd ./client
+        - yarn --cwd ./client test:headless
+        - yarn coverage
+    - stage: Deploy and Publish
       script:
-        - cd ./client;
-        - yarn;
-        - yarn test:headless;
-
         - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker-compose build; fi;
         - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" $REGISTRY; fi;
         - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker-compose push; fi;
