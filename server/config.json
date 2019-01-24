@@ -1,7 +1,7 @@
 {
-  "MONGO_CONNECTIONSTRING": "mongodb://shoppycart.documents.azure.com:10255/?ssl=true&replicaSet=globaldb",
-  "MONGO_USER": "shoppycart",
-  "MONGO_PASS": "NxKIY2vJYi7m36oN2zvTk6sgq9P385fAIjnToZdU8ucXlcZvDVv4Dt3NSGvpNvl0cl7BC5nqmQV5a76T3AdxpQ==",
+  "MONGO_CONNECTIONSTRING": "mongodb://localhost:27017/shopping_list",
+  "MONGO_USER": "",
+  "MONGO_PASS": "",
   "DISABLE_CORS": false,
   "TOKEN_EXPIRATION": 60,
   "SECRET": 5
