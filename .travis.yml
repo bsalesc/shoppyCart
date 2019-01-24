@@ -26,8 +26,8 @@ jobs:
         - yarn --cwd ./server test
         - yarn --cwd ./client
         - yarn --cwd ./client test:headless
-        - sudo echo $(yarn coverage:echo)
-        - sudo yarn coverage
+        - yarn coverage:echo | cat
+        - yarn coverage
     - stage: Deploy and Publish
       script:
         - if [ $TRAVIS_BRANCH = "develop" ] & [ $TRAVIS_PULL_REQUEST = "false" ]; then docker-compose build; fi;
