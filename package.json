@@ -4,8 +4,7 @@
     "tslint": "yarn tslint:client && yarn tslint:server",
     "tslint:client": "./node_modules/.bin/tslint --project ./client",
     "tslint:server": "./node_modules/.bin/tslint --project ./server",
-    "coverage": "./node_modules/.bin/lcov-result-merger */coverage/lcov.info | coveralls",
-    "coverage:echo": "./node_modules/.bin/lcov-result-merger */coverage/lcov.info"
+    "coverage": "./node_modules/.bin/lcov-result-merger ./*/coverage/lcov.info | coveralls"
   },
   "devDependencies": {
     "prettier": "^1.14.2",

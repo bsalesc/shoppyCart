@@ -26,7 +26,6 @@ jobs:
         - yarn --cwd ./server test
         - yarn --cwd ./client
         - yarn --cwd ./client test:headless
-        - yarn coverage:echo | cat
         - yarn coverage
     - stage: Deploy and Publish
       script:
