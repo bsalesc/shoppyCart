@@ -14,6 +14,7 @@ import { Subject } from 'rxjs';
 import { SwUpdate } from '@angular/service-worker';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './components/shared.module';
+import { SideNavComponent } from './components/layout/side-nav/side-nav.component';
 
 class MockSwUpdate {
   $$availableSubj = new Subject<{ available: { hash: string } }>();
@@ -39,6 +40,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         HeaderComponent,
+        SideNavComponent,
         FooterComponent,
         MessageComponent,
       ],

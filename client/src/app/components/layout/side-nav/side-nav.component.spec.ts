@@ -3,7 +3,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { APP_BASE_HREF } from '@angular/common';
 
 import { SideNavComponent } from './side-nav.component';
-import { RouterModule } from '../../router/router.module';
+import { RouterModule } from '../../../router/router.module';
+import { AppModule } from 'src/app/app.module';
+import { MenuService } from 'src/app/services/menu.service';
 
 describe('SideNavComponent', () => {
   let component: SideNavComponent;
@@ -12,8 +14,8 @@ describe('SideNavComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule, RouterModule],
-      declarations: [],
-      providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+      declarations: [SideNavComponent],
+      providers: [{ provide: APP_BASE_HREF, useValue: '/' }, MenuService],
     }).compileComponents();
   }));
 

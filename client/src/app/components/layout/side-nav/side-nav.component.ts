@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuService } from '../../services/menu.service';
-import { UserService } from '../../services/user.service';
+import { MenuService } from '../../../services/menu.service';
 
 @Component({
   selector: 'app-side-nav',
