@@ -12,12 +12,14 @@ import { MessageService } from './services/message.service';
 import { environment } from '../environments/environment';
 import { MessageComponent } from './components/message/message.component';
 import { SharedModule } from './components/shared.module';
+import { SideNavComponent } from './components/layout/side-nav/side-nav.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
+    SideNavComponent,
     MessageComponent,
   ],
   imports: [
