@@ -1,6 +1,6 @@
-# ShoppingList
+# shoppyCart
 
-The idea of this application is to use on desktop and mobile.
+The idea of this application to be used on desktop and mobile.
 
 ### [Client / Angular / Boostrap](/client)
 

@@ -1,5 +1,6 @@
-export interface IUserBase {
-  id: any;
+import { IBaseSimpleModel } from './basemodel.interface';
+
+export interface IUserBase extends IBaseSimpleModel {
   email: string;
   name: string;
   token?: string;
