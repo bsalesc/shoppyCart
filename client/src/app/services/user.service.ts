@@ -20,25 +20,25 @@ export class UserService {
         params: new HttpParams().set('email', email).set('pass', pass),
       })
       .pipe(
-        map<Result<User>, Result<User>>(result => {
-          this.setUser({ ...this.userStorage, user: result.data });
-          return result;
+        map<User, User>(user => {
+          this.setUser({ ...this.userStorage, user });
+          return user;
         }),
       );
 
   logout = () =>
     this.http.get<User>('users/logout').pipe(
-      map<Result<User>, Result<User>>(result => {
+      map<User, User>(user => {
         this.setUser({ ...this.userStorage, user: null });
-        return result;
+        return user;
       }),
     );
 
-  register = (user: User) =>
-    this.http.post<User>('users/register', user).pipe(
-      map<Result<User>, Result<User>>(result => {
-        this.setUser({ ...this.userStorage, user: result.data });
-        return result;
+  register = (newUser: User) =>
+    this.http.post<User>('users/register', newUser).pipe(
+      map<User, User>(user => {
+        this.setUser({ ...this.userStorage, user });
+        return user;
       }),
     );
 
@@ -69,12 +69,7 @@ export class UserService {
   }
 
   setUser = (userStorage: UserStorage) =>
-    localStorage.setItem(
-      'user',
-      JSON.stringify(
-        (this.userStorage = { ...this.userStorage, ...userStorage }),
-      ),
-    );
+    localStorage.setItem('user', JSON.stringify((this.userStorage = { ...this.userStorage, ...userStorage })));
 
   loadUser = (): UserStorage => {
     this.userStorage = JSON.parse(localStorage.getItem('user'));

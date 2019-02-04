@@ -10,7 +10,7 @@
     "prettier": "^1.14.2",
     "prettier-tslint": "^0.4.0",
     "tslint": "^5.11.0",
-    "typescript": "^3.0.1"
+    "typescript": "3.3.1"
   },
   "dependencies": {
     "coveralls": "^3.0.2",

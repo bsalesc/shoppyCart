@@ -23,9 +23,5 @@ export class EditComponent implements OnInit {
 
   ngOnInit() {}
 
-  handleEdit = () => {
-    this.itemService
-      .edit(this.item)
-      .subscribe(result => this.edit.emit(result.data));
-  };
+  handleEdit = () => this.itemService.edit(this.item).subscribe(item => this.edit.emit(item));
 }

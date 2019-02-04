@@ -19,7 +19,7 @@ export class HttpService {
     this.API_URL = environment.api_url;
   }
 
-  catchError = observable =>
+  buildObservable = <T>(observable: Observable<Result<T>>): Observable<T> =>
     observable.pipe(
       map(result => result),
       catchError(result => {
@@ -30,6 +30,7 @@ export class HttpService {
         }
         return throwError(result.error);
       }),
+      map(result => result.data),
     );
 
   mergeOptions = (options?: Options): Options => ({
@@ -37,60 +38,20 @@ export class HttpService {
     ...options,
   });
 
-  get = <T>(url: string, options?: Options): Observable<Result<T>> =>
-    this.catchError(
-      this.service.get<Result<T>>(
-        this.API_URL + url,
-        this.mergeOptions(options),
-      ),
-    );
+  get = <T>(url: string, options?: Options): Observable<T> =>
+    this.buildObservable<T>(this.service.get<Result<T>>(this.API_URL + url, this.mergeOptions(options)));
 
-  post = <T>(
-    url: string,
-    body: any,
-    options?: Options,
-  ): Observable<Result<T>> =>
-    this.catchError(
-      this.service.post<Result<T>>(
-        this.API_URL + url,
-        body,
-        this.mergeOptions(options),
-      ),
-    );
+  post = <T>(url: string, body: any, options?: Options): Observable<T> =>
+    this.buildObservable<T>(this.service.post<Result<T>>(this.API_URL + url, body, this.mergeOptions(options)));
 
-  put = <T>(
-    url: string,
-    body?: any,
-    options?: Options,
-  ): Observable<Result<T>> =>
-    this.catchError(
-      this.service.put<Result<T>>(
-        this.API_URL + url,
-        body,
-        this.mergeOptions(options),
-      ),
-    );
+  put = <T>(url: string, body?: any, options?: Options): Observable<T> =>
+    this.buildObservable<T>(this.service.put<Result<T>>(this.API_URL + url, body, this.mergeOptions(options)));
 
-  delete = <T>(url: string, options?: Options): Observable<Result<T>> =>
-    this.catchError(
-      this.service.delete<Result<T> & any>(
-        this.API_URL + url,
-        this.mergeOptions(options),
-      ),
-    );
+  delete = <T>(url: string, options?: Options): Observable<T> =>
+    this.buildObservable<T>(this.service.delete<Result<T> & any>(this.API_URL + url, this.mergeOptions(options)));
 
-  patch = <T>(
-    url: string,
-    body: any,
-    options?: Options,
-  ): Observable<Result<T>> =>
-    this.catchError(
-      this.service.patch<Result<T> & any>(
-        this.API_URL + url,
-        body,
-        this.mergeOptions(options),
-      ),
-    );
+  patch = <T>(url: string, body: any, options?: Options): Observable<T> =>
+    this.buildObservable<T>(this.service.patch<Result<T> & any>(this.API_URL + url, body, this.mergeOptions(options)));
 
   get token() {
     let token = '';
@@ -122,4 +83,5 @@ interface Options {
 
 export interface Result<T> {
   data: T;
+  success: boolean;
 }

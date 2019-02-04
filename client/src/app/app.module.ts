@@ -15,22 +15,14 @@ import { SharedModule } from './components/shared.module';
 import { SideNavComponent } from './components/layout/side-nav/side-nav.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    SideNavComponent,
-    MessageComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, SideNavComponent, MessageComponent],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule,
     HttpClientModule,
     SharedModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   providers: [MessageService],
   bootstrap: [AppComponent],
