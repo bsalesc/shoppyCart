@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuService } from '../../../services/menu.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -7,7 +8,7 @@ import { MenuService } from '../../../services/menu.service';
   styleUrls: ['./side-nav.component.css'],
 })
 export class SideNavComponent implements OnInit {
-  constructor(private menuService: MenuService) {}
+  constructor(private menuService: MenuService, private _router: Router) {}
 
   ngOnInit() {}
 
@@ -18,6 +19,8 @@ export class SideNavComponent implements OnInit {
   get menus() {
     return this.menuService.get();
   }
+
+  isActivePage = url => url === this._router.url;
 
   handle = () => setTimeout(this.menuService.toggle, 300);
 }

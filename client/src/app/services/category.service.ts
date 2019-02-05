@@ -1,18 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../utils';
 import { Category } from '../interfaces/category';
+import { Subject } from 'rxjs';
+import { observableIterator } from '../utils/obsersable';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
-  constructor(private http: HttpService) {}
+  private _categories$: Subject<Category[]>;
+  private observableIterator = observableIterator<Category>();
+
+  constructor(private http: HttpService) {
+    this._categories$ = this.observableIterator.observable;
+  }
+
+  get categories() {
+    this.getAll().subscribe(categories => this._categories$.next(categories));
+    return this._categories$;
+  }
 
   getAll = () => this.http.get<Category[]>('categories/');
 
   getById = id => this.http.get<Category[]>('categories/' + id);
 
-  add = (category: Category) => this.http.post<Category>('categories/', category);
+  add = (newCategory: Category) =>
+    this.http.post<Category>('categories/', newCategory).pipe(this.observableIterator.add);
 
   edit = (category: Category) => this.http.put<Category>('categories/' + category.id, category);
 
-  remove = (category: Category) => this.http.delete('categories/' + category.id);
+  remove = (category: Category) => this.http.delete('categories/' + category.id).pipe(this.observableIterator.remove);
 }
