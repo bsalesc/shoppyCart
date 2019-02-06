@@ -17,5 +17,5 @@ export class ListComponent {
 
   toggle = id => (this.isExpanded(id) ? this._expanded.splice(this._expanded.indexOf(id), 1) : this._expanded.push(id));
 
-  // remove = category => this.categoryService.remove(category).subscribe(success => );
+  remove = category => this.categoryService.remove(category);
 }

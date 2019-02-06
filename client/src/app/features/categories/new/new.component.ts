@@ -1,7 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CategoryFormGroup } from 'src/app/validations/category.validation';
 import { CategoryService } from 'src/app/services/category.service';
-import { Category } from 'src/app/interfaces/category';
+import { Category } from 'src/app/interfaces';
 
 @Component({
   selector: 'app-new',

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../utils';
-import { Category } from '../interfaces/category';
 import { Subject } from 'rxjs';
 import { observableIterator } from '../utils/obsersable';
+import { Category } from '../interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class CategoryService {
@@ -27,5 +27,6 @@ export class CategoryService {
 
   edit = (category: Category) => this.http.put<Category>('categories/' + category.id, category);
 
-  remove = (category: Category) => this.http.delete('categories/' + category.id).pipe(this.observableIterator.remove);
+  remove = (category: Category) =>
+    this.http.delete('categories/' + category.id).subscribe(this.observableIterator.remove(category));
 }
