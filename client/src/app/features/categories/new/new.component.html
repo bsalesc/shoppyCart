@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup" (submit)="handleAdd()">
+  <div class="row form-group">
+    <div class="col-sm-12">
+      <div class="input-group">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Description"
+          aria-label="Description"
+          name="description"
+          formControlName="description"
+          [class.is-invalid]="!formGroup.description.isValid"
+          required
+        />
+        <div class="input-group-append">
+          <button [disabled]="!formGroup.valid" type="submit" class="btn btn-primary append-field">Add</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!formGroup.valid" class="row col-sm-12 errors">
+    <span *ngFor="let error of formGroup.errorsMessage">
+      {{ '* ' + error }}
+    </span>
+  </div>
+</form>

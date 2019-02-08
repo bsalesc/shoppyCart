@@ -20,10 +20,7 @@ export class ListComponent implements OnInit {
   @ViewChild(EditComponent)
   editView: EditComponent;
 
-  constructor(
-    private itemService: ItemService,
-    private userService: UserService,
-  ) {}
+  constructor(private itemService: ItemService, private userService: UserService) {}
 
   get list(): Item[] {
     return this._shoppingList.filter(f => this.showBoughtItems || !f.bought);
@@ -56,15 +53,9 @@ export class ListComponent implements OnInit {
 
   isExpanded = id => !!this._expanded.find(f => f === id);
 
-  toggle = id =>
-    this.isExpanded(id)
-      ? this._expanded.splice(this._expanded.indexOf(id), 1)
-      : this._expanded.push(id);
+  toggle = id => (this.isExpanded(id) ? this._expanded.splice(this._expanded.indexOf(id), 1) : this._expanded.push(id));
 
-  loadList = () =>
-    this.itemService
-      .getAll()
-      .subscribe(result => (this._shoppingList = result.data));
+  loadList = () => this.itemService.getAll().subscribe(list => (this._shoppingList = list));
 
   mark = (item: Item) => {
     item.bought = !item.bought;
@@ -74,9 +65,7 @@ export class ListComponent implements OnInit {
   get currentTotalToSpend(): number {
     if (!this._shoppingList.length) return 0;
 
-    const values = this._shoppingList
-      .filter(f => !f.bought)
-      .map(wish => (wish.price || 0) * wish.quantity);
+    const values = this._shoppingList.filter(f => !f.bought).map(wish => (wish.price || 0) * wish.quantity);
 
     if (!values.length) return 0;
 
@@ -88,15 +77,11 @@ export class ListComponent implements OnInit {
       this._shoppingList.splice(this._shoppingList.indexOf(item), 1);
     });
 
-  openEditModal = wish =>
-    (this.itemSelected = Object.assign({}, wish)) && this.modalView.show();
+  openEditModal = wish => (this.itemSelected = Object.assign({}, wish)) && this.modalView.show();
 
   handleEditItem = () => this.editView.handleEdit();
 
-  handleEdit = item =>
-    (this._shoppingList = this._shoppingList.map(
-      w => (w.id === item.id ? item : w),
-    ));
+  handleEdit = item => (this._shoppingList = this._shoppingList.map(w => (w.id === item.id ? item : w)));
 
   handleAdd = item => this._shoppingList.push(item);
 }

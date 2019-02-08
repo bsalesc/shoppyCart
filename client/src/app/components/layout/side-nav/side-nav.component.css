@@ -23,6 +23,11 @@
   text-decoration: inherit;
 }
 
+.side-nav .list-group .list-group-item .active {
+  font-weight: 600;
+  color: #3b7abd;
+}
+
 .navbar-brand {
   text-align: center;
   margin-right: 0;

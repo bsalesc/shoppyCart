@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Menu } from '../interfaces/menu';
 import { UserService } from './user.service';
+import { Menu } from '../interfaces';
 
 @Injectable({ providedIn: 'root' })
 export class MenuService {

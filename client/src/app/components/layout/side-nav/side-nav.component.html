@@ -1,8 +1,9 @@
 <div [ngClass]="'navbar side-nav bg-dark ' + visibleCls">
   <ul class="list-group">
     <div *ngFor="let menu of menus">
-      <li *ngIf="menu.allowed" class="list-group-item"><a [routerLink]="menu.url" (click)="handle()">{{
-          menu.description }}</a></li>
+      <li *ngIf="menu.allowed" class="list-group-item">
+        <a [routerLink]="menu.url" (click)="handle()" [class.active]="isActivePage(menu.url)">{{ menu.description }}</a>
+      </li>
     </div>
   </ul>
 </div>

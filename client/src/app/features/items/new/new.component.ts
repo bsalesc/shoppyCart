@@ -19,8 +19,8 @@ export class NewComponent {
   }
 
   handleAdd = () => {
-    this.itemService.add(this.formGroup.value).subscribe(result => {
-      this.add.emit(result.data);
+    this.itemService.add(this.formGroup.value).subscribe(item => {
+      this.add.emit(item);
       this.formGroup.reset();
     });
   };

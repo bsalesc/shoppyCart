@@ -4,6 +4,7 @@ import * as express from 'express';
 
 import { ItemRouter } from './routes/item.route';
 import { UserRouter } from './routes/user.route';
+import { CategoryRouter } from './routes/category.route';
 
 import { jwtDecode } from './utils/token.util';
 
@@ -20,6 +21,8 @@ export default async (): Promise<express.Application> => {
   userRouter.registerRoutes();
   const itemRouter = new ItemRouter(app);
   itemRouter.registerRoutes();
+  const categoryRouter = new CategoryRouter(app);
+  categoryRouter.registerRoutes();
 
   return app;
 };

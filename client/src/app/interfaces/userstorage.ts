@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from '.';
 
 export interface UserStorage {
   user?: User;

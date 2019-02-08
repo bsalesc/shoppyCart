@@ -1,9 +1,9 @@
-export interface IItem {
-  id: string;
+import { IBaseModel } from './basemodel.interface';
+
+export interface IItem extends IBaseModel {
   description: string;
   quantity: number;
   bought: boolean;
   boughtAt: string | Date;
-  userId: string;
   price?: number;
 }
