@@ -8,6 +8,7 @@ import { ItemService } from '../../../services/item.service';
 import { SharedModule } from '../../../components/shared.module';
 import { EditModule } from '../edit/edit.module';
 import { HttpClientModule } from '@angular/common/http';
+import { MockItemService } from 'src/app/services/item.service.spec';
 
 describe('ListComponent', () => {
   let component: ListComponent;
@@ -15,16 +16,9 @@ describe('ListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        CommonModule,
-        FormsModule,
-        NewModule,
-        SharedModule,
-        EditModule,
-        HttpClientModule,
-      ],
+      imports: [CommonModule, FormsModule, NewModule, SharedModule, EditModule, HttpClientModule],
       declarations: [ListComponent],
-      providers: [ItemService],
+      providers: [{ provide: ItemService, useClass: MockItemService }],
     }).compileComponents();
   }));
 
